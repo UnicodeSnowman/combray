@@ -15,5 +15,13 @@ feature 'Creating Items' do
 
     click_button 'Create Item'
     expect(page).to have_content('Item has been created.')
+
+    item = Item.where(name: 'New Item 1').first
+
+    expect(page.current_url).to eql(item_url(item))
+
+    title = 'New Item 1 - Items - Gallery'
+    expect(find('title').native.text).to have_content(title)
   end
+
 end
