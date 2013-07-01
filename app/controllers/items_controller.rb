@@ -19,7 +19,8 @@ class ItemsController < ApplicationController
       flash[:notice] = 'Item has been created.'
       redirect_to @item
     else
-
+      flash[:alert] = 'Item has not been created.'
+      render :action => 'new'
     end
   end
 

@@ -1,29 +1,46 @@
-<h2>New Item</h2>
-<%= form_for(@item) do |f| %>
-  <p>
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :size %><br />
-    <%= f.text_field :size %>
-  </p>
-  <p>
-    <%= f.label :year %><br />
-    <%= f.text_field :year %>
-  </p>
-  <p>
-    <%= f.label :origin %><br />
-    <%= f.text_field :origin %>
-  </p>
+<section>
+  <h1>New Item</h1>
+  <%= form_for(@item) do |f| %>
+  
+    <% if @item.errors.any? %>
+      <section id="error_explanation">
+        <h1><%= pluralize(@item.errors.count, "error") %>
+          prohibited this item from being saved: 
+        </h1> 
 
-  <%= f.submit %>
-<% end %>
+        <ul>
+        <% @item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </section>
+    <% end %>
+  
+    <p>
+      <%= f.label :code %><br />
+      <%= f.text_field :code %>
+    </p>
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :description %><br />
+      <%= f.text_area :description %>
+    </p>
+    <p>
+      <%= f.label :size %><br />
+      <%= f.text_field :size %>
+    </p>
+    <p>
+      <%= f.label :year %><br />
+      <%= f.text_field :year %>
+    </p>
+    <p>
+      <%= f.label :origin %><br />
+      <%= f.text_field :origin %>
+    </p>
+  
+    <%= f.submit %>
+  <% end %>
+</section>
