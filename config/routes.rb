@@ -8,6 +8,7 @@ AntiquesGallery::Application.routes.draw do
   root :to => "items#index"
 
   resources :items
+  resources :categories
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
