@@ -3,5 +3,5 @@ class Item < ActiveRecord::Base
   validates :description, :presence => true
   validates :code, :presence => true, :uniqueness => true
 
-  belongs_to :category
+  belongs_to :subcategory
 end

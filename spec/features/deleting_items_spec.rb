@@ -8,7 +8,7 @@ feature 'Deleting Items' do
     visit '/'
   end
   
-  scenario 'Deleting a project' do
+  scenario 'Deleting an item' do
     
     click_link 'Test Item One'
     click_link 'Remove Item'

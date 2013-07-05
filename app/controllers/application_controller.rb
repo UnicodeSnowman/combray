@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   protected
     def load_nav
       @test_thing = 'blah blah blah'
-      #@categories = Category.all
-      @categories = [{'name' => 'Category 1'}, {'name' => 'Category 2'}, {'name' => 'Category 3'}]
+      @categories = Category.all
     end
 end
