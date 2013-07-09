@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   describe "passwords" do
     it "needs a password and confirmation to save" do
-      u = User.new(name: "chris")
+      u = User.new(email: "caplingerc@gmail.com")
 
       u.save
       expect(u).to_not be_valid
@@ -20,7 +20,7 @@ describe User do
 
     it "needs password and confirmation to match" do
       u = User.create(
-        name: 'chris',
+        email: 'caplingerc@gmail.com',
         password: 'testpass',
         password_confirmation: 'testpassssss'
       )
@@ -31,7 +31,7 @@ describe User do
 
   describe "authentication" do
     let(:user) { User.create(
-      name: 'chris',
+      email: 'caplingerc@gmail.com',
       password: 'testpass',
       password_confirmation: 'testpass'
     )}

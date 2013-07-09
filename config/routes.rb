@@ -19,6 +19,10 @@ AntiquesGallery::Application.routes.draw do
     resources :subcategories
   end
 
+  get 'admin' => 'sessions#index'
+  get 'admin/login' => 'sessions#new'
+  post 'admin/login' => 'sessions#create'
+
   ###########################
   #
   # Example of regular route:
