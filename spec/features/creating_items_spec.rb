@@ -3,9 +3,10 @@ require 'spec_helper'
 feature 'Creating Items' do
 
   before do
-    visit '/'
+    @category = FactoryGirl.create(:category, name: 'Category One')
+    @subcategory = FactoryGirl.create(:subcategory, category_id: @category.id, name: 'Subcategory One')
+    visit '/items/new'
 
-    click_link 'New Item'
   end
 
   scenario 'can create a project' do
@@ -13,6 +14,7 @@ feature 'Creating Items' do
     fill_in 'Code', with: '1234'
     fill_in 'Name', with: 'New Item 1'
     fill_in 'Description', with: 'A nice item'
+    select 'Category One : Subcategory One', :from => 'item_subcategory_id'
     fill_in 'Size', with: '22 W x 21 H x 6 D cm'
     fill_in 'Year', with: '1900-1984'
     fill_in 'Origin', with: 'France'

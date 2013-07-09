@@ -8,7 +8,12 @@ AntiquesGallery::Application.routes.draw do
   root :to => "items#index"
 
   resources :categories
+  resources :subcategories
   resources :items
+
+#  namespace :admin do
+#    
+#  end
 
   resources :categories do
     resources :subcategories

@@ -1,9 +1,7 @@
 
-<section>
-  <h1>Subcategories:</h1>
-  <ul>
-    <%= @category.subcategories.each do |subcategory| %>
-      <li><%= subcategory[:name] %></li>
-    <% end %>
-  </ul>
-</section>
+<h1>Subcategories:</h1>
+<ul>
+  <% @category.subcategories.each do |subcategory| %>
+    <li><%= link_to subcategory.name, [@category, subcategory] %></li>
+  <% end %>
+</ul>

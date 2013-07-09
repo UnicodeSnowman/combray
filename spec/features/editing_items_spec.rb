@@ -3,10 +3,11 @@ require 'spec_helper'
 feature 'editing items' do
 
   before do
-    FactoryGirl.create(:item, name: 'Test Item One')
+    @category = FactoryGirl.create(:category)
+    @subcategory = FactoryGirl.create(:subcategory, category_id: @category.id)
+    @item = FactoryGirl.create(:item, name: 'Test Item One', subcategory_id: @subcategory.id)
 
-    visit '/'
-    click_link 'Test Item One'
+    visit "/items/#{@item.id}"
     click_link 'Edit Item'
   end
 
@@ -16,6 +17,7 @@ feature 'editing items' do
     click_button 'Update Item'
 
     expect(page).to have_content('Item has been updated.')
+    expect(page).to have_content('Test Item Two')
   end
 
   scenario 'updating an item to an invalid value' do

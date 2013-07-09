@@ -1,11 +1,21 @@
 require 'spec_helper'
 
 feature 'viewing items' do
-  scenario 'listing all items' do
-    item = FactoryGirl.create(:item, name: 'Test Item One', code: 238475)
 
-    visit '/'
-    click_link 'Test Item One'
-    expect(page.current_url).to eql(item_url(item))
+  before do 
+    @category = FactoryGirl.create(:category)
+    @subcategory = FactoryGirl.create(:subcategory, category_id: @category.id)
+    @item = FactoryGirl.create(:item, name: 'Test Item One', subcategory_id: @subcategory.id)
+
   end
+
+  scenario 'viewing a single item' do
+    visit "/items/#{@item.id}"
+    expect(page.current_path).to eql(item_path(@item))
+  end
+
+  scenario 'viewing all items on the items path' do
+    visit "/items" 
+  end
+     
 end

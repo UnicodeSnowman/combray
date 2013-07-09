@@ -1,7 +1,8 @@
 
 <div class="navbar">
   <div class="navbar-inner">
-    <ul class="nav">
+    <%= image_tag('http://placehold.it/300x60') %>
+    <ul class="nav pull-right">
       <% @categories.each do |category| %>
         <li><%= link_to category['name'], category_path(category) %></li>
       <% end %>

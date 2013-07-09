@@ -1,6 +1,6 @@
 
-<%= render 'subcategories/subcategories_list' %>
+<div class="category-title">
+  <h1><%= @category[:name] %></h1>
+</div>
 
-<section>
-  <h1>Viewing Items for: <%= @category[:name] %></h1>
-</section>
+<%= render :partial => '/shared/subcategory_and_items_layout' %>

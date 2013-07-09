@@ -3,9 +3,8 @@ require 'spec_helper'
 feature 'Creating categories' do
 
   before do
-    visit '/categories'
+    visit '/categories/new'
 
-    click_link 'New Category'
   end
 
   scenario 'can create a category' do

@@ -1,13 +1,13 @@
 class CategoriesController < ApplicationController
-
+  before_action :set_category, only: [:show, :edit, :update]
+  
   def index
     @categories = Category.all
+    @items = Item.all
   end
 
   def show
-    @category = Category.find(params[:id])
-    @subcategories = @category.subcategories
-    #@items = Item.where(:category_id => params[:id])
+    @items = @category.items
   end
 
   def new
@@ -30,6 +30,15 @@ class CategoriesController < ApplicationController
   end
 
   def update
+
+    if @category.update(category_params)
+      flash[:notice] = 'Category has been updated.'
+      redirect_to @category
+    else
+      flash[:error] = 'Category has not been updated.'
+      render :action => 'edit'
+    end
+
   end
 
   def destroy
@@ -39,5 +48,12 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'The category you were looking for could not be found.'
+    redirect_to categories_path
   end
 end

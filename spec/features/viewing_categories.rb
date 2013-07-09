@@ -32,6 +32,5 @@ feature 'viewing categories' do
     expect(page.current_url).to eql(category_url(@category_one))
     expect(page).to have_content('Subcategory One')
     expect(page).to have_content('Subcategory Two')
-
   end
 end
