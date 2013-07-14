@@ -21,6 +21,7 @@ end
 # gem 'therubyracer', platforms: :ruby
 
 gem 'twitter-bootstrap-rails'
+gem 'carrierwave', '0.8.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

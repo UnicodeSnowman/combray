@@ -3,8 +3,12 @@ require 'spec_helper'
 feature 'Creating subcategories' do
 
   before do
+    
+    user = FactoryGirl.create(:admin_user)
+    sign_in_as!(user)
+
     @category = FactoryGirl.create(:category, name: 'Category One')
-    visit '/subcategories/new'
+    visit '/admin/subcategories/new'
   end
 
   scenario 'can create a subcategory' do

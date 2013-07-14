@@ -1,0 +1,13 @@
+<section>
+
+  <%= render partial: 'shared/form_errors', :locals => { instance: @category } %>
+
+  <%= form_for [:admin, @category] do |f| %>
+
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <%= f.submit %>
+  <% end %>
+</section>

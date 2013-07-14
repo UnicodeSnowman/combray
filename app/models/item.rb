@@ -5,4 +5,5 @@ class Item < ActiveRecord::Base
   validates :code, :presence => true, :uniqueness => true
 
   belongs_to :subcategory
+  mount_uploader :photo, PhotoUploader
 end

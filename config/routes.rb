@@ -1,4 +1,5 @@
 AntiquesGallery::Application.routes.draw do
+  get "subcategory/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -7,13 +8,15 @@ AntiquesGallery::Application.routes.draw do
 
   root :to => "items#index"
 
-  resources :categories
-  resources :subcategories
+#  resources :categories
+#  resources :subcategories
   resources :items
 
-#  namespace :admin do
-#    
-#  end
+  namespace :admin do
+    resources :items   
+    resources :categories
+    resources :subcategories
+  end
 
   resources :categories do
     resources :subcategories

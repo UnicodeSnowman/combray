@@ -3,13 +3,14 @@ require 'spec_helper'
 feature 'Creating Items' do
 
   before do
+    sign_in_as!(FactoryGirl.create(:admin_user))
     @category = FactoryGirl.create(:category, name: 'Category One')
     @subcategory = FactoryGirl.create(:subcategory, category_id: @category.id, name: 'Subcategory One')
-    visit '/items/new'
+    visit '/admin/items/new'
 
   end
 
-  scenario 'can create a project' do
+  scenario 'can create an item' do
 
     fill_in 'Code', with: '1234'
     fill_in 'Name', with: 'New Item 1'
@@ -22,9 +23,7 @@ feature 'Creating Items' do
     click_button 'Create Item'
     expect(page).to have_content('Item has been created.')
 
-    item = Item.where(name: 'New Item 1').first
-
-    expect(page.current_url).to eql(item_url(item))
+    expect(page.current_url).to eql(admin_items_url)
 
     title = 'New Item 1 - Items - Gallery'
     expect(find('title').native.text).to have_content(title)
@@ -45,8 +44,7 @@ feature 'Creating Items' do
     fill_in 'Description', with: 'test description'
     click_button 'Create Item'
 
-    visit '/'
-    click_link 'New Item'
+    visit '/admin/items/new'
 
     fill_in 'Name', with: 'Test Name Numero dos'
     fill_in 'Code', with: 4567

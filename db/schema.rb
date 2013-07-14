@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130709045403) do
+ActiveRecord::Schema.define(version: 20130714190120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20130709045403) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "subcategory_id"
+    t.string   "photo"
   end
 
   add_index "items", ["subcategory_id"], name: "index_items_on_subcategory_id", using: :btree
@@ -49,6 +50,7 @@ ActiveRecord::Schema.define(version: 20130709045403) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",           default: false
   end
 
 end

@@ -1,0 +1,14 @@
+
+<% if instance.errors.any? %>
+  <section id="error_explanation">
+    <h1><%= pluralize(instance.errors.count, "error") %>
+      prohibited this item from being saved: 
+    </h1> 
+
+    <ul>
+    <% instance.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </section>
+<% end %>

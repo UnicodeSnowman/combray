@@ -4,9 +4,12 @@ require 'spec_helper'
 feature 'editing categories' do
 
   before do
+    user = FactoryGirl.create(:admin_user)
+    sign_in_as!(user)
+
     @category = FactoryGirl.create(:category, name: 'Category One')
 
-    visit "/categories/#{@category.id}/edit"
+    visit "/admin/categories/#{@category.id}/edit"
   end
 
   scenario 'updating a category' do

@@ -6,6 +6,10 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
+section, article, header, footer, nav, aside, hgroup {
+    display: block;
+}
+
 body {
     background: url('/assets/squairy_light.png') fixed;
 

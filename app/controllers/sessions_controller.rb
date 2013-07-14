@@ -14,6 +14,10 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:login][:password])
       session[:user_id] = user.id
       flash[:notice] = 'logged in successfully'
+
+      puts 'session user id'
+      puts session[:user_id]
+
       redirect_to admin_path
     else
       flash[:error] = 'login failed'

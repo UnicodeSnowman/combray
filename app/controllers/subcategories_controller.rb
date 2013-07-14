@@ -6,22 +6,6 @@ class SubcategoriesController < ApplicationController
     @items = @subcategory.items
   end
 
-  def new
-    @subcategory = Subcategory.new
-  end
-
-  def create
-    @subcategory = Subcategory.new(subcategory_params)
-
-    if @subcategory.save
-      flash[:notice] = 'Subcategory has been created.'
-      redirect_to '/'    
-    else
-      flash[:error] = 'Subcategory has not been created.'
-      render :action => 'new'
-    end
-
-  end
 
   private
 
