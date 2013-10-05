@@ -28,5 +28,6 @@
 
     <%= f.submit %>
 
+    <%= link_to "see this subcategory's items", admin_items_path(:subcategory_id => @subcategory) unless f.object.new_record? %>
   <% end %>
 </section>

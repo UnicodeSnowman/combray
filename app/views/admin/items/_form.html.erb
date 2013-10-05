@@ -32,21 +32,41 @@
       <%= f.label :origin %><br />
       <%= f.text_field :origin %>
     </p>
-    <p>
-      <%= f.label :photo, 'Photos' %><br />
-      <%= f.file_field :photo %>
-    </p>
-  
-    <% if @item.photo.present? %>
-      <div class="photo">
-        <p>
-          <% link_to File.basename(@item.photo.path), @item.photo.url %> 
-        </p>
-      </div>
 
-    <% end %>
+    <% number = 0 %>
+    <div id='photos'>
+      <%= link_to "+ Add Photo",
+        new_admin_photo_path,
+        :remote => true,
+        :update => 'photos',
+        :position => 'after',
+        :id => 'add_photo_link' %>
+        
+      <%= render partial: 'admin/photos/form', locals: { number: number } if f.object.new_record? %>
+        
+    </div>
 
     <%= f.submit %>
+
+    <% unless f.object.new_record? %>
+      <hr />
+      <h3>Current Photos</h3>
+      <div class="photos">
+        <% if @item.photos.length <= 1 %>
+          no photos
+        <% end %>
+        <ul class="thumbs">
+          <% @item.photos.each do |current_photo| %>
+            <li>
+              <%= image_tag current_photo.photo.url %> 
+              <%= link_to 'Remove Photo', admin_photo_path(current_photo, :item_id => @item.id), { :method => :delete }%>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    
+    <% end %>
+  
 
   <% end %>
 </section>

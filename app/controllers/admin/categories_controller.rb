@@ -15,7 +15,7 @@ class Admin::CategoriesController < ApplicationController
 
     if @category.save
       flash[:notice] = 'Category has been created.'
-      redirect_to categories_path
+      redirect_to admin_categories_path
     else
       flash[:alert] = 'Category has not been created.'
       render :action => 'new'
@@ -35,6 +35,18 @@ class Admin::CategoriesController < ApplicationController
     else
       flash[:error] = 'Category has not been updated.'
       render :action => 'edit'
+    end
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:notice] = 'Category has been deleted'
+
+    if request.xhr?
+      render :json => @category.to_json 
+    else
+      redirect_to admin_categories_path
     end
   end
 

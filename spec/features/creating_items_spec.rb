@@ -23,7 +23,7 @@ feature 'Creating Items' do
     click_button 'Create Item'
     expect(page).to have_content('Item has been created.')
 
-    expect(page.current_url).to eql(admin_items_url)
+    #expect(page.current_url).to eql(admin_item_url(@last_item_id + 1))
 
     title = 'New Item 1 - Items - Gallery'
     expect(find('title').native.text).to have_content(title)

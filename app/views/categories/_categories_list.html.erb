@@ -1,0 +1,18 @@
+
+<section class="content-inner">
+  <ul class="categories--list">
+    <% @categories.each do |category| %>
+      <% if category.name == "accessories" || category.name == "fine art" %>
+        <br />
+      <% end %>
+      <li class="category">
+        <%= link_to category.name.titleize, category, { :id => "category_#{category.name.tr(" ", "_")}" } %>
+      </li>
+      <ul class="categories--subcategories--list">
+        <% category.subcategories.each do |subcategory| %>
+          <li class="subcategory"><%= link_to subcategory.name.titleize, [category, subcategory], { :id => "subcategory_#{subcategory.name.tr(" ", "_")}" } %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </ul>
+</section>

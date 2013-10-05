@@ -1,0 +1,11 @@
+
+<%= fields_for @item do |f| %>
+    <%= f.fields_for :photos, :child_index => number do |photo| %>
+  
+      <p>
+        <%= "New Photo ##{number += 1}" %><br />
+        <%= photo.file_field :photo, { :class => 'photo_field' } %>
+      </p>
+  
+    <% end %>
+<% end %>

@@ -1,12 +1,19 @@
 AntiquesGallery::Application.routes.draw do
-  get "subcategory/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  root :to => "items#index"
+  root :to => 'pages#home'
+  get '/home' => 'pages#home'
+  get '/services' => 'pages#services'
+  get '/about' => 'pages#about'
+  get '/contact' => 'pages#contact'
+  get '/newsletter' => 'pages#newsletter'
+
+  #get '/collection' => categories?
+  # get "subcategory/index"
 
 #  resources :categories
 #  resources :subcategories
@@ -16,13 +23,14 @@ AntiquesGallery::Application.routes.draw do
     resources :items   
     resources :categories
     resources :subcategories
+    resources :photos
   end
 
   resources :categories do
     resources :subcategories
   end
 
-  get 'admin' => 'sessions#index'
+  #get 'admin' => 'sessions#index'
   get 'admin/login' => 'sessions#new'
   post 'admin/login' => 'sessions#create'
 

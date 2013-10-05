@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       puts 'session user id'
       puts session[:user_id]
 
-      redirect_to admin_path
+      redirect_to admin_categories_path
     else
       flash[:error] = 'login failed'
       render :new

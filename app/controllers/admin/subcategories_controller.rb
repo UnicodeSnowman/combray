@@ -1,4 +1,6 @@
 class Admin::SubcategoriesController < ApplicationController
+  before_action :authorize_admin!
+
   def index
     @subcategories = Subcategory.all
   end
@@ -36,6 +38,18 @@ class Admin::SubcategoriesController < ApplicationController
     else
       flash[:error] = 'Subcategory has not been updated.' 
       render :action => 'edit'
+    end
+  end
+
+  def destroy
+    @subcategory = Subcategory.find(params[:id])
+    @subcategory.destroy
+    flash[:notice] = 'Subcategory has been deleted'
+
+    if request.xhr?
+      render :json => @subcategory.to_json 
+    else
+      redirect_to admin_categories_path
     end
   end
 

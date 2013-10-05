@@ -8,6 +8,10 @@
       <%= f.label :name %><br />
       <%= f.text_field :name %>
     </p>
+
     <%= f.submit %>
+
+    <%= link_to "see this category's items", admin_items_path(:category_id => @category) unless f.object.new_record? %>
+    
   <% end %>
 </section>

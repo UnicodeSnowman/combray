@@ -4,13 +4,12 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @items = Item.all
+
+    # render if request.xhr? to make back button work
   end
 
   def show
     @items = @category.items
-  end
-
-  def destroy
   end
 
   private

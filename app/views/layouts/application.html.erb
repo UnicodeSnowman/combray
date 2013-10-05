@@ -8,24 +8,52 @@
     Gallery
   <% end %>
 </title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Sintony' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div class="container-fluid">
+  <div class="container">
 
     <% flash.each do |key, value| %>
-      <div class='flash' id='<%= key %>'>
+      <div class='flash pull-right' id='<%= key %>'>
         <%= value %> 
       </div>
     <% end %>
-    
-    <%= render "layouts/nav" %>
 
+    <% if current_user.try(:admin?) %>
+      <div class="content">
+        <div id="admin-panel" class="row">
+          <div class="span10">
+            <p>ADMIN</p>
+          </div>
+          <div class="span2 pull-right">
+            <%= link_to "Categories", admin_categories_path %>
+            <%= link_to "Items", admin_items_path %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
     <div class="content">
+      <%= render "layouts/nav" %>
       <%= yield %>
+      <footer>
+        <div class="row">
+          <ul class="span8">
+            <li>contact</li>        
+          </ul>
+          <ul class="span4 pull-right">
+            <li>external link</li>        
+            <li>another link</li>        
+            <li>another link</li>        
+          </ul>
+        </div>
+      </footer>
     </div>
+    <div id="notifications"></div>
   </div>
 
 </body>

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'adding photos to an item' do
+feature 'adding photos to an item', js: true do
 
   before do
     user = FactoryGirl.create(:admin_user)
@@ -8,24 +8,33 @@ feature 'adding photos to an item' do
 
     @category = FactoryGirl.create(:category, name: 'Category One')
     @subcategory = FactoryGirl.create(:subcategory, category_id: @category.id, name: 'Subcategory One')
-    @item = FactoryGirl.create(:item, subcategory_id: @subcategory.id)
 
-    visit "/admin/items/#{@item.id}/edit"
+    visit "/admin/items/new"
   end
 
-  it 'should show a file field to add a photo' do
 
-    expect(page).to have_content('Photos')
-  end
+  it 'should allow an admin to attach a file when creating a new item' do
+    fill_in "Code", with: '1294712'
+    fill_in "Name", with: 'Item Test Name'
+    fill_in "Description", with: 'Item Description'
 
-  it 'should allow an admin to attach a file' do
-    attach_file "Photo", "spec/fixtures/test.png"
-    click_button 'Update Item'
+    attach_file "Photo #1", Rails.root.join("spec/fixtures/test_one.png")
 
-    expect(page).to have_content('Item has been updated.')
+    click_link 'Add Photo'
+    attach_file "Photo #2", Rails.root.join("spec/fixtures/test_two.png")
 
-    within('.item .photo') do
-      expect(page).to have_content('test.png')
+#    attach_file "Photo #3", "spec/fixtures/test_three.png"
+
+    click_button 'Create Item'
+
+    expect(page).to have_content('Item has been created.')
+
+    within('.item .photos') do
+       expect(page).to have_css('.photo', :count => 2)
+#      expect(page).to have_content('test_one.png')
+#      expect(page).to have_content('test_two.png')
+      #expect(page).to have_content('test_three.png')
     end
   end
+
 end

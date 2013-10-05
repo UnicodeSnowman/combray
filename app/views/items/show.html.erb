@@ -1,18 +1,44 @@
 <% title(@item.name, "Items") %>
 
-<h1><%= @item.name %></h1>
+<div class="items--show">
+  
+  <div class="photo-main row-fluid">
+    <div class="span7">
+      <%= image_tag(@item.photos.first.photo.url) unless @item.photos.empty? %>
+    </div>
+    <div class="span5 description">
+      <h1><%= @item.name %></h1>
 
-<div>
-  <%= link_to 'Edit Item', edit_item_path(@item) %>
-  <%= link_to 'Remove Item', item_path(@item), :method => :delete, :data => { confirm: 'Are you sure you want to remove this item?'} %>
+      <p>
+        <label>Size:</label>
+        <%= @item.size %>
+      </p>
+
+      <p>
+        <label>Year:</label>
+        <%= @item.year %>
+      </p>
+
+      <p>
+        <label>Code:</label>
+        <%= @item.code %>
+      </p>
+
+      <p>
+        <%= @item.description %>
+      </p>
+
+    </div>
+  </div>
+  
+  <div class="thumbs">
+  
+    <% @item.photos.each do |photo| %>
+      <li>
+        <%= image_tag(photo.photo.url) %> 
+      </li>
+    <% end %>
+    
+  </div>
 </div>
 
-<%= image_tag('http://placehold.it/600x400') %>
-
-<div class="thumbs">
-  <% [1,2,3,4].each do |thumb| %>
-    <li>
-      <%= image_tag('http://placehold.it/100x100') %>
-    </li>
-  <% end %>
-</div>

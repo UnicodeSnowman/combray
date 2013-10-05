@@ -1,20 +1,20 @@
-<section>
-  <ul>
+<section class="content-inner">
+  <ul class="thumbnails">
   <% @items.each do |item| %>
-    <li class="item">
-      <%= link_to image_tag('http://placehold.it/300x300'), item %>
-      <section class="item-blurb">
-        <p>
-          <%= item.name %>
-          <br />
-          <%= item.description %>
-        </p>
-      </section>
+    <li >
+      <div class="item thumbnail">
+        <%= image_tag('http://placehold.it/250x250') %>
+        <%= link_to(item) do %>
+          <div class="item-blurb">
+            <p>
+              <%= item.name %>
+            </p>
+          </div>
+        <% end %>
+      </div>
     </li>
   <% end %>
-    <p>
-      Showing <%= @items.count %> items
-    </p>
+  <div style="clear:both"></div>
   </ul> 
 </section>
 

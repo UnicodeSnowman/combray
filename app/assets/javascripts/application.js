@@ -13,6 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
 //= require_tree .
+
+var cg = cg || {};
+
+cg.uiNotification = function(params) {
+    var content = params.content || 'notify!',
+        delay = params.delay || 1000,
+        element = params.element || '#notifications';
+
+    var $elem = $(element);
+    
+    var notification = $('<div>notify!</div>')
+        .addClass('notification')
+        .hide()
+        .fadeIn('fast')
+        .delay(delay)
+        .fadeOut('slow', function () { $(this).remove() })
+
+    $elem.append(notification);
+}  
 
