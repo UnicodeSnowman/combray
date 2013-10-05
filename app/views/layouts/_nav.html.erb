@@ -2,15 +2,16 @@
 <div class="navigation">
   <div class="row">
     <div class="logo span2">
-      <%= link_to image_tag("http://jacksons.se/static/images/logo.png"), home_path %>
+      <%= link_to image_tag("logo.jpg"), home_path %>
     </div>
 
     <div class="span10 links-container">
       <ul class="links">
         <li><%= link_to 'Collections', categories_path %></li>      
+        <li><%= link_to 'Services', about_path %></li>      
         <li><%= link_to 'About', about_path %></li>      
-        <li><%= link_to 'Contact', contact_path %></li>      
-        <li><%= link_to 'Newsletter', newsletter_path %></li>      
+        <li><%= link_to 'Contact', about_path %></li>      
+        <li><%= link_to 'Search', about_path %></li>      
         <!-- <li><input type="search" /></li> -->
         <div style="clear:both"></div>
       </ul>
