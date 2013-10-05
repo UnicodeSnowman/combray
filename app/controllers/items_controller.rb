@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   private
 
     def item_params
-      params.require(:item).permit(:code, :name, :description, :size, :year, :origin, :subcategory_id)
+      params.require(:item).permit(:code, :name, :description, :subcategory_id)
     end
 
     def set_item

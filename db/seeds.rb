@@ -16,17 +16,18 @@
       { name: 'seating'}, 
       { name: 'case pieces'},
       { name: 'tables' },
-      { name: 'accessories' },
+      { name: 'misc' },
       { name: 'fine art' }
     ])
 
     # Category: Seating
     seating = Category.find_by_name('seating')
     seating_subcategories = [
-      Subcategory.new({:name => 'bergeres'}),
-      Subcategory.new({:name => 'arm chairs'}),
       Subcategory.new({:name => 'side chairs'}),
-      Subcategory.new({:name => 'sofas'})
+      Subcategory.new({:name => 'arm chairs'}),
+      Subcategory.new({:name => 'bergeres'}),
+      Subcategory.new({:name => 'sofas & daybeds'}),
+      Subcategory.new({:name => 'stools'})
     ]
     seating_subcategories.each do |subcat|
       seating.subcategories << subcat
@@ -35,9 +36,10 @@
     # Category: Case Pieces
     case_pieces = Category.find_by_name('case pieces')
     case_pieces_subcategories = [
-      Subcategory.new({:name => 'commodes'}),
+      Subcategory.new({:name => 'cabinets'}),
+      Subcategory.new({:name => 'vitrines & etageres'}),
       Subcategory.new({:name => 'buffets'}),
-      Subcategory.new({:name => 'cabinets & vitrines'})
+      Subcategory.new({:name => 'commodes'})
     ]
     case_pieces_subcategories.each do |subcat|
       case_pieces.subcategories << subcat
@@ -46,13 +48,36 @@
     # Category: Tables
     tables = Category.find_by_name('tables')
     tables_subcategories = [
-      Subcategory.new({:name => 'side tables'}),
       Subcategory.new({:name => 'center tables'}),
-      Subcategory.new({:name => 'library and desks'}),
-      Subcategory.new({:name => 'dining tables'})
+      Subcategory.new({:name => 'side tables'}),
+      Subcategory.new({:name => 'dining tables'}),
+      Subcategory.new({:name => 'coffee & cocktail tables'}),
+      Subcategory.new({:name => 'desks'}),
+      Subcategory.new({:name => 'consoles'})
     ]
     tables_subcategories.each do |subcat|
       tables.subcategories << subcat
+    end
+
+    # Category: MISC
+    misc = Category.find_by_name('misc')
+    misc_subcategories = [
+      Subcategory.new({:name => 'center tables'}),
+      Subcategory.new({:name => 'side tables'}),
+      Subcategory.new({:name => 'consoles'})
+    ]
+    misc_subcategories.each do |subcat|
+      misc.subcategories << subcat
+    end
+
+    # Category: Fine Art
+    fine_art = Category.find_by_name('fine art')
+    fine_art_subcategories = [
+      Subcategory.new({:name => 'Norman Mooney'}),
+      Subcategory.new({:name => 'Landscapes & Still Life'})
+    ]
+    fine_art_subcategories.each do |subcat|
+      fine_art.subcategories << subcat
     end
 
     user = User.new

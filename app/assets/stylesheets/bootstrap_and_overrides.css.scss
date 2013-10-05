@@ -97,16 +97,33 @@ body {
 }
 
 #home {
-    position: relative;
-    .main-image {
-        background-image: url("http://placehold.it/1170x500");
-        background-repeat: no-repeat;
+    @mixin text {
+        background-color: white;
+        opacity: 0.8;
+        margin-left: 0px;
     }
 
-    h1 {
-        padding-left: 10%;
-        padding-right: 10%;
+    position: relative;
+    .main-image {
+        background-image: url("odelberg_table.jpg");
+        background-repeat: no-repeat;
+        height: 650px;
+        padding-top: 150px;
+    }
+
+    .title {
+        @include text;
         color: rgb(176, 39, 51);
+    }
+
+    .body-text {
+        h3 {
+            font-size:16px;
+            line-height:30px;
+        }
+
+        @include text;
+        padding-bottom: 15px;
     }
 
     h3 {
@@ -231,10 +248,15 @@ body {
     }
 
     .links {
+        padding-left: 15px;
         li {
             float: left;
             margin: 15px;
-            //margin-left: 6px;
+        }
+
+        li:last-child {
+            padding-left: 50px;
+            background-color: green;
         }
 
         a {
@@ -249,7 +271,8 @@ body {
         }
 
         a:hover {
-            @include border-bottom-hover;
+            //@include border-bottom-hover;
+            color: $color-red;
         }
 
     }

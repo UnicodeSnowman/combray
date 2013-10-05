@@ -20,18 +20,6 @@
       <%= f.label :subcategory %><br /> 
       <%= f.select(:subcategory_id, Subcategory.all.map { |subcategory| [subcategory.category.name + " : " + subcategory.name, subcategory.id] }) %><br /> 
     </p>
-    <p>
-      <%= f.label :size %><br />
-      <%= f.text_field :size %>
-    </p>
-    <p>
-      <%= f.label :year %><br />
-      <%= f.text_field :year %>
-    </p>
-    <p>
-      <%= f.label :origin %><br />
-      <%= f.text_field :origin %>
-    </p>
 
     <% number = 0 %>
     <div id='photos'>
