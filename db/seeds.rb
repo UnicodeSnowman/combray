@@ -10,6 +10,7 @@
     Subcategory.delete_all
     Item.delete_all
     Photo.delete_all
+    User.delete_all
 
     Category.create([
       { name: 'seating'}, 
@@ -53,3 +54,10 @@
     tables_subcategories.each do |subcat|
       tables.subcategories << subcat
     end
+
+    user = User.new
+    user.email = "zpopovic@combraygallery.com"
+    user.password = "p@ssword"
+    user.password_confirmation = "p@ssword"
+    user.admin = true
+    user.save
