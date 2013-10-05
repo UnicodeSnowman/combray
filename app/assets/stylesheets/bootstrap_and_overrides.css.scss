@@ -105,7 +105,7 @@ body {
 
     position: relative;
     .main-image {
-        background-image: url("odelberg_table.jpg");
+        background-image: url(asset_path('odelberg_table.jpg'));
         background-repeat: no-repeat;
         height: 400px;
         padding-top: 150px;
