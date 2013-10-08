@@ -17,10 +17,8 @@ $color-red: rgb(176, 39, 51);
     transition: background-color 0.3s ease;
 }
 
-@mixin border-bottom-hover {
-    border-bottom: $color-red solid 2px;
-    transition: border-color 0.3s ease;
-    color: $color-dark-grey;
+@mixin red-hover {
+    color: $color-red;
     text-decoration: none;
 }
 
@@ -46,13 +44,17 @@ li {
 }
 
 footer {
-    border-top: 1px solid $color-dark-grey;
-    margin-top: 15px;
-    padding-top: 8px;
+    //border-top: 1px solid $color-dark-grey;
+    margin: 10px;
+    padding-bottom: 2px;
     font-size: 14px;
-    li {
-        display: inline;
-        padding-left: 20px;
+
+    a {
+        padding-left: 15px;
+    }
+
+    a:hover {
+        @include red-hover;
     }
 }
 
@@ -232,8 +234,7 @@ body {
         .links-container {
             margin-left: 10px;
             display: inline-block;
-            width: 75%;
-            padding-top: 30px;
+            padding-top: 35px;
             ul {
                 margin-left: 0px;
             }
@@ -241,9 +242,7 @@ body {
     }
 
     .logo {
-        padding-bottom: 3px;
-        padding-top: 10px;
-        padding-left: 10px;
+        padding: 20px;
 
     }
 
@@ -271,8 +270,7 @@ body {
         }
 
         a:hover {
-            //@include border-bottom-hover;
-            color: $color-red;
+            @include red-hover;
         }
 
     }
@@ -291,8 +289,7 @@ body {
     }
 
     a:hover {
-        text-decoration: none;
-        color: $color-red;
+        @include red-hover
     }
 
 }

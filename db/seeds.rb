@@ -62,9 +62,9 @@
     # Category: MISC
     misc = Category.find_by_name('misc')
     misc_subcategories = [
-      Subcategory.new({:name => 'center tables'}),
-      Subcategory.new({:name => 'side tables'}),
-      Subcategory.new({:name => 'consoles'})
+      Subcategory.new({:name => 'Decorative Arts'}),
+      Subcategory.new({:name => 'Lighting'}),
+      Subcategory.new({:name => 'Mirrors'})
     ]
     misc_subcategories.each do |subcat|
       misc.subcategories << subcat
@@ -74,7 +74,7 @@
     fine_art = Category.find_by_name('fine art')
     fine_art_subcategories = [
       Subcategory.new({:name => 'Norman Mooney'}),
-      Subcategory.new({:name => 'Landscapes & Still Life'})
+      Subcategory.new({:name => 'Landscapes'})
     ]
     fine_art_subcategories.each do |subcat|
       fine_art.subcategories << subcat
