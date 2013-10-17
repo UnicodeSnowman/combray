@@ -34,21 +34,9 @@ $(function() {
         }
     }
 
-//    var selectedCategory = localStorage.getItem("selectedCategory");
-//    var selectedSubcategory = localStorage.getItem("selectedSubcategory");
-//
-//    if (selectedCategory) {
-//        setTimeout(function() {
-//            $("#".concat(selectedCategory)).click();
-//            $("#".concat(selectedSubcategory)).addClass("selected");
-//        }, 0);
-//    }
-    
-
     $categories_list.bind('click', function(e) {
 
         $(this).next().toggle("fast");
-        window.localStorage.setItem("selectedCategory", e.target.id);
 
         return false;
     });
@@ -61,8 +49,6 @@ $(function() {
 
         $subcategories_list.find('a').removeClass("selected");
         $(this).toggleClass("selected");
-
-        window.localStorage.setItem("selectedSubcategory", e.target.id);
 
         if (window.history) {
             window.history.pushState(null, '', this.href);

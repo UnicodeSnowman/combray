@@ -80,6 +80,31 @@
       fine_art.subcategories << subcat
     end
 
+    # Items
+    cct = Subcategory.find_by_name('coffee & cocktail tables')
+    item = Item.new
+    item.code = '1234'
+    item.name = 'round pedestal swivel table'
+    item.description = 'Table top in elm and elm root resting on round channeled baluster pedestal in birch, with elm and birch cross base ending in birch channeled feet. Iron swivel mechanism allows the table top to be rotated between the heights of 24" and 30". Takes one 18" extension leaf (original not available, new one to be custom made upon a sale).'
+    item.subcategory_id = cct.id
+    cct.items << item
+
+    desks = Subcategory.find_by_name('desks')
+    item = Item.new
+    item.code = '2345'
+    item.name = 'rectangular flame birch writing table'
+    item.description = 'Table top with canted corners, lined with (new) leather, resting on an apron with three drawers. Four long saber legs. Made for free-standing.'
+    item.subcategory_id = desks.id
+    desks.items << item
+
+    cabinets = Subcategory.find_by_name('cabinets')
+    item = Item.new
+    item.code = '3456'
+    item.name = 'biedermeier period birch root and birch architectural armoire'
+    item.description = 'Ebonized pediment resting on rectangular birch architrave with ebonized frieze molding on top of the birch structure with a pair of doors on top of a faux drawer, flanked by swollen ebonized columns with maple bases and capitals. Ebonized apron molding, block feet.'
+    item.subcategory_id = cabinets.id
+    cabinets.items << item
+
     user = User.new
     user.email = "zpopovic@combraygallery.com"
     user.password = "p@ssword"

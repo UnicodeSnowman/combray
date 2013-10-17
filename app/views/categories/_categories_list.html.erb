@@ -6,7 +6,7 @@
         <br />
       <% end %>
       <li class="category">
-        <%= link_to category.name.titleize, category, { :id => "category_#{category.name.tr(" ", "_")}" } %>
+        <%= link_to category.name.titleize, category %>
       </li>
       <ul class="categories--subcategories--list">
         <% category.subcategories.each do |subcategory| %>

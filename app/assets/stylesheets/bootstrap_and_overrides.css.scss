@@ -22,8 +22,13 @@ $color-red: rgb(176, 39, 51);
     text-decoration: none;
 }
 
+@mixin image-hover {
+    opacity: 0.5;
+}
+
 @mixin border-top-separator {
     border-top: 4px solid $color-orange;
+    padding-top: 10px;
 }
 
 @mixin border-bottom-separator {
@@ -47,6 +52,7 @@ footer {
     //border-top: 1px solid $color-dark-grey;
     margin: 10px;
     padding-bottom: 2px;
+    padding-top: 20px;
     font-size: 14px;
 
     a {
@@ -64,7 +70,7 @@ body {
     background-image: url(asset_path('pixel_weave.png'));
     font-size: 14px;
     font-family: 'Sintony', sans-serif;
-    line-height: 18px;
+    line-height: 25px;
 }
 
 .thumbnails {
@@ -72,8 +78,11 @@ body {
         margin-left: 20px;
         margin-bottom: 20px;
         .thumbnail {
+            width: 250px;
+
             padding: 0;
             border: 1px solid rgb(131, 131, 131);
+
         } 
         img {
             border-radius: 3px;
@@ -121,11 +130,10 @@ body {
     .body-text {
         h3 {
             font-size:16px;
-            line-height:30px;
         }
 
         @include text;
-        padding-bottom: 15px;
+        padding: 20px;
     }
 
     h3 {
@@ -149,13 +157,6 @@ body {
 }
 
 #about {
-    padding-left: 200px;
-    line-height: 25px;
-
-    .heading {
-        width: 200px;
-        margin-bottom: 15px;
-    }
 }
 
 #items {
@@ -171,6 +172,7 @@ body {
     background-color: $color-white;
     box-shadow: 0 0 7px rgb(65, 65, 65);
     @include border-top-separator;
+    @include border-bottom-separator;
 }
 
 .category-title {
@@ -194,9 +196,14 @@ body {
 }
 
 .thumbs {
+    padding-top: 5px;
     li {
         width: 200px;
         display: inline-block
+    }
+
+    img:hover {
+        @include image-hover;
     }
 }
 
@@ -229,50 +236,33 @@ body {
     }
 }
 
-.navigation {
-    .row {
-        .links-container {
-            margin-left: 10px;
-            display: inline-block;
-            padding-top: 35px;
-            ul {
-                margin-left: 0px;
+.navbar {
+    .navbar-inner {
+        border: none;
+        box-shadow: none;
+        border-radius: 0px;
+        background-image: none;
+        background-color: white;
+
+        img {
+            height: 100px;
+        }
+    }
+
+    ul.nav {
+        font-size: 20px;
+
+        li {
+            line-height: 120px;
+            padding-right: 30px;
+            a {
+                color: $color-dark-grey;
+            }
+
+            a:hover {
+                @include red-hover
             }
         }
-    }
-
-    .logo {
-        padding: 20px;
-
-    }
-
-    .links {
-        padding-left: 15px;
-        li {
-            float: left;
-            margin: 15px;
-        }
-
-        li:last-child {
-            padding-left: 50px;
-            background-color: green;
-        }
-
-        a {
-            color: $color-dark-grey;
-            font-size: 18px;
-            text-decoration: none;
-            //border-bottom: $color-dark-grey solid 1px;
-//            padding-bottom: 3px;
-//            padding-right: 35px;
-            letter-spacing: 3px;
-            //font-family: 'Libre Baskerville', serif;
-        }
-
-        a:hover {
-            @include red-hover;
-        }
-
     }
 }
 
@@ -361,10 +351,11 @@ form {
         }
 
         a:hover {
-            background: rgb(231, 142, 142);
-            box-shadow: inner 1px 1px rgb(216, 216, 216);
-            text-decoration: none;
-            background-color: $color-red;
+            @include image-hover;
+//            background: rgb(231, 142, 142);
+//            box-shadow: inner 1px 1px rgb(216, 216, 216);
+//            text-decoration: none;
+//            background-color: $color-red;
         }
     }
 
@@ -372,7 +363,7 @@ form {
         position: relative;
 
         img:hover {
-            opacity: 0.5;
+            @include image-hover;
         }
 
         .photo {

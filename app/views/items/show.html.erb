@@ -3,11 +3,11 @@
 <div class="items--show">
   
   <div class="photo-main row-fluid">
-    <div class="span7">
+    <div class="span6 offset1">
       <%= image_tag(@item.photos.first.photo.url) unless @item.photos.empty? %>
     </div>
-    <div class="span5 description">
-      <h1><%= @item.name %></h1>
+    <div class="span4 description">
+      <h1><%= @item.name.titleize %></h1>
 
       <p>
         <label>Ref #:</label>
@@ -25,13 +25,15 @@
     </div>
   </div>
   
-  <div class="thumbs">
+  <div class="row-fluid thumbs">
   
-    <% @item.photos.each do |photo| %>
-      <li>
-        <%= image_tag(photo.photo.url) %> 
-      </li>
-    <% end %>
+    <div class="span6 offset1">
+      <% @item.photos.each do |photo| %>
+        <li>
+          <%= image_tag(photo.photo.url) %> 
+        </li>
+      <% end %>
+    </div>
     
   </div>
 </div>
