@@ -1,38 +1,11 @@
-var localStorageManager;
-
 $(function() {
     var $categories_list = $('.categories--list li.category');
     var $subcategories_list = $('.categories--subcategories--list');
+
+    var currentCategory = location.pathname.split('/')[2];
+    var regExp = new RegExp(/.*\/categories\/(\d*).*/);
+
     $subcategories_list.hide();
-
-    localStorageManager = {
-
-        getItems: function(name) {
-            return localStorage.getItem(name).split(",");
-        },
-
-        removeItem: function(name, item) {
-           if (typeof item === "string") {
-               var items = localStorage.getItem(name).split(",");
-               items.splice(items.indexOf(item), 1);
-               localStorageManager.setItems(name, items);
-           } else {
-               throw "item name must be a string"
-           }
-           
-        },
-
-        setItems: function(name, items) {
-            console.log(items);
-            return localStorage.setItem(name, items);
-        },
-
-        addItem: function(name, item) {
-            var items = localStorageManager.getItems(name);
-            items.push(item);
-            return localStorageManager.setItems(name, items);
-        }
-    }
 
     $categories_list.bind('click', function(e) {
 
@@ -56,9 +29,17 @@ $(function() {
         }
     });
 
+    var isCurrentCategory = function (i, category) {
+        return category.href.match(regExp)[1] == currentCategory;
+    }
+
+    // check the url for the current category, click it to open
+    // menu
+    $categories_list.find('a').filter(isCurrentCategory).click();
+
     $(window).bind('popstate', function(e) {
         //console.log(window.location.pathname);
-        console.log(e);
+        console.log('popstate', e);
         //$.get(...)
     });
 });
