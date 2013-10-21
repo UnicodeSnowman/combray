@@ -6,7 +6,7 @@
         <% if item.photos.empty? %>
           <%= image_tag('http://placehold.it/250x250') %>
         <% else %>
-          <% image_tag(item.photos.first.photo.url) %>
+          <%= image_tag(item.photos.first.photo.url) %>
         <% end %>
 
         <%= link_to(item) do %>

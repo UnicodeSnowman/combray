@@ -48,6 +48,9 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.1'
 
+# setting up S3 for image assets
+gem "fog"
+
 # heroku
 gem 'rails_12factor', group: :production
 
