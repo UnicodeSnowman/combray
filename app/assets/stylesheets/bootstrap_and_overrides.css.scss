@@ -44,6 +44,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    @include red-hover;
+}
+
 li {
     list-style: none;
 }
@@ -162,6 +166,9 @@ body {
     .main {
         margin-left: 10px;
     }
+    h4 {
+        margin-left: 20px;
+    }
 }
 .container {
 }
@@ -179,8 +186,9 @@ body {
 }
 
 .content-inner { 
-    color: $color-white;
-    //box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.69);
+    p {
+        margin-left: 20px;
+    }
 
 }
 

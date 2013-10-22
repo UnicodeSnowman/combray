@@ -1,11 +1,11 @@
 
 <div id="items" class="row-fluid">
 
-  <div class="sidebar span2">
+  <div class="sidebar span2 offset1">
     <%= render 'categories/categories_list' %>
   </div>
 
-  <div class="main span10">
+  <div class="main span9">
     <div class="row-fluid">
       <div class="span12">
         <h4>
@@ -20,7 +20,7 @@
     <% if params[:id] %>
       <%= render 'items/items_list' %>
     <% else %>
-      <%= image_tag('http://placehold.it/600x400') %>
+      <%= image_tag('http://placehold.it/900x400') %>
     <% end %>
   </div>
 
