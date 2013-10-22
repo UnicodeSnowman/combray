@@ -26,12 +26,13 @@
     <% if current_user.try(:admin?) %>
       <div class="content">
         <div id="admin-panel" class="row">
-          <div class="span10">
-            <p>ADMIN</p>
+          <div class="span8 offset1">
+            <h4>ADMIN</h4>
           </div>
-          <div class="span2 pull-right">
+          <div class="span3 pull-right">
             <%= link_to "Categories", admin_categories_path %>
             <%= link_to "Items", admin_items_path %>
+            <%= link_to "Pages", admin_items_path %>
           </div>
         </div>
       </div>
@@ -42,10 +43,12 @@
       <%= yield %>
 
       <footer class="row-fluid">
+        <!--
         <div class="span2">
           <a href="#">Newsletter</a>
           <a href="#">Links</a>
         </div>
+        -->
         <div class="span5 pull-right">
           307 Warren Street, Hudson, N.Y. 12534 Tel (518) 828-2880
         </div>

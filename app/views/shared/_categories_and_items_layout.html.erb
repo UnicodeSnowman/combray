@@ -6,6 +6,17 @@
   </div>
 
   <div class="main span10">
+    <div class="row-fluid">
+      <div class="span12">
+        <h4>
+          <% if local_assigns[:subcategory] %>
+            <%= link_to category.name.titleize, category_path(category) %> > <%= link_to subcategory.name.titleize, [category, subcategory] %>
+          <% elsif local_assigns[:category] %>
+            <%= link_to category.name.titleize, category_path(category) %> 
+          <% end %>
+        </h4>
+      </div>
+    </div>    
     <% if params[:id] %>
       <%= render 'items/items_list' %>
     <% else %>

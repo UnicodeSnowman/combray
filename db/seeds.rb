@@ -111,3 +111,14 @@
     user.password_confirmation = "p@ssword"
     user.admin = true
     user.save
+
+    # pages
+    about = Page.new
+    about.title = "about"
+    about.text = "Prior to launching Combray Gallery in 2013, Zoran Popovic spent 15 years in the Manhattan antiques market. Former gallery manager of Ritter Antik, Zoran is a USPAP qualified appraiser and a founder of Popovic Appraisal & Consulting, a full service appraisal and collection management firm."
+    about.save
+
+    home = Page.new
+    home.title = "home"
+    home.text = "Combray Gallery offers authentic European continental furniture and decorative arts from 18th through 20th Century, with a special focus on Sweden, Austria, Germany and France."
+    home.save

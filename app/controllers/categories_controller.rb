@@ -10,6 +10,8 @@ class CategoriesController < ApplicationController
 
   def show
     @items = @category.items
+
+    render partial: '/items/items_list', :locals => { items: @items } if request.xhr?
   end
 
   private

@@ -49,7 +49,8 @@ end
 gem 'bcrypt-ruby', '~> 3.0.1'
 
 # setting up S3 for image assets
-gem "fog"
+gem 'fog'
+gem 'rmagick'
 
 # heroku
 gem 'rails_12factor', group: :production

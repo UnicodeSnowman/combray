@@ -4,9 +4,9 @@
     <li >
       <div class="item thumbnail">
         <% if item.photos.empty? %>
-          <%= image_tag('http://placehold.it/250x250') %>
+          <%= image_tag('http://placehold.it/200x200') %>
         <% else %>
-          <%= image_tag(item.photos.first.photo.url) %>
+          <%= image_tag(item.photos.first.photo.thumb.url) %>
         <% end %>
 
         <%= link_to(item) do %>

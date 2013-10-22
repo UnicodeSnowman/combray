@@ -40,13 +40,13 @@
       <hr />
       <h3>Current Photos</h3>
       <div class="photos">
-        <% if @item.photos.length <= 1 %>
+        <% if @item.photos.length < 1 %>
           no photos
         <% end %>
         <ul class="thumbs">
           <% @item.photos.each do |current_photo| %>
             <li>
-              <%= image_tag current_photo.photo.url %> 
+              <%= image_tag current_photo.photo.thumb.url %> 
               <%= link_to 'Remove Photo', admin_photo_path(current_photo, :item_id => @item.id), { :method => :delete }%>
             </li>
           <% end %>
