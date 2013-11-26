@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Gallery</title>
+    <%= stylesheet_link_tag    "items", media: "all" %>
+  </head>
+  <div class="items-show print">
+    
+    <div class="header">
+      <%= link_to image_tag("logo_cropped.png"), home_path, :class => 'brand' %>
+      <a class="address">307 Warren Street, Hudson, N.Y. 12534 <span>|</span> (518) 828-2880</a>
+    </div>
+
+    <br>
+    <br>
+    
+    <div>
+      <div>
+        <div class="description">
+          <h1><%= @item.name.titleize %></h1>
+
+          <br>
+
+          <p>
+            <label>Ref #:</label>
+            <%= @item.code %>
+          </p>
+
+          <br>
+
+          <p>
+            <%= @item.description %>
+          </p>
+
+        </div>
+        <div class="photos-main">
+          <%= image_tag(@item.photos.first.photo.url) unless @item.photos.empty? %>
+        </div>
+      </div>
+
+      <% @item.photos.each do |photo| %>
+        <div class="row-fluid photo-row">
+          <div class="span12 photos-main">
+            <%= image_tag(@item.photos.first.photo.url) unless @item.photos.empty? %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+</html>

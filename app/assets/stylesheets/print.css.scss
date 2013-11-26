@@ -1,0 +1,38 @@
+@media print {
+    #admin-panel, .items-show div.photos-main, .description a, .description .actions, .navbar ul.nav {
+        display: none;
+    }
+
+    body {
+        font-size: 11px;
+        line-height: 20px;
+
+        .navbar .brand {
+            float: none;
+            text-align: center;
+        }
+
+        a:link:after, a:visited:after {
+            content:"";
+        }
+    }
+
+}
+
+//    <style type="text/css" media="all">
+//      @media print {
+//        * { margin: 0 !important; padding: 0 !important; }
+//
+//        html, body {
+//          /*changing width to 100% causes huge overflow and wrap*/
+//          height:100%; 
+//          overflow: hidden;
+//          background: #FFF; 
+//          //font-size: 9.5pt;
+//        }
+//
+//        //.template { width: auto; left:0; top:0; }
+//        img { width:50%; }
+//        li { margin: 0 0 10px 20px !important;}
+//      } 
+//    </style>

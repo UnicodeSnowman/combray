@@ -1,13 +1,13 @@
 
 <div id="items" class="row-fluid">
 
-  <div class="sidebar span2 offset1">
+  <div class="sidebar span3">
     <%= render 'categories/categories_list' %>
   </div>
 
   <div class="main span9">
     <div class="row-fluid">
-      <div class="span12">
+      <div>
         <h4>
           <% if local_assigns[:subcategory] %>
             <%= link_to category.name.titleize, category_path(category) %> > <%= link_to subcategory.name.titleize, [category, subcategory] %>

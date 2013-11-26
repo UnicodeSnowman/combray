@@ -1,12 +1,12 @@
 <section class="content-inner">
   <div class="row-fluid">
-    <div class="span12">
+    <div>
       <ul class="thumbnails">
       <% @items.each do |item| %>
         <li >
           <div class="item thumbnail">
             <% if item.photos.empty? %>
-              <%= image_tag('http://placehold.it/200x200') %>
+              <%= image_tag('http://placehold.it/260x260') %>
             <% else %>
               <%= image_tag(item.photos.first.photo.thumb.url) %>
             <% end %>

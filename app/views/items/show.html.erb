@@ -1,10 +1,10 @@
 <% title(@item.name, "Items") %>
+<%= stylesheet_link_tag "print", media: "print" %>
 
-<div class="items--show">
-  
-  <div class="photo-main row-fluid">
-    <div class="span6 offset1">
-      <%= image_tag(@item.photos.first.photo.url) unless @item.photos.empty? %>
+<div class="items-show">
+  <div class="row-fluid">
+    <div class="span8 photos-main">
+      <%= image_tag(@item.photos.first.photo.main_show.url) unless @item.photos.empty? %>
     </div>
     <div class="span4 description">
       <h1><%= @item.name.titleize %></h1>
@@ -18,19 +18,21 @@
         <%= @item.description %>
       </p>
 
-      <p>Enquiry</p>
-
-      <p>Print</p>
+      <p class="actions">
+        <a href="">Enquiry</a>
+        <span>|</span>
+        <a class="print-button">Print</a>
+      </p>
 
     </div>
   </div>
   
   <div class="row-fluid thumbs">
   
-    <div class="span6 offset1">
+    <div class="span12">
       <% @item.photos.each do |photo| %>
         <li>
-          <%= image_tag(photo.photo.url) %> 
+          <%= image_tag(photo.photo.thumb_show.url) %> 
         </li>
       <% end %>
     </div>

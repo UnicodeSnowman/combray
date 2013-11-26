@@ -57,7 +57,6 @@ footer {
     margin: 10px;
     padding-bottom: 2px;
     padding-top: 20px;
-    font-size: 14px;
 
     a {
         padding-left: 15px;
@@ -72,10 +71,19 @@ body {
     color: $color-dark-grey;
     background-color: $color-white;
     background-image: url(asset_path('pixel_weave.png'));
-    font-size: 14px;
-    font-family: 'Sintony', sans-serif;
+    font: normal 100% 'Sintony';
+    //font-family: 'Sintony', sans-serif;
     line-height: 25px;
+
+    h1 {
+        font-size: 1.5625em; /* 25 / 16 */
+    }
+
+    .print-button {
+        cursor: pointer;
+    }
 }
+
 
 .thumbnails {
     li {
@@ -109,7 +117,7 @@ body {
     }
 }
 
-#home {
+.pages-home {
     @mixin text {
         background-color: white;
         opacity: 0.8;
@@ -130,15 +138,11 @@ body {
     }
 
     .body-text {
-        h3 {
-            font-size:16px;
-        }
-
         @include text;
         padding: 20px;
     }
 
-    h3 {
+    h1 {
         text-align: left;
     }
 
@@ -158,21 +162,6 @@ body {
     }
 }
 
-#about {
-}
-
-#items {
-    margin-top: 15px;
-    .main {
-        margin-left: 10px;
-    }
-    h4 {
-        margin-left: 20px;
-    }
-}
-.container {
-}
-
 .content {
     background-color: $color-white;
     box-shadow: 0 0 7px rgb(65, 65, 65);
@@ -185,26 +174,18 @@ body {
     text-align: right;
 }
 
-.content-inner { 
-    p {
-        margin-left: 20px;
-    }
-
-}
-
 // modules
 
 .delete {
     a {
         color: $color-red;
-        font-size: 11px;
     }
 }
 
 .thumbs {
     padding-top: 5px;
     li {
-        width: 200px;
+        //width: 200px;
         display: inline-block
     }
 
@@ -225,13 +206,10 @@ body {
         background-color: black;
         opacity: 0;
         color: $color-white;
-        font-size: 10px;
 
         p {
             position: absolute;
             bottom: 0%;
-            left: 5%;
-            right: 5%;
         }
     }
 
@@ -240,11 +218,6 @@ body {
     }
 }
 
-.items--show {
-    label {
-        display: inline;
-    }
-}
 
 .navbar {
     margin-bottom: 0px;
@@ -255,27 +228,36 @@ body {
         border-radius: 0px;
         background-image: none;
         background-color: white;
-        padding-top: 9px;
 
         img {
             height: 100px;
-            margin-left: 70px;
         }
     }
 
     ul.nav {
-        font-size: 20px;
+        padding-top: 85px;
+        padding-bottom: 10px;
 
         li {
-            line-height: 120px;
-            padding-right: 15px;
+            //line-height: 120px;
+            padding-left: 40px;
+            padding-top: 5px;
             a {
                 color: $color-dark-grey;
+                padding: 0;
+            }
+
+            input {
+                width: 224px;
+                border-radius: 15px;
             }
 
             a:hover {
                 @include red-hover
             }
+        }
+        li:last-child {
+            padding-top: 0px;
         }
     }
 }
@@ -289,7 +271,6 @@ body {
 
     a {
         color: $color-dark-grey;
-        font-size: 14px;
     }
 
     a:hover {
@@ -366,10 +347,6 @@ form {
 
         a:hover {
             @include image-hover;
-//            background: rgb(231, 142, 142);
-//            box-shadow: inner 1px 1px rgb(216, 216, 216);
-//            text-decoration: none;
-//            background-color: $color-red;
         }
     }
 

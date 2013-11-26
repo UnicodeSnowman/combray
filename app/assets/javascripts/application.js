@@ -34,3 +34,8 @@ cg.uiNotification = function(params) {
     $elem.append(notification);
 }  
 
+$(function () {
+    $('.print-button').on('click', function () {
+        window.print();  
+    });
+});

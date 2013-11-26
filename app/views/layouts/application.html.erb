@@ -24,8 +24,8 @@
     <% end %>
 
     <% if current_user.try(:admin?) %>
-      <div class="content">
-        <div id="admin-panel" class="row">
+      <div id="admin-panel" class="content">
+        <div class="row">
           <div class="span8 offset1">
             <h4>ADMIN</h4>
           </div>
@@ -41,18 +41,6 @@
     <div class="content">
       <%= render "layouts/nav" %>
       <%= yield %>
-
-      <footer class="row-fluid">
-        <!--
-        <div class="span2">
-          <a href="#">Newsletter</a>
-          <a href="#">Links</a>
-        </div>
-        -->
-        <div class="span5 pull-right">
-          307 Warren Street, Hudson, N.Y. 12534 Tel (518) 828-2880
-        </div>
-      </footer>
     </div>
 
     <div id="notifications"></div>
