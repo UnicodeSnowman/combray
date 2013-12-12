@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
    layout 'print', :only => [:print]
 
   def index
-    @items = Item.all
+    @items = Item.search(params)
   end
 
   def show

@@ -2,15 +2,23 @@ $color-red: rgb(176, 39, 51);
 
 .items-show {
 
-    .photos-main {
-        //width: 750px;
-        //height: 399px;
+    .carousel-control {
+        line-height: 37px
     }
 
-    span {
-        color: $color-red;
+    .carousel-control.right {
+        right: 35px;
     }
 
+    .carousel-indicators {
+        top: 10px;
+        right: 10px;
+    }
+
+    .images {
+        padding-left: 20px;
+    }
+    
     .thumbs {
         img {
             padding-right: 20px;
@@ -25,6 +33,24 @@ $color-red: rgb(176, 39, 51);
         }
     }
 }
+
+.thumbnails {
+    li {
+        margin-left: 0px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding-top: 0px;
+        .thumbnail {
+            padding: 0;
+            border: 1px solid rgb(131, 131, 131);
+
+        } 
+        img {
+            border-radius: 3px;
+        }
+    }
+}
+
 
 .items-show.print {
     background-color: white;

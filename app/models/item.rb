@@ -8,4 +8,15 @@ class Item < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
   accepts_nested_attributes_for :photos
   #mount_uploader :photo, PhotoUploader
+  
+  def self.search(params)
+    if params
+      find(:all, :conditions => [
+        "name LIKE ? OR description LIKE ?", 
+        "%#{params[:q]}%", 
+        "%#{params[:q]}%"])
+    else
+      find(:all)
+    end
+  end
 end

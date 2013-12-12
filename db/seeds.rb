@@ -122,3 +122,7 @@
     home.title = "home"
     home.text = "Combray Gallery offers authentic European continental furniture and decorative arts from 18th through 20th Century, with a special focus on Sweden, Austria, Germany and France."
     home.save
+
+    contact = Page.new
+    contact.title = "contact us"
+    contact.save

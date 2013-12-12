@@ -4,13 +4,10 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @items = Item.all
-
-    # render if request.xhr? to make back button work
   end
 
   def show
     @items = @category.items
-
     render partial: '/items/items_list', :locals => { items: @items } if request.xhr?
   end
 
