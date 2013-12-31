@@ -1,0 +1,76 @@
+@import "variables.css.scss";
+@import "mixins.css.scss";
+
+form {
+    margin: 25px;
+    padding: 25px;
+    background: $color-white;
+    border-radius: 10px;
+    width: 55%;
+    margin: auto;
+
+    a {
+        color: $color-red;
+    }
+
+    input[type=submit] {
+        color: $color-white;
+        background-color: $color-dark-grey;
+        padding: 25px;
+        border-radius: 15px;
+        margin-top: 10px;
+        width: 100%;
+        border: none;
+        @include ease-background-color;
+    }
+
+    input[type=submit]:hover {
+        background-color: $color-red;
+    }
+
+    label {
+        background: $color-dark-grey;
+        padding: 5px 10px 10px 10px;
+        border-radius: 10px;
+        display: inline;
+        color: $color-white;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    #photos {
+        a {
+            background: $color-dark-grey;
+            padding: 12px;
+            box-shadow: 1px 1px 1px 1px rgb(216, 216, 216);
+            border-radius: 10px;
+            display: inline-block;
+            color: $color-white;
+            @include ease-background-color;
+        }
+
+        a:hover {
+            @include image-hover;
+        }
+    }
+
+    .photos {
+        position: relative;
+
+        img:hover {
+            @include image-hover;
+        }
+
+        .photo {
+                position: relative;
+            a {
+                position: absolute;
+                color: $color-white;
+                left: 10px;
+                bottom: 10px;
+            }
+        }
+    }
+}
