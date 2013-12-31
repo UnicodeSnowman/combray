@@ -1,4 +1,5 @@
-$color-red: rgb(176, 39, 51);
+@import "variables.css.scss";
+@import "mixins.css.scss";
 
 .items-show {
 
@@ -18,7 +19,7 @@ $color-red: rgb(176, 39, 51);
     .images {
         padding-left: 20px;
     }
-    
+
     .thumbs {
         img {
             padding-right: 20px;
@@ -26,27 +27,44 @@ $color-red: rgb(176, 39, 51);
         }
     }
 
-    .description {
+    .detail {
         padding-right: 20px;
         label {
             display: inline;
         }
+
+        .code: {
+            font-weight: bold;
+        }
+
+        .item-title {
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
     }
+
 }
 
 .thumbnails {
     li {
         margin-left: 0px;
-        margin-right: 10px;
-        margin-bottom: 10px;
+        margin-right: 15px;
+        margin-bottom: 15px;
         padding-top: 0px;
+
         .thumbnail {
             padding: 0;
             border: 1px solid rgb(131, 131, 131);
-
         } 
+
         img {
+            width: 200px;
             border-radius: 3px;
+        }
+
+        img:hover {
+            @include image-hover
         }
     }
 }
@@ -54,7 +72,6 @@ $color-red: rgb(176, 39, 51);
 
 .items-show.print {
     background-color: white;
-    //width: 700px;
 
     .header {
         text-align: center;
@@ -70,11 +87,7 @@ $color-red: rgb(176, 39, 51);
 
     }
 
-    .photo-row {
-        //padding-top: 20px;
-    }
-
-    .description {
+    .detail {
         padding-top: 10px;
         color: rgb(60, 60, 60);
     }

@@ -1,3 +1,4 @@
+
 /*
   =require twitter-bootstrap-static/bootstrap
 
@@ -6,25 +7,8 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-$default-padding: 15px;
-$color-dark-grey: #333; //rgb(11,11,11); //rgba(25, 25, 25, 0.86);
-$color-light-grey: rgb(130, 130, 130); //#DFE2DB;
-$color-white: #fefefe; //rgb(197, 197, 197);
-$color-orange: rgb(222, 76, 48);
-$color-red: rgb(176, 39, 51);
-
-@mixin ease-background-color {
-    transition: background-color 0.3s ease;
-}
-
-@mixin red-hover {
-    color: $color-red;
-    text-decoration: none;
-}
-
-@mixin image-hover {
-    opacity: 0.5;
-}
+@import "variables.css.scss";
+@import "mixins.css.scss";
 
 section, article, header, footer, nav, aside, hgroup {
     display: block;
@@ -33,11 +17,6 @@ section, article, header, footer, nav, aside, hgroup {
 a {
     color: $color-dark-grey;
     text-decoration: none;
-    font-size: 0.875em; /* 14 / 16 */
-}
-
-p {
-    font-size: 0.875em;
 }
 
 a:hover {
@@ -46,7 +25,6 @@ a:hover {
 
 li {
     list-style: none;
-    padding-top: 5px;
 }
 
 span {
@@ -70,10 +48,9 @@ footer {
 body {
     color: $color-dark-grey;
     background-color: $color-white;
-    background-image: url(asset_path('pixel_weave.png'));
     font: normal 100% 'Sintony';
     font-family: 'Sintony', sans-serif;
-    line-height: 25px;
+    font-size: 0.8em;
 
     h1 {
         font-size: 1.0625em; /* 17 / 16 */
@@ -93,7 +70,7 @@ body {
     }
 
     a:hover {
-        text-decoration: none;        
+        text-decoration: none;
     }
 
     p {
@@ -104,16 +81,17 @@ body {
 .pages-home {
     @mixin text {
         background-color: white;
-        opacity: 0.8;
+        opacity: 0.7;
         margin-left: 0px;
     }
 
     position: relative;
+
     .main-image {
         background-image: url(asset_path('odelberg_table.jpg'));
         background-repeat: no-repeat;
         height: 400px;
-        padding-top: 150px;
+        padding-top: 30%;
     }
 
     .title {
@@ -123,11 +101,12 @@ body {
 
     .body-text {
         @include text;
-        padding: 20px;
+        padding: 8px;
     }
 
     h1 {
         text-align: left;
+        font-size: 1.2em;
     }
 
     .home-body {
@@ -148,7 +127,6 @@ body {
 
 .content {
     background-color: $color-white;
-    box-shadow: 0 0 7px rgb(65, 65, 65);
 }
 
 .category-title {
@@ -178,48 +156,27 @@ body {
 
 .item {
     position: relative;
-    .item-blurb {
-        position: absolute;
-        padding: 15px;
-        top: 0px;
-        right: 0px;
-        bottom: 0px;
-        left: 0px;
-        background-color: black;
-        opacity: 0;
-        color: $color-white;
-
-        p {
-            position: absolute;
-            bottom: 0%;
-        }
-    }
-
-    .item-blurb:hover {
-        opacity: 0.6;
-    }
 }
 
-
 .navbar {
-    margin-bottom: 5px;
     padding: 5px;
     text-transform: uppercase;
+    font-size: 1.0625em;
 
     .navbar-inner {
         border: none;
+        background-color: $color-white;
         box-shadow: none;
         border-radius: 0px;
         background-image: none;
-        background-color: white;
 
         img {
-            width: 300px;
+            width: 250px;
         }
     }
 
     ul.nav {
-        padding-top: 55px;
+        padding-top: 3%;
 
         form {
             display: inline;
@@ -227,9 +184,8 @@ body {
         }
 
         li {
-            padding-left: 40px;
-            padding-top: 5px;
-            font-size: 1.1em;
+            margin-right: 25px;
+
             a {
                 letter-spacing: 0.3em;
                 color: $color-dark-grey;
@@ -238,7 +194,6 @@ body {
 
             input {
                 width: 120px;
-                //border-radius: 15px;
                 margin-bottom: 0px;
                 display: none;
             }
@@ -252,7 +207,6 @@ body {
 
 .categories--list {
     margin-left: 25px;
-
 }
 
 .categories--subcategories--list {

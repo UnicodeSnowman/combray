@@ -15,18 +15,18 @@
 
         <a class="carousel-control left" href="#itemCarousel" data-slide="prev">&lsaquo;</a>
         <a class="carousel-control right" href="#itemCarousel" data-slide="next">&rsaquo;</a>
-      
+
       </div>
     </div>
-    <div class="span4 description">
-      <h1><%= @item.name.titleize %></h1>
+    <div class="span4 detail">
+      <h1 class="item-title"><%= @item.name.titleize %></h1>
 
-      <p>
+      <p class="code">
         <label>Ref #:</label>
         <%= @item.code %>
       </p>
 
-      <p>
+      <p class="description">
         <%= @item.description %>
       </p>
 

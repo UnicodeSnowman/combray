@@ -1,0 +1,14 @@
+
+@mixin image-hover {
+    opacity: 0.5;
+}
+
+@mixin ease-background-color {
+    transition: background-color 0.3s ease;
+}
+
+@mixin red-hover {
+    color: $color-red;
+    text-decoration: none;
+}
+
