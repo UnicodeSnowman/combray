@@ -27,10 +27,6 @@ li {
     list-style: none;
 }
 
-span {
-    color: $color-red;
-}
-
 body {
     color: $color-dark-grey;
     background-color: $color-white;
@@ -185,10 +181,6 @@ body {
             }
         }
     }
-}
-
-.categories--list {
-    margin-left: 25px;
 }
 
 .categories--subcategories--list {

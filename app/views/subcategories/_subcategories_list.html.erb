@@ -1,8 +1,0 @@
-
-<section class="content-inner">
-  <ul>
-    <% @category.subcategories.each do |subcategory| %>
-      <li><%= link_to subcategory.name.titleize, [@category, subcategory], { :id => "subcategory_" + subcategory.id.to_s } %></li>
-    <% end %>
-  </ul>
-</section>
