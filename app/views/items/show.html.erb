@@ -27,9 +27,11 @@
       </p>
 
       <p class="actions">
-        <a href="">Enquiry</a>
-        <span>|</span>
+        <%= link_to "Enquiry", "mailto:contact@combraygallery.com?subject=Combray Gallery: Item: ##{@item.code} - #{@item.name.titleize}"%>
+        <span class="divider">|</span>
         <a class="print-button">Print</a>
+        <span class="divider">|</span>
+        <%= link_to "Share", "mailto:?subject=Combray Gallery: Item: ##{@item.code} - #{@item.name.titleize}"%>
       </p>
 
     </div>
