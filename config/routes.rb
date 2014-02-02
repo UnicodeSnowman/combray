@@ -1,4 +1,6 @@
 AntiquesGallery::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -20,20 +22,20 @@ AntiquesGallery::Application.routes.draw do
   resources :items
   get 'items/:id/print' => 'items#print', as: :print
 
-  namespace :admin do
-    resources :items   
-    resources :categories
-    resources :subcategories
-    resources :photos
-  end
+#  namespace :admin do
+#    resources :items   
+#    resources :categories
+#    resources :subcategories
+#    resources :photos
+#  end
 
   resources :categories do
     resources :subcategories
   end
 
   #get 'admin' => 'sessions#index'
-  get 'admin/login' => 'sessions#new'
-  post 'admin/login' => 'sessions#create'
+  #get 'admin/login' => 'sessions#new'
+  #post 'admin/login' => 'sessions#create'
 
   ###########################
   #

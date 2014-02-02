@@ -7,7 +7,12 @@ class PagesController < ApplicationController
   def about
   end
 
+  def contact
+  end
+
   def set_page
-    @page = Page.find_by_title(params[:action])
+    page = Page.find_by_title(params[:action])
+    @title = page.title.titleize
+    @text = page.text
   end
 end

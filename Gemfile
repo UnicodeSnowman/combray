@@ -24,6 +24,7 @@ end
 
 gem 'twitter-bootstrap-rails'
 gem 'carrierwave', '0.8.0'
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

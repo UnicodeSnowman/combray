@@ -1,4 +1,4 @@
-#about {
+#services {
     line-height: 21px;
     background-image: url(asset_path('contact.jpg'));
     height: 600px;
@@ -6,8 +6,9 @@
     .text {
         padding: 20px;
         height: 100%;
-        overflow: scroll;
+        overflow-y: scroll;
         background: white;
         opacity: 0.8;
     }
 }
+
