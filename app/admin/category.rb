@@ -1,4 +1,4 @@
-ActiveAdmin.register Category, :as => 'Main Categories' do
+ActiveAdmin.register Category, :as => 'Main Category' do
 
   
   # See permitted parameters documentation:

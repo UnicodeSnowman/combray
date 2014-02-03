@@ -48,11 +48,13 @@ ActiveAdmin.register Item do
       row :code
       row :description
       row :subcategory
-      row "Images" do
-        ul do
-          item.photos.each do |photo|
-            li do
-              image_tag(photo.photo.thumb.url)
+      unless item.photos.empty?
+        row "Images" do
+          ul do
+            item.photos.each do |photo|
+              li do
+                image_tag(photo.photo.thumb.url)
+              end
             end
           end
         end

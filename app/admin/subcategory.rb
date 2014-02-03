@@ -1,4 +1,4 @@
-ActiveAdmin.register Subcategory, :as => 'Subcategories' do
+ActiveAdmin.register Subcategory do
 
   
   # See permitted parameters documentation:
