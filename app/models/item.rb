@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
 
   belongs_to :subcategory
   has_many :photos, :dependent => :destroy
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos, :allow_destroy => true
   #mount_uploader :photo, PhotoUploader
   
   def self.search(params)
