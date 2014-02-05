@@ -2,13 +2,14 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update]
   
   def index
-    @categories = Category.all
-    @items = Item.all
+    @categories = Category.includes(:subcategories).all
+    category = Photo.find_by_title('category')
+    @category_image_url = category.photo.url if category
   end
 
   def show
+    @categories = Category.includes(:subcategories).all
     @items = @category.items
-    render partial: '/items/items_list', :locals => { items: @items } if request.xhr?
   end
 
   private

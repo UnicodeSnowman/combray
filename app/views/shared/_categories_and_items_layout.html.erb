@@ -1,4 +1,3 @@
-
 <div id="items" class="row-fluid">
 
   <div class="sidebar span3">
@@ -20,7 +19,7 @@
     <% if params[:id] %>
       <%= render 'items/items_list' %>
     <% else %>
-      <%= image_tag('eames.jpg') %>
+      <%= image_tag(@category_image_url) if @category_image_url %>
     <% end %>
   </div>
 

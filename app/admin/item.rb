@@ -1,7 +1,7 @@
 ActiveAdmin.register Item do
 
   ActiveAdmin.register Photo do
-    belongs_to :item
+    belongs_to :item, :optional => true
   end
 
   controller do
