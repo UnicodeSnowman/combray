@@ -1,6 +1,8 @@
 #services {
     line-height: 21px;
     background-image: url(asset_path('contact.jpg'));
+    background-repeat: no-repeat;
+    background-position: center;
     height: 600px;
 
     .text {

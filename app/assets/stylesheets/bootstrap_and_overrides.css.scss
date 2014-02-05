@@ -43,23 +43,6 @@ body {
     }
 }
 
-#admin-panel {
-    color: $color-red;
-    padding-top: 10px;
-    a {
-        color: $color-red;
-        padding-right: 10px;
-    }
-
-    a:hover {
-        text-decoration: none;
-    }
-
-    p {
-        margin-left: 10px;
-    }
-}
-
 .pages-home {
     @mixin text {
         background-color: white;
@@ -70,7 +53,7 @@ body {
     position: relative;
 
     .main-image {
-        background-image: url(asset_path('odelberg_table.jpg'));
+        background-image: url(asset_path('home.jpg'));
         background-repeat: no-repeat;
         height: 400px;
         padding-top: 30%;
@@ -88,7 +71,8 @@ body {
 
     h1 {
         text-align: left;
-        font-size: 1.2em;
+        line-height: 30px;
+        font-size: 1.3em;
     }
 
     .home-body {

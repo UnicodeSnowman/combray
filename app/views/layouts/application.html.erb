@@ -22,21 +22,6 @@
       </div>
     <% end %>
 
-    <% if current_user.try(:admin?) %>
-      <div id="admin-panel" class="content">
-        <div class="row">
-          <div class="span8 offset1">
-            <h4>ADMIN</h4>
-          </div>
-          <div class="span3 pull-right">
-            <%= link_to "Categories", admin_categories_path %>
-            <%= link_to "Items", admin_items_path %>
-            <%= link_to "Pages", admin_items_path %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
     <div class="content">
       <%= render "layouts/nav" %>
       <%= yield %>
