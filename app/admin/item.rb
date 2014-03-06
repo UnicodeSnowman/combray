@@ -23,6 +23,8 @@ ActiveAdmin.register Item do
     f.inputs "Details" do
       f.input :name
       f.input :code
+      f.input :age
+      f.input :measurements
       f.input :subcategory
       f.input :description
     end
