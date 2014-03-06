@@ -10,7 +10,7 @@ ActiveAdmin.register Item do
     end
 
     def permitted_params
-      params.permit item: [:name, :code, :description, :subcategory_id, photos_attributes: [:id, :photo, :item_id, :_destroy]]
+      params.permit item: [:name, :code, :description, :subcategory_id, :age, :measurements, photos_attributes: [:id, :photo, :item_id, :_destroy]]
     end
   end
   

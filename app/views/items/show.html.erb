@@ -26,6 +26,20 @@
         <%= @item.description %>
       </p>
 
+      <% if @item.age %>
+        <p>
+          <span>Age:</span>
+          <span><%= @item.age %></span>
+        </p>
+      <% end %> 
+
+      <% if @item.measurements %>
+        <p>
+          <span>Measurements:</span>
+          <span><%= @item.measurements %></span>
+        </p>
+      <% end %> 
+
       <p class="actions">
         <%= link_to "Enquiry", "mailto:contact@combraygallery.com?subject=Combray Gallery: Item: ##{@item.code} - #{@item.name.titleize}"%>
         <span class="divider">|</span>
