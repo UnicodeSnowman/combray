@@ -3,21 +3,18 @@
 
 
 $(function() {
-    
-    $('a#add_photo_link').click(function(e) {
-        e.preventDefault();
-        var url = '/admin/photos/new?number=' + $('#photos .photo_field').length;
-        $.get(url, function(data) {
-            $('#photos').append(data);
-        });
+    var $main = $('#items-show .main-image img'),
+        $thumbnails = $('#items-show .thumbnail');
+
+    $thumbnails.click(function (e) {
+
+        var fullUrl = e.target.attributes["data-url"].value;
+        $main.attr('src', fullUrl);
+        
+//        $.get(fullUrl).then(function (resp) {
+//            $main  
+//        });
 
         return false;
-    });
-
-    var $thumbnails = $('.thumbs img'),
-        $bigphoto = $('.main img');
-
-    $thumbnails.click(function() {
-        $bigphoto.attr('src', $(this).attr('src'));
     });
 });

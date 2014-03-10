@@ -1,18 +1,10 @@
 <% title(@item.name, "Items") %>
 <%= stylesheet_link_tag "print", media: "print" %>
 
-<div class="items-show">
+<div id="items-show">
   <div class="row-fluid">
-    <div class="span8 images">
-      <div id="itemCarousel" class="carousel slide">
-        <div class="carousel-inner">
-          <% @item.photos.each_with_index do |photo, index| %>
-            <div class="item <%= 'active' if index == 0 %>">
-              <%= image_tag(photo.photo.main_show.url) %> 
-            </div>
-          <% end %>
-        </div>
-      </div>
+    <div class="span8 main-image">
+      <%= image_tag(@item.photos.second.photo.main_show.url) %> 
     </div>
 
     <div class="span4 detail">
@@ -49,6 +41,18 @@
       </p>
 
     </div>
+  </div>
+
+  <div class="row-fluid">
+      <ul class="span8 thumbnails">
+        <% @item.photos.each_with_index do |photo, index| %>
+          <li class="thumbnail">
+            <span class="thumbnail">
+              <%= image_tag(photo.photo.thumb_show.url, :data => { :url => photo.photo.main_show.url }) %> 
+            </span>
+          </li>
+        <% end %>
+      </ul>
   </div>
 </div>
 

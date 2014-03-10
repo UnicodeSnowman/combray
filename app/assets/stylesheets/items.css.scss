@@ -1,48 +1,6 @@
 @import "variables.css.scss";
 @import "mixins.css.scss";
 
-.item {
-    position: relative;
-}
-
-.items-show {
-
-    .carousel-control {
-        line-height: 37px
-    }
-
-    .carousel-control.right {
-        right: 35px;
-    }
-
-    .carousel-indicators {
-        top: 10px;
-        right: 10px;
-    }
-
-    .images {
-        padding-left: 20px;
-    }
-
-    .thumbs {
-        img {
-            padding-right: 20px;
-            padding-bottom: 20px;
-        }
-    }
-
-    .detail {
-        padding-right: 20px;
-
-        .item-title {
-            font-weight: bold;
-            text-transform: uppercase;
-            line-height: 22px;
-        }
-    }
-
-}
-
 .thumbnails {
     li {
         margin-left: 0px;
@@ -56,7 +14,6 @@
         } 
 
         img {
-            width: 200px;
             border-radius: 3px;
         }
 
@@ -66,8 +23,29 @@
     }
 }
 
+#items {
+    .thumbnails {
+        li {
+            img {
+                width: 200px;
+            }
+        }
+    }
+}
 
-.items-show.print {
+#items-show {
+    .thumbnails {
+        padding-top: 25px;
+        li {
+            img {
+                width: 150px;
+            }
+        }
+    }
+}
+
+
+#items-show.print {
     background-color: white;
 
     .header {
