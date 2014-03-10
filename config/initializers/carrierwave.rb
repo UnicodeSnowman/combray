@@ -8,6 +8,6 @@ CarrierWave.configure do |config|
   }
 
   config.storage = :fog
-  config.fog_directory = 'images.combraygallery.com'
+  config.fog_directory = 'combraygallery'
   config.fog_public = true
 end
