@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :print, :edit, :update, :destroy]
+  before_action :set_item, only: [:print, :edit, :update, :destroy]
   # before_action to prevent undefined routes from throwing errors
    layout 'print', :only => [:print]
 
@@ -8,7 +8,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # set_item
+      @item = Item.includes(:photos).find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = 'The item you were looking for could not be found.'
+      redirect_to items_path
   end
 
   def print

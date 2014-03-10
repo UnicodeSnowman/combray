@@ -4,7 +4,9 @@
 <div id="items-show">
   <div class="row-fluid">
     <div class="span8 main-image">
-      <%= image_tag(@item.photos.second.photo.main_show.url) %> 
+      <% if @item.photos.first %>
+        <%= image_tag(@item.photos.first.photo.main_show.url) %> 
+      <% end %>
     </div>
 
     <div class="span4 detail">

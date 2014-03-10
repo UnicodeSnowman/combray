@@ -3,16 +3,20 @@
 
 
 $(function() {
-    var $main = $('#items-show .main-image img'),
+    var $mainImage = $('#items-show .main-image img'),
         $thumbnails = $('#items-show .thumbnail');
 
     $thumbnails.click(function (e) {
 
         var fullUrl = e.target.attributes["data-url"].value;
-        $main.attr('src', fullUrl);
+
+        if ($mainImage.length) {
+            $mainImage.attr('src', fullUrl);
+        }
+        
         
 //        $.get(fullUrl).then(function (resp) {
-//            $main  
+//            $mainImage  
 //        });
 
         return false;
