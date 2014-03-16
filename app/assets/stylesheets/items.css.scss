@@ -34,6 +34,11 @@
 }
 
 #items-show {
+    .main-image {
+        img {
+            width: 750px;
+        }
+    }
     .thumbnails {
         padding-top: 25px;
         li {
