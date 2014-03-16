@@ -1,19 +1,31 @@
+<div class="header">
+  <div class="row">
+    <div class="span8">
+      <%= link_to image_tag("header.png"), home_path, :class => 'brand' %>
+    </div>
+    <div class="span4 search">
+      <%= form_tag(items_path, :method => :get) do %>
+        <div class="form-group">
+          <%= text_field_tag :q, nil, { :class => "search-field", :placeholder => "SEARCH..." } %>
+          <button type="submit" class="search-link">
+            <i class="icon-search"></i>
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<div class="navbar">
-  <div class="navbar-inner">
-    <%= link_to image_tag("header.png"), home_path, :class => 'brand' %>
-    <ul class="nav pull-right">
-        <li><%= link_to 'Collections', categories_path %></li>      
-        <li><%= link_to 'About', about_path %></li>      
-        <li><%= link_to 'Services', services_path %></li>      
-        <li><%= link_to 'Contact', contact_path %></li>      
-        <li>
-          <%= form_tag(items_path, :method => :get) do %>
-            <%= link_to 'Search', '#', :class => 'search-link' %>
-            <%= text_field_tag :q, nil, { :class => "search-field", :placeholder => "SEARCH..." } %>
-          <% end %>
-        </li>
-    </ul>
+<div class="navigation">
+  <div class="row">
+    <div class="span12 navigation-inner">
+      <ul class="nav">
+          <li><%= link_to 'Collections', categories_path %></li>      
+          <li><%= link_to 'About', about_path %></li>      
+          <li><%= link_to 'Services', services_path %></li>      
+          <li><%= link_to 'Contact', contact_path %></li>      
+      </ul>
+    </div>
   </div>
 </div>
 
