@@ -4,21 +4,24 @@
 
 $(function() {
     var $mainImage = $('#items-show .main-image img'),
-        $thumbnails = $('#items-show .thumbnail');
+        $thumbnails = $('#items-show .thumbnail'),
+        $zoom;
 
     $thumbnails.click(function (e) {
 
-        var fullUrl = e.target.attributes["data-url"].value;
+        if ($zoom) {
+            $zoom.trigger('zoom.destroy');
+        }
+        
+        var fullUrl = e.target.attributes["data-url"].value,
+            alt = e.target.attributes["alt"].value;
 
         if ($mainImage.length) {
             $mainImage.attr('src', fullUrl);
+            $mainImage.attr('alt', alt);
+            $zoom = $mainImage.parent().zoom({ magnify: 3 });
+            console.log($zoom);
         }
-        
-        
-//        $.get(fullUrl).then(function (resp) {
-//            $mainImage  
-//        });
-
         return false;
     });
 });
