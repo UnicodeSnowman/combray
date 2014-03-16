@@ -5,7 +5,11 @@
 $(function() {
     var $mainImage = $('#items-show .main-image img'),
         $thumbnails = $('#items-show .thumbnail'),
-        $zoom;
+        $zoom = setZoom();
+
+    function setZoom () {
+        return $mainImage.parent().zoom({ magnify: 3 }); 
+    }
 
     $thumbnails.click(function (e) {
 
@@ -19,8 +23,7 @@ $(function() {
         if ($mainImage.length) {
             $mainImage.attr('src', fullUrl);
             $mainImage.attr('alt', alt);
-            $zoom = $mainImage.parent().zoom({ magnify: 3 });
-            console.log($zoom);
+            $zoom = setZoom();
         }
         return false;
     });
