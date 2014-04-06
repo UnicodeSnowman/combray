@@ -1,9 +1,9 @@
 <div class="header">
   <div class="row">
-    <div class="span8">
+    <div class="span7">
       <%= link_to image_tag("header.png"), home_path, :class => 'brand' %>
     </div>
-    <div class="span4 search">
+    <div class="span5 search">
       <%= form_tag(items_path, :method => :get) do %>
         <div class="form-group">
           <%= text_field_tag :q, nil, { :class => "search-field", :placeholder => "SEARCH..." } %>
@@ -28,5 +28,6 @@
     </div>
   </div>
 </div>
+
 
 

@@ -4,14 +4,20 @@ class ItemsController < ApplicationController
    layout 'print', :only => [:print]
 
   def index
-    @items = Item.search(params)
+    render json: Item.search(params).as_json(:include => :photos)
   end
 
   def show
-      @item = Item.includes(:photos).find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      flash[:alert] = 'The item you were looking for could not be found.'
-      redirect_to items_path
+    if (params[:subcategory_id])
+      render json: Item.includes(:photos).find_by(:subcategory_id => params[:subcategory_id]).as_json(:include => :photos)
+    else
+      render json: Item.includes(:photos)
+                       .find(params[:id])
+                       .as_json(:include => :photos)
+    end
+#    rescue ActiveRecord::RecordNotFound
+#      flash[:alert] = 'The item you were looking for could not be found.'
+#      redirect_to items_path
   end
 
   def print

@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Combray Gallery</title>
+
+<link rel="stylesheet" type="text/css" href="main.css">
+
+<link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+var loadedobjects=""
+var rootdomain="http://"+window.location.hostname
+
+function ajaxpage(url, containerid){
+var page_request = false
+if (window.XMLHttpRequest) // if Mozilla, Safari etc
+page_request = new XMLHttpRequest()
+else if (window.ActiveXObject){ // if IE
+try {
+page_request = new ActiveXObject("Msxml2.XMLHTTP")
+} 
+catch (e){
+try{
+page_request = new ActiveXObject("Microsoft.XMLHTTP")
+}
+catch (e){}
+}
+}
+else
+return false
+page_request.onreadystatechange=function(){
+loadpage(page_request, containerid)
+}
+page_request.open('GET', url, true)
+page_request.send(null)
+}
+
+function loadpage(page_request, containerid){
+if (page_request.readyState == 4 && (page_request.status==200 || window.location.href.indexOf("http")==-1))
+document.getElementById(containerid).innerHTML=page_request.responseText
+}
+
+function loadobjs(){
+if (!document.getElementById)
+return
+for (i=0; i<arguments.length; i++){
+var file=arguments[i]
+var fileref=""
+if (loadedobjects.indexOf(file)==-1){ //Check to see if this object has not already been added to page before proceeding
+if (file.indexOf(".js")!=-1){ //If object is a js file
+fileref=document.createElement('script')
+fileref.setAttribute("type","text/javascript");
+fileref.setAttribute("src", file);
+}
+else if (file.indexOf(".css")!=-1){ //If object is a css file
+fileref=document.createElement("link")
+fileref.setAttribute("rel", "stylesheet");
+fileref.setAttribute("type", "text/css");
+fileref.setAttribute("href", file);
+}
+}
+if (fileref!=""){
+document.getElementsByTagName("head").item(0).appendChild(fileref)
+loadedobjects+=file+" " //Remember this object as being already added to page
+}
+}
+}
+
+</script>
+
+</head>
+
+<body>
+<div class="main">
+
+
+
+
+
+<div class="header">
+
+<div style="position:relative; left:15px; top:15px; display:inline;">
+<a href="index.html">
+<img src="images/logo9.png" border="0" />
+</a>
+</div>
+<img src="images/transparent50.png" border="0" />
+
+<div style="position:relative; top:-15px; display:inline;">
+<a href="current-stock.html">CURRENT STOCK</a>
+<img src="images/transparent20.png" border="0" />
+<a href="about.html">ABOUT</a>
+<img src="images/transparent20.png" border="0" />
+<a href="services.html">SERVICES</a>
+<img src="images/transparent20.png" border="0" />
+<a href="contact.html">CONTACT</a>
+<img src="images/transparent20.png" border="0" />
+<a href="#">SEARCH</a>
+</div>
+
+</div>
+
+<br /><br />
+
+
+
+
+
+
+
+
+<div class="product">
+
+<div id="rightcolumn">
+
+<div style="border:1px solid black;">
+<a href="images/big1.jpg" target="_parent"><img src="images/product1.jpg" border="0" /></a>
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="description">
+
+<h1>Amazing Object for Your Beautiful House</h1>
+
+<p>Ref #: AZ99</p>
+
+<p>This item was made in the 19th century.  If you like items made in the 19th century, then you should buy this item.  You should also consider items made in the 20th century.</p>
+
+<p>Age: 1850</p>
+
+<p>Origin: Castle of Castles</p>
+
+<p>Measurements: 5' x 5' x 5'</p>
+
+<p><a href="mailto:contact@combraygallery.com">Enquiry</a> | <a href="#">Print</a> | <a href="mailto:">Share</a></p>
+
+<br /><br />
+
+<a href="javascript:ajaxpage('product1.html', 'rightcolumn');"><img src="images/icon1.jpg" border="0" /></a>
+<a href="javascript:ajaxpage('product2.html', 'rightcolumn');"><img src="images/icon2.jpg" border="0" /></a>
+<a href="javascript:ajaxpage('product3.html', 'rightcolumn');"><img src="images/icon3.jpg" border="0" /></a>
+<a href="javascript:ajaxpage('product4.html', 'rightcolumn');"><img src="images/icon4.jpg" border="0" /></a>
+<a href="javascript:ajaxpage('product5.html', 'rightcolumn');"><img src="images/icon5.jpg" border="0" /></a>
+<a href="javascript:ajaxpage('product6.html', 'rightcolumn');"><img src="images/icon6.jpg" border="0" /></a>
+<a href="javascript:ajaxpage('product7.html', 'rightcolumn');"><img src="images/icon7.jpg" border="0" /></a>
+<a href="javascript:ajaxpage('product8.html', 'rightcolumn');"><img src="images/icon8.jpg" border="0" /></a>
+<a href="javascript:ajaxpage('product9.html', 'rightcolumn');"><img src="images/icon9.jpg" border="0" /></a>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<div class="clear"></div>
+
+<br /><br /><br />
+
+
+
+
+
+<div id="rightcolumn"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

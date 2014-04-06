@@ -22,12 +22,12 @@ end
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'twitter-bootstrap-rails'
 gem 'carrierwave', '0.8.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'angularjs-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'

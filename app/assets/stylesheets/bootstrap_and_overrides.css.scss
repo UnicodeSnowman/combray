@@ -1,4 +1,81 @@
 
+.main {
+    margin-top: -100px;
+    line-height: 20px;
+    font-size: 16px;
+
+    p {
+        margin: 0;
+    }
+}
+
+@mixin body-text {
+    p {
+        margin-top: 15px;
+    }
+}
+
+#home {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: url(asset_path('home.jpg'));
+}
+
+#current-stock {
+    @include body-text;
+    padding-top: 120px;
+
+    .categories {
+
+    }
+    .subcategories {
+        li {
+            margin-left: 15px;
+        }
+        a {
+            color: gray;
+        }
+    }
+}
+
+#current-stock-item {
+    @include body-text;
+    padding-top: 120px;
+
+    .thumbs {
+        margin-top: 25px;
+    }
+}
+
+#services {
+    @include body-text;
+    padding-top: 120px;
+}
+
+#about {
+    @include body-text;
+    padding-top: 120px;
+}
+
+#contact {
+    @include body-text;
+    padding-top: 120px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: url(asset_path('contact.jpg'));
+}
+
+.header {
+    margin: 0 auto;
+}
+
+.nav {
+    padding-left: 40px;
+    a {
+        padding-left: 20px;
+    }
+}
+
 /*
   =require twitter-bootstrap-static/bootstrap
 
@@ -7,205 +84,218 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-@import "variables.css.scss";
-@import "mixins.css.scss";
-
-section, article, header, footer, nav, aside, hgroup {
-    display: block;
-}
-
-.content a {
-    color: $color-dark-grey;
-    text-decoration: none;
-}
-
-a:hover {
-    @include red-hover;
-}
-
-li {
-    list-style: none;
-}
-
-body {
-    color: $color-dark-grey;
-    background-color: $color-white;
-    font: normal 100% 'Sintony';
-    font-family: 'Sintony', sans-serif;
-    font-size: 0.8em;
-
-    h1 {
-        font-size: 1.0625em; /* 17 / 16 */
-    }
-
-    .print-button {
-        cursor: pointer;
-    }
-}
-
-.pages-home {
-    @mixin text {
-        background-color: white;
-        opacity: 0.9;
-        margin-left: 0px;
-    }
-
-    position: relative;
-
-    .main-image {
-        background-image: url(asset_path('background_images/home.jpg'));
-        background-repeat: no-repeat;
-        height: 400px;
-        padding-top: 30%;
-    }
-
-    .title {
-        @include text;
-        color: rgb(176, 39, 51);
-    }
-
-    .body-text {
-        @include text;
-        padding: 8px;
-
-        img {
-            margin-top: 10px;
-            width: 400px;
-        }
-    }
-
-    h1 {
-        text-align: left;
-        line-height: 30px;
-        font-size: 1.1em;
-    }
-
-    .home-body {
-        p {
-            padding-left: 10%;
-            padding-right: 10%;
-        }
-    }
-
-    .main-image {
-        text-align: center;
-    }
-
-    img {
-        opacity: 0.6;
-    }
-}
-
-.content {
-    background-color: $color-white;
-}
-
-.category-title {
-    color: $color-white;
-    text-align: right;
-}
-
-// modules
-
-.delete {
-    a {
-        color: $color-red;
-    }
-}
-
-.thumbs {
-    padding-top: 5px;
-    li {
-        //width: 200px;
-        display: inline-block
-    }
-
-    img:hover {
-        @include image-hover;
-    }
-}
-
-.divider {
-    color: $color-red;
-}
-
-.header {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    .form-group {
-        display: inline-block;
-    }
-
-    form {
-        margin-right: 0px;
-        padding-top: 30px;
-    }
-
-    .search {
-        button.search-link {
-            background: none;
-            border: none;
-            position: relative;
-            top: -5px;
-            right: 35px;
-        }
-    }
-    img {
-        padding-left: 15px;
-        width: 95px;
-    }
-}
-
-.navigation {
-    padding-bottom: 20px;
-    margin-bottom: 0px;
-    text-transform: uppercase;
-    font-size: 1.2625em;
-
-    .brand {
-        padding: 0px;
-    }
-
-    .navigation-inner {
-        margin: 0px;
-    }
-
-    ul.nav-list {
-        text-align: center;
-        form {
-            display: inline;
-            padding: 0px;
-        }
-
-        li {
-            float: left;
-            width: 25%;
-
-            a {
-                letter-spacing: 0.3em;
-                //color: $color-dark-grey;
-                padding: 0;
-            }
-
-            a:hover {
-                @include red-hover;
-                background: white;
-            }
-        }
-    }
-}
-
-.categories--subcategories--list {
-    margin-left: 15px;
-
-    a {
-        color: $color-light-grey;
-    }
-
-    a.selected {
-        color: $color-red;
-    }
-
-}
-
-
+//@import "variables.css.scss";
+//@import "mixins.css.scss";
+//
+//section, article, header, footer, nav, aside, hgroup {
+//    display: block;
+//}
+//
+//.content a {
+//    color: $color-dark-grey;
+//    text-decoration: none;
+//}
+//
+//a:hover {
+//    @include red-hover;
+//}
+//
+//li {
+//    list-style: none;
+//}
+//
+//body {
+//    color: $color-dark-grey;
+//    background-color: $color-white;
+//    font: normal 100% 'Sintony';
+//    font-family: 'Sintony', sans-serif;
+//    font-size: 0.8em;
+//
+//    h1 {
+//        font-size: 1.0625em; /* 17 / 16 */
+//    }
+//
+//    .print-button {
+//        cursor: pointer;
+//    }
+//}
+//
+//.pages-home {
+//    @mixin text {
+//        background-color: white;
+//        opacity: 0.9;
+//        margin-left: 0px;
+//    }
+//
+//    position: relative;
+//
+//    .main-image {
+//        background-image: url(asset_path('background_images/home.jpg'));
+//        background-repeat: no-repeat;
+//        height: 400px;
+//        padding-top: 30%;
+//    }
+//
+//    .title {
+//        @include text;
+//        color: rgb(176, 39, 51);
+//    }
+//
+//    .body-text {
+//        @include text;
+//        padding: 8px;
+//
+//        img {
+//            margin-top: 10px;
+//            width: 400px;
+//        }
+//    }
+//
+//    h1 {
+//        text-align: left;
+//        line-height: 30px;
+//        font-size: 1.1em;
+//    }
+//
+//    .home-body {
+//        p {
+//            padding-left: 10%;
+//            padding-right: 10%;
+//        }
+//    }
+//
+//    .main-image {
+//        text-align: center;
+//    }
+//
+//    img {
+//        opacity: 0.6;
+//    }
+//}
+//
+//.content {
+//    background-color: $color-white;
+//}
+//
+//.category-title {
+//    color: $color-white;
+//    text-align: right;
+//}
+//
+//// modules
+//
+//.delete {
+//    a {
+//        color: $color-red;
+//    }
+//}
+//
+//.thumbs {
+//    padding-top: 5px;
+//    li {
+//        //width: 200px;
+//        display: inline-block
+//    }
+//
+//    img:hover {
+//        @include image-hover;
+//    }
+//}
+//
+//.divider {
+//    color: $color-red;
+//}
+//
+//.header {
+//    padding-top: 25px;
+//    padding-bottom: 20px;
+//    .form-group {
+//        display: inline-block;
+//    }
+//
+//    form {
+//        margin-right: 0px;
+//        padding-top: 30px;
+//    }
+//
+//    .search {
+//        .form-group {
+//            input {
+//                width: 200px;
+//            }
+//        }
+//        button.search-link {
+//            background: none;
+//            border: none;
+//            position: relative;
+//            top: -5px;
+//            right: 35px;
+//        }
+//    }
+//    img {
+//        padding-left: 15px;
+//        width: 95px;
+//    }
+//}
+//
+//.navigation {
+//    padding-bottom: 20px;
+//    margin-bottom: 0px;
+//    text-transform: uppercase;
+//    font-size: 1.2625em;
+//
+//    .brand {
+//        padding: 0px;
+//    }
+//
+//    .navigation-inner {
+//        margin: 0px;
+//    }
+//
+//    ul.nav-list {
+//        text-align: center;
+//        form {
+//            display: inline;
+//            padding: 0px;
+//        }
+//
+//        li {
+//            float: left;
+//            width: 25%;
+//
+//            a {
+//                letter-spacing: 0.3em;
+//                //color: $color-dark-grey;
+//                padding: 0;
+//            }
+//
+//            a:hover {
+//                @include red-hover;
+//                background: white;
+//            }
+//        }
+//    }
+//}
+//
+//.categories--subcategories--list {
+//    margin-left: 15px;
+//
+//    a {
+//        color: $color-light-grey;
+//    }
+//
+//    a.selected {
+//        color: $color-red;
+//    }
+//
+//}
+//
+//#print-header {
+//    display: none;
+//    background-image: url(asset_path('print_letterhead.png'));
+//    background-repeat: no-repeat;
+//    height: 400px;
+//    padding-top: 30%;
+//}
+//
+//

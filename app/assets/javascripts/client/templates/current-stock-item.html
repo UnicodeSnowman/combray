@@ -1,0 +1,29 @@
+<div id="current-stock-item">
+    <div class="product">
+        <div id="rightcolumn">
+            <div style="border:1px solid black;">
+                <a href="">
+                    <img src="assets/product1.jpg" border="0" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="description">
+        <h1 ng-bind="item.name"></h1>
+        <p>Ref #: {{item.code}}</p>
+        <p ng-bind="item.description"></p>
+        <p>Age: {{item.age}}</p>
+        <p>Origin: {{item.origin}}</p>
+        <p>Measurements: {{item.measurements}}</p>
+
+        <p><a href="mailto:contact@combraygallery.com">Enquiry</a> | <a href="#">Print</a> | <a href="mailto:">Share</a></p>
+
+        <div class="thumbs">
+            <a href="" ng-repeat="thumb in item.photos"><img src="assets/icon1.jpg" border="0" /></a>
+            <!--
+            <a href="" ng-repeat="thumb in item.photos"><img src="{{thumb.photo.thumb.url}}" border="0" /></a>
+            -->
+        </div>
+    </div>
+</div>
