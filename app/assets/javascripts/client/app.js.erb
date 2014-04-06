@@ -1,4 +1,9 @@
 //= depend_on_asset client/templates/home.html
+//= depend_on_asset client/templates/about.html
+//= depend_on_asset client/templates/contact.html
+//= depend_on_asset client/templates/services.html
+//= depend_on_asset client/templates/current-stock.html
+//= depend_on_asset client/templates/current-stock-item.html
 
 angular.module('Combray', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
@@ -7,7 +12,7 @@ angular.module('Combray', ['ngRoute'])
               templateUrl: '<%=asset_path("client/templates/home.html")%>'
             })
             .when('/current-stock:category?:subcategory?', {
-              templateUrl: "<%=asset_path 'assets/client/templates/current-stock.html'%>",
+              templateUrl: '<%=asset_path("client/templates/current-stock.html)"%>',
                 controller: 'CurrentStockCtrl',
                 reloadOnSearch: false,
                 resolve: {
@@ -20,7 +25,7 @@ angular.module('Combray', ['ngRoute'])
                 }
             })
             .when('/current-stock/:itemId', {
-              templateUrl: "<%=asset_path 'assets/client/templates/current-stock-item.html'%>",
+              templateUrl: '<%=asset_path("client/templates/current-stock-item.html)"%>',
                 controller: 'CurrentStockItemCtrl',
                 resolve: {
                     item: ['$http', '$route', function ($http, $route) {
@@ -31,13 +36,13 @@ angular.module('Combray', ['ngRoute'])
                 }
             })
             .when('/about', {
-              templateUrl: "<%=asset_path 'assets/client/templates/about.html'%>"
+              templateUrl: '<%=asset_path("client/templates/about.html")%>'
             })
             .when('/contact', {
-              templateUrl: "<%=asset_path 'assets/client/templates/contact.html'%>"
+              templateUrl: '<%=asset_path("client/templates/contact.html")%>'
             })
             .when('/services', {
-              templateUrl: "<%=asset_path 'assets/client/templates/services.html'%>"
+              templateUrl: '<%=asset_path("client/templates/services.html")%>'
             });
     }]);
 
