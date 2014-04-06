@@ -1,8 +1,10 @@
+//= depend_on_asset client/templates/home.html
+
 angular.module('Combray', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-              templateUrl: "<%=asset_path 'assets/client/templates/home.html'%>"
+              templateUrl: '<%=asset_path("client/templates/home.html")%>'
             })
             .when('/current-stock:category?:subcategory?', {
               templateUrl: "<%=asset_path 'assets/client/templates/current-stock.html'%>",
@@ -23,7 +25,6 @@ angular.module('Combray', ['ngRoute'])
                 resolve: {
                     item: ['$http', '$route', function ($http, $route) {
                         return $http.get('/items/' + $route.current.params.itemId).then(function (res) {
-//                        return $http.get('/items').then(function (res) {
                             return res.data;
                         })
                     }]
