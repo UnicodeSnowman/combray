@@ -12,7 +12,7 @@ angular.module('Combray', ['ngRoute'])
               templateUrl: '<%=asset_path("client/templates/home.html")%>'
             })
             .when('/current-stock:category?:subcategory?', {
-              templateUrl: '<%=asset_path("client/templates/current-stock.html)"%>',
+              templateUrl: '<%=asset_path("client/templates/current-stock.html")%>',
                 controller: 'CurrentStockCtrl',
                 reloadOnSearch: false,
                 resolve: {
@@ -25,7 +25,7 @@ angular.module('Combray', ['ngRoute'])
                 }
             })
             .when('/current-stock/:itemId', {
-              templateUrl: '<%=asset_path("client/templates/current-stock-item.html)"%>',
+              templateUrl: '<%=asset_path("client/templates/current-stock-item.html")%>',
                 controller: 'CurrentStockItemCtrl',
                 resolve: {
                     item: ['$http', '$route', function ($http, $route) {
