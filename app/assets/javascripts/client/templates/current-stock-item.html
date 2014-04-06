@@ -1,9 +1,9 @@
 <div id="current-stock-item">
     <div class="product">
         <div id="rightcolumn">
-            <div style="border:1px solid black;">
+            <div class="main-image" style="border:1px solid black;">
                 <a href="">
-                    <img src="assets/product1.jpg" border="0" />
+                    <img ng-src="{{item.photos[0].photo.main_show.url}}" border="0" />
                 </a>
             </div>
         </div>
@@ -20,10 +20,7 @@
         <p><a href="mailto:contact@combraygallery.com">Enquiry</a> | <a href="#">Print</a> | <a href="mailto:">Share</a></p>
 
         <div class="thumbs">
-            <a href="" ng-repeat="thumb in item.photos"><img src="assets/icon1.jpg" border="0" /></a>
-            <!--
-            <a href="" ng-repeat="thumb in item.photos"><img src="{{thumb.photo.thumb.url}}" border="0" /></a>
-            -->
+            <a href="" ng-repeat="thumb in item.photos"><img ng-click="onThumbClick(thumb)" ng-src="{{thumb.photo.thumb_show.url}}" border="0" /></a>
         </div>
     </div>
 </div>

@@ -12,15 +12,7 @@
     <div class="grid">
         <img ng-hide="items.length" src="assets/current-stock.jpg" />
         <div ng-show="items.length">
-            <div class="cell"><a href="#"><img src="assets/newsquare1.jpg" border="0" /></a></div>
-            <div class="cell"><a href="#"><img src="assets/newsquare2.jpg" border="0" /></a></div>
-            <div class="cell"><a href="#"><img src="assets/newsquare3.jpg" border="0" /></a></div>
-            <div class="cell"><a href="#"><img src="assets/newsquare4.jpg" border="0" /></a></div>
-            <div class="cell"><a href="#"><img src="assets/newsquare5.jpg" border="0" /></a></div>
-            <div class="cell"><a href="#"><img src="assets/newsquare6.jpg" border="0" /></a></div>
-            <div class="cell"><a href="#"><img src="assets/newsquare7.jpg" border="0" /></a></div>
-            <div class="cell"><a href="#"><img src="assets/newsquare8.jpg" border="0" /></a></div>
-            <div class="cell"><a href="#"><img src="assets/newsquare9.jpg" border="0" /></a></div>
+            <div class="cell" ng-repeat="item in items"><a ng-href="#/current-stock/{{item.id}}"><img ng-src="{{item.photos[0].photo.thumb.url}}" border="0" /></a></div>
         </div>
     </div>
 </div>

@@ -4,12 +4,16 @@ class ItemsController < ApplicationController
    layout 'print', :only => [:print]
 
   def index
-    render json: Item.search(params).as_json(:include => :photos)
+    if (params[:subcategory_id])
+      render json: Item.where(subcategory_id: params[:subcategory_id]).as_json(:include => :photos)
+    else
+      render json: Item.search(params).as_json(:include => :photos)
+    end
   end
 
   def show
     if (params[:subcategory_id])
-      render json: Item.includes(:photos).find_by(:subcategory_id => params[:subcategory_id]).as_json(:include => :photos)
+      render json: Item.where(subcategory_id: params[:subcategory_id]).as_json(:include => :photos)
     else
       render json: Item.includes(:photos)
                        .find(params[:id])

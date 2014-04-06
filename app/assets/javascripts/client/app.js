@@ -10,6 +10,7 @@ angular.module('Combray', ['ngRoute'])
                 reloadOnSearch: false,
                 resolve: {
                     categories: ['$http', function ($http) {
+                        console.log('resolve...');
                         return $http.get('/categories').then(function (res) {
                             return res.data;
                         })
@@ -23,7 +24,6 @@ angular.module('Combray', ['ngRoute'])
                     item: ['$http', '$route', function ($http, $route) {
                         return $http.get('/items/' + $route.current.params.itemId).then(function (res) {
 //                        return $http.get('/items').then(function (res) {
-                            debugger;
                             return res.data;
                         })
                     }]
@@ -40,22 +40,25 @@ angular.module('Combray', ['ngRoute'])
             });
     }]);
 
-angular.module('Combray').controller('AppCtrl', ['$scope', function ($scope) {
-    $scope.test = 'test';
-}])
+angular.module('Combray').controller('AppCtrl', ['$scope', function ($scope) { }])
 .controller('CurrentStockCtrl', [
     '$scope', 
     '$location', 
     '$http',
     'categories', function ($scope, $location, $http, categories) {
 
-    function getItems () {
+    function getItemsBySubcategory (subcategory_id) {
         // need to:
         // fetch items based on value of subcategory query param
-        $http.get('/items').then(function (res) {
+        var reqUrl = '/items';
+
+        if (subcategory_id) {
+            reqUrl += '?subcategory_id=' + subcategory_id;
+        }
+        
+        $http.get(reqUrl).then(function (res) {
             $scope.items = res.data;
         });
-        console.log($location.search());
     }
 
     console.log('categories', categories);
@@ -68,8 +71,8 @@ angular.module('Combray').controller('AppCtrl', ['$scope', function ($scope) {
         $location.search('category', category.name);
 
         if (subcategory) {
-            $location.search('subcategory', subcategory.name);
-            getItems();
+            $location.search('subcategory', subcategory.id.toString());
+            getItemsBySubcategory(subcategory.id);
         } else {
             category.open = !category.open;
         }
@@ -80,5 +83,10 @@ angular.module('Combray').controller('AppCtrl', ['$scope', function ($scope) {
     '$location', 
     'item', function ($scope, $location, item) {
 
+    var $mainImage = angular.element('.main-image img');
+
+    $scope.onThumbClick = function (thumb) {
+        $mainImage.attr('src', thumb.photo.main_show.url);
+    }
     $scope.item = item;
 }]);
