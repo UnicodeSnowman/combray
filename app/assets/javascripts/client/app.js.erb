@@ -2,10 +2,10 @@ angular.module('Combray', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'assets/client/templates/home.html'
+              templateUrl: "<%=asset_path 'assets/client/templates/home.html'%>"
             })
             .when('/current-stock:category?:subcategory?', {
-                templateUrl: 'assets/client/templates/current-stock.html',
+              templateUrl: "<%=asset_path 'assets/client/templates/current-stock.html'%>",
                 controller: 'CurrentStockCtrl',
                 reloadOnSearch: false,
                 resolve: {
@@ -18,7 +18,7 @@ angular.module('Combray', ['ngRoute'])
                 }
             })
             .when('/current-stock/:itemId', {
-                templateUrl: 'assets/client/templates/current-stock-item.html',
+              templateUrl: "<%=asset_path 'assets/client/templates/current-stock-item.html'%>",
                 controller: 'CurrentStockItemCtrl',
                 resolve: {
                     item: ['$http', '$route', function ($http, $route) {
@@ -30,13 +30,13 @@ angular.module('Combray', ['ngRoute'])
                 }
             })
             .when('/about', {
-                templateUrl: 'assets/client/templates/about.html'
+              templateUrl: "<%=asset_path 'assets/client/templates/about.html'%>"
             })
             .when('/contact', {
-                templateUrl: 'assets/client/templates/contact.html'
+              templateUrl: "<%=asset_path 'assets/client/templates/contact.html'%>"
             })
             .when('/services', {
-                templateUrl: 'assets/client/templates/services.html'
+              templateUrl: "<%=asset_path 'assets/client/templates/services.html'%>"
             });
     }]);
 
