@@ -10,7 +10,7 @@
         </ul>
     </div>
     <div class="grid">
-        <img ng-hide="items.length" src="assets/current-stock.jpg" />
+        <div ng-hide="items.length"><%= image_tag('current-stock.jpg') %></div>
         <div ng-show="items.length">
             <div class="cell" ng-repeat="item in items"><a ng-href="#/current-stock/{{item.id}}"><img ng-src="{{item.photos[0].photo.thumb.url}}" border="0" /></a></div>
         </div>
