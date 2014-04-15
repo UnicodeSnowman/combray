@@ -14,13 +14,22 @@ angular.module('Combray', ['ngRoute'])
             .when('/current-stock:category?:subcategory?', {
               templateUrl: '<%=asset_path("client/templates/current-stock.html")%>',
                 controller: 'CurrentStockCtrl',
-                reloadOnSearch: false,
+                reloadOnSearch: true,
                 resolve: {
-                    categories: ['$http', function ($http) {
-                        console.log('resolve...');
+                    categories: ['$http', '$route', function ($http, $route) {
                         return $http.get('/categories').then(function (res) {
-                            return res.data;
+                          return $(res.data).map(function (i, category) {
+                            category.open = $route.current.params.category == category.id ? true : false;
+                            return category;
+                          });
                         })
+                    }],
+                    items: ['$http', '$route', 'ItemsService', function ($http, $route, itemsService) {
+                        var subcategoryId = $route.current.params.subcategory
+
+                        return subcategoryId ? itemsService.all($route.current.params.subcategory).then(function (res) {
+                            return res.data;
+                        }) : [];
                     }]
                 }
             })
@@ -47,38 +56,37 @@ angular.module('Combray', ['ngRoute'])
     }]);
 
 angular.module('Combray').controller('AppCtrl', ['$scope', function ($scope) { }])
+.service('ItemsService', ['$http', function ($http) {
+    this.all = function (subcategory_id) {
+      var reqUrl = '/items';
+
+      if (subcategory_id) {
+          reqUrl += '?subcategory_id=' + subcategory_id;
+      }
+      
+      return $http.get(reqUrl);
+    }  
+}])
 .controller('CurrentStockCtrl', [
     '$scope', 
     '$location', 
     '$http',
-    'categories', function ($scope, $location, $http, categories) {
+    'ItemsService',
+    'categories',
+    'items', function ($scope, $location, $http, itemsService, categories, items) {
 
-    function getItemsBySubcategory (subcategory_id) {
-        // need to:
-        // fetch items based on value of subcategory query param
-        var reqUrl = '/items';
-
-        if (subcategory_id) {
-            reqUrl += '?subcategory_id=' + subcategory_id;
-        }
-        
-        $http.get(reqUrl).then(function (res) {
-            $scope.items = res.data;
-        });
-    }
-
-    console.log('categories', categories);
     $scope.categories = categories;
-    $scope.items = [];
-
+    $scope.items = items;
 
     $scope.onCategoryClick = function (category, subcategory) {
         $location.search('subcategory', null);
-        $location.search('category', category.name);
+        $location.search('category', category.id);
 
         if (subcategory) {
-            $location.search('subcategory', subcategory.id.toString());
-            getItemsBySubcategory(subcategory.id);
+            $location.search('subcategory', subcategory.id);
+            itemsService.all(subcategory.id).then(function (res) {
+                $scope.items = res.data;
+            })
         } else {
             category.open = !category.open;
         }
