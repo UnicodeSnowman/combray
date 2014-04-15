@@ -37,10 +37,8 @@ angular.module('Combray', ['ngRoute'])
               templateUrl: '<%=asset_path("client/templates/current-stock-item.html")%>',
                 controller: 'CurrentStockItemCtrl',
                 resolve: {
-                    item: ['$http', '$route', function ($http, $route) {
-                        return $http.get('/items/' + $route.current.params.itemId).then(function (res) {
-                            return res.data;
-                        })
+                    item: ['ItemsService', '$route', function (itemsService, $route) {
+                        return itemsService.find($route.current.params.itemId);
                     }]
                 }
             })
@@ -72,7 +70,13 @@ angular.module('Combray')
         }
         
         return $http.get(reqUrl);
-      }  
+      };
+
+      this.find = function (item_id) {
+        return $http.get('/items/' + item_id).then(function (res) {
+            return res.data;
+        })
+      }
   }])
   .controller('CurrentStockCtrl', [
       '$scope', 
