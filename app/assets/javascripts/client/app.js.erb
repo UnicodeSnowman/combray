@@ -51,56 +51,63 @@ angular.module('Combray', ['ngRoute'])
               templateUrl: '<%=asset_path("client/templates/contact.html")%>'
             })
             .when('/services', {
+//              resolve: {
+//                content: ['$http', function ($http) {
+//                    return $http.get('/services').then(function (res) {
+//                      return res.data;
+//                    })
+//                }]
+//              },
               templateUrl: '<%=asset_path("client/templates/services.html")%>'
             });
     }]);
 
-angular.module('Combray').controller('AppCtrl', ['$scope', function ($scope) { }])
-.service('ItemsService', ['$http', function ($http) {
-    this.all = function (subcategory_id) {
-      var reqUrl = '/items';
+angular.module('Combray')
+  .service('ItemsService', ['$http', function ($http) {
+      this.all = function (subcategory_id) {
+        var reqUrl = '/items';
 
-      if (subcategory_id) {
-          reqUrl += '?subcategory_id=' + subcategory_id;
-      }
-      
-      return $http.get(reqUrl);
-    }  
-}])
-.controller('CurrentStockCtrl', [
-    '$scope', 
-    '$location', 
-    '$http',
-    'ItemsService',
-    'categories',
-    'items', function ($scope, $location, $http, itemsService, categories, items) {
-
-    $scope.categories = categories;
-    $scope.items = items;
-
-    $scope.onCategoryClick = function (category, subcategory) {
-        $location.search('subcategory', null);
-        $location.search('category', category.id);
-
-        if (subcategory) {
-            $location.search('subcategory', subcategory.id);
-            itemsService.all(subcategory.id).then(function (res) {
-                $scope.items = res.data;
-            })
-        } else {
-            category.open = !category.open;
+        if (subcategory_id) {
+            reqUrl += '?subcategory_id=' + subcategory_id;
         }
-    }
-}])
-.controller('CurrentStockItemCtrl', [
-    '$scope', 
-    '$location', 
-    'item', function ($scope, $location, item) {
+        
+        return $http.get(reqUrl);
+      }  
+  }])
+  .controller('CurrentStockCtrl', [
+      '$scope', 
+      '$location', 
+      '$http',
+      'ItemsService',
+      'categories',
+      'items', function ($scope, $location, $http, itemsService, categories, items) {
 
-    var $mainImage = angular.element('.main-image img');
+      $scope.categories = categories;
+      $scope.items = items;
 
-    $scope.onThumbClick = function (thumb) {
-        $mainImage.attr('src', thumb.photo.main_show.url);
-    }
-    $scope.item = item;
-}]);
+      $scope.onCategoryClick = function (category, subcategory) {
+          $location.search('subcategory', null);
+          $location.search('category', category.id);
+
+          if (subcategory) {
+              $location.search('subcategory', subcategory.id);
+              itemsService.all(subcategory.id).then(function (res) {
+                  $scope.items = res.data;
+              })
+          } else {
+              category.open = !category.open;
+          }
+      }
+  }])
+  .controller('CurrentStockItemCtrl', [
+      '$scope', 
+      '$location', 
+      'item', function ($scope, $location, item) {
+
+      var $mainImage = angular.element('.main-image img');
+
+      $scope.onThumbClick = function (thumb) {
+          $mainImage.attr('src', thumb.photo.main_show.url);
+      }
+      $scope.item = item;
+  }]);
