@@ -61,7 +61,44 @@ angular.module('Combray', ['ngRoute'])
     }]);
 
 angular.module('Combray')
-  .service('ItemsService', ['$http', function ($http) {
+    .directive('photoBox', function () {
+        var $backdrop = $('<div class="photo-box-backdrop"></div>'),
+            $overlay = $('<div class="photo-box-overlay" style="background-color:white;"><p class="exit">x</p><img src=""></img></div>'),
+            $body = $('body');
+
+        function remove () {
+            $backdrop.unbind('click');
+            $overlay.find('.exit').unbind('click');
+            $backdrop.remove();
+            $overlay.remove();
+        }
+
+        function append (url) {
+            $overlay.find('img').attr('src', url);
+            $body.append($backdrop);
+            $body.append($overlay);
+        }
+
+        return {
+            restrict: 'A',
+            scope: {
+                photoBox: '='                
+            },
+            link: function (scope, elem, attrs) {
+                elem.bind('click', function () {
+                    remove();
+                    $backdrop.on('click', function () {
+                        remove();
+                    });
+                    $overlay.find('.exit').on('click', function () {
+                        remove();
+                    });
+                    append(scope.photoBox.url);
+                });
+            }
+        }
+    })
+    .service('ItemsService', ['$http', function ($http) {
       this.all = function (subcategory_id) {
         var reqUrl = '/items';
 
@@ -77,8 +114,8 @@ angular.module('Combray')
             return res.data;
         })
       }
-  }])
-  .controller('CurrentStockCtrl', [
+    }])
+    .controller('CurrentStockCtrl', [
       '$scope', 
       '$location', 
       '$http',
@@ -102,8 +139,8 @@ angular.module('Combray')
               category.open = !category.open;
           }
       }
-  }])
-  .controller('CurrentStockItemCtrl', [
+    }])
+    .controller('CurrentStockItemCtrl', [
       '$scope', 
       '$location', 
       'item', function ($scope, $location, item) {
@@ -112,6 +149,9 @@ angular.module('Combray')
 
       $scope.onThumbClick = function (thumb) {
           $mainImage.attr('src', thumb.photo.main_show.url);
+          $scope.current = thumb.photo;
       }
+
+      $scope.current = item.photos[0].photo;
       $scope.item = item;
-  }]);
+    }]);

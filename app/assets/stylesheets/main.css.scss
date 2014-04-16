@@ -168,3 +168,33 @@ ul{
 	color:#000000;
 	left:15px;
 }
+
+.photo-box-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.4;
+}
+
+.photo-box-overlay {
+    z-index: 998;
+    height: 700px;
+    width: 700px;
+    position: absolute;
+    margin-left: -350px; /* 700/2 */
+    margin-top: -350px; /* 700/2 */
+    top: 50%;
+    left: 50%;
+
+    .exit {
+        cursor: pointer;
+        z-index: 999;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+    }
+}
