@@ -14,7 +14,7 @@ angular.module('Combray', ['ngRoute'])
             .when('/current-stock:category?:subcategory?', {
               templateUrl: '<%=asset_path("client/templates/current-stock.html")%>',
                 controller: 'CurrentStockCtrl',
-                reloadOnSearch: true,
+                reloadOnSearch: false,
                 resolve: {
                     categories: ['$http', '$route', function ($http, $route) {
                         return $http.get('/categories').then(function (res) {
