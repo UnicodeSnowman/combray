@@ -6,19 +6,30 @@
 //= depend_on_asset client/templates/current-stock-item.html
 
 angular.module('Combray', ['ngRoute'])
+    .value('utils', {
+      titleize: function (phrase) {
+        return phrase.split(' ').map(function (word) {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        }).join(' ');
+      }
+    })
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
               templateUrl: '<%=asset_path("client/templates/home.html")%>'
             })
             .when('/current-stock:category?:subcategory?', {
-              templateUrl: '<%=asset_path("client/templates/current-stock.html")%>',
+                templateUrl: '<%=asset_path("client/templates/current-stock.html")%>',
                 controller: 'CurrentStockCtrl',
                 reloadOnSearch: false,
                 resolve: {
-                    categories: ['$http', '$route', function ($http, $route) {
+                    categories: ['$http', '$route', 'utils', function ($http, $route, utils) {
                         return $http.get('/categories').then(function (res) {
-                          return $(res.data).map(function (i, category) {
+                          return res.data.map(function (category) {
+                            category.name = utils.titleize(category.name);
+                            category.subcategories = category.subcategories.map(function (subcategory) {
+                              return utils.titleize(subcategory.name); 
+                            });
                             category.open = $route.current.params.category == category.id ? true : false;
                             return category;
                           });
@@ -57,47 +68,24 @@ angular.module('Combray', ['ngRoute'])
 //                }]
 //              },
               templateUrl: '<%=asset_path("client/templates/services.html")%>'
+            })
+            .when('/search', {
+                templateUrl: '<%=asset_path("client/templates/current-stock.html")%>',
+                controller: 'CurrentStockCtrl',
+                resolve: {
+                  items: ['ItemsService', function (itemsService) {
+                    return itemsService.all().then(function (res) {
+                      return res.data;
+                    });
+                  }], 
+                  categories: function () {
+                    return [];
+                  }
+                }
             });
     }]);
 
 angular.module('Combray')
-    .directive('photoBox', function () {
-        var $backdrop = $('<div class="photo-box-backdrop"></div>'),
-            $overlay = $('<div class="photo-box-overlay" style="background-color:white;"><p class="exit">x</p><img src=""></img></div>'),
-            $body = $('body');
-
-        function remove () {
-            $backdrop.unbind('click');
-            $overlay.find('.exit').unbind('click');
-            $backdrop.remove();
-            $overlay.remove();
-        }
-
-        function append (url) {
-            $overlay.find('img').attr('src', url);
-            $body.append($backdrop);
-            $body.append($overlay);
-        }
-
-        return {
-            restrict: 'A',
-            scope: {
-                photoBox: '='                
-            },
-            link: function (scope, elem, attrs) {
-                elem.bind('click', function () {
-                    remove();
-                    $backdrop.on('click', function () {
-                        remove();
-                    });
-                    $overlay.find('.exit').on('click', function () {
-                        remove();
-                    });
-                    append(scope.photoBox.url);
-                });
-            }
-        }
-    })
     .service('ItemsService', ['$http', function ($http) {
       this.all = function (subcategory_id) {
         var reqUrl = '/items';
@@ -115,16 +103,50 @@ angular.module('Combray')
         })
       }
     }])
+    .filter('ItemsFilter', function () {
+      function isMatch (item, query) {
+        var result = false;
+        if (item.name && item.name.indexOf(query) !== -1)
+          result = true;
+        if (item.description && item.description.indexOf(query) !== -1)
+          result = true;
+        else if (item.category && item.category.indexOf(query) !== -1)
+          result = true; 
+        else if (item.subcategory && item.subcategory.indexOf(query) !== -1)
+          result = true; 
+        return result; 
+      }
+      return function (items, query) {
+        var result = [];
+        return items.reduce(function (acc, item) {
+          if (isMatch(item, query))
+            acc.push(item);
+          return acc; 
+        }, [])
+      }
+    })
+    .controller('AppCtrl', ['$scope', '$location', function ($scope, $location) {
+      $scope.$watch(function () { return $location.path(); }, function (path) {
+        $scope.isSearch = path === '/search';
+      });
+
+      $scope.query = '';
+    }])
     .controller('CurrentStockCtrl', [
       '$scope', 
       '$location', 
       '$http',
+      '$filter',
       'ItemsService',
       'categories',
-      'items', function ($scope, $location, $http, itemsService, categories, items) {
+      'items', function ($scope, $location, $http, $filter, itemsService, categories, items) {
+
+      var itemsFilter = $filter('ItemsFilter');
 
       $scope.categories = categories;
-      $scope.items = items;
+      $scope.$watch('query', function (q) {
+        $scope.items = $scope.query ? itemsFilter(items, $scope.query) : items;
+      });
 
       $scope.onCategoryClick = function (category, subcategory) {
           $location.search('subcategory', null);

@@ -4,13 +4,13 @@
             <li ng-repeat="category in categories">
                 <a href="" ng-click="onCategoryClick(category)">{{category.name}}</a>
                 <ul class="subcategories" ng-show="category.open" ng-if="category.subcategories.length">
-                    <li ng-repeat="subcategory in category.subcategories"><a href="" ng-click="onCategoryClick(category, subcategory)">{{subcategory.name}}</a></li>
+                    <li ng-repeat="subcategory in category.subcategories"><a href="" ng-click="onCategoryClick(category, subcategory)">{{subcategory}}</a></li>
                 </ul>
             </li>
         </ul>
     </div>
     <div class="grid">
-        <div ng-hide="items.length"><%= image_tag('current-stock.jpg') %></div>
+        <div ng-hide="items.length || isSearch"><%= image_tag('current-stock.jpg') %></div>
         <div ng-show="items.length">
             <div class="cell" ng-repeat="item in items"><a ng-href="#/current-stock/{{item.id}}"><img ng-src="{{item.photos[0].photo.thumb.url}}" border="0" /></a></div>
         </div>
