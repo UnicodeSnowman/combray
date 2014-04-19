@@ -60,11 +60,6 @@ a:active {color:#b02733; text-decoration:none;}  /* selected link */
 	margin-bottom:10px;
 }
 
-.footer{
-	width:1024px;
-	height:100px;
-}
-
 hr{
 	width:100%;
 	height:1px;
@@ -117,8 +112,12 @@ ul{
     margin-bottom: 15px;
 }
 
-.description img{
+.description img {
 	border:1px solid black;
+}
+
+.share-options img {
+    border: none;
 }
 
 .product{
@@ -183,24 +182,26 @@ ul{
 }
 
 .footer{
-	position:relative;
+	//width:1024px;
+	height:100%;
+	//position:relative;
 	width:99%;
-	bottom:55%;
+	//bottom:55%;
 	margin-left:auto;
 	margin-right:auto;
 }
 
 .copyright{
-	position:relative;
-	float:left;
+	//position:relative;
+	//float:left;
 	color:white;
 	font-size:12px;
-	top:128px;
+	//top:128px;
 }
 
 .share{
-	position:relative;
+	//position:relative;
 	float:right;
-	top:120px;
+	//top:120px;
 }
 

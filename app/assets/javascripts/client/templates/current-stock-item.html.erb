@@ -17,7 +17,15 @@
         <div><p>Origin: </p><p ng-bind="item.origin | Titleize"></p></div>
         <div><p>Measurements: </p><p ng-bind="item.measurements"></p></div>
 
-        <p><a href="mailto:contact@combraygallery.com">Enquiry</a> | <a href="#">Print</a> | <a href="mailto:">Share</a></p>
+        <p class="share-options"><a href="mailto:contact@combraygallery.com">Enquiry</a> | <a href="" onclick="window.print()">Print</a> |
+          <span style="position:relative; top:5px;">
+            <a href="mailTo:"><%= image_tag('share/email.png') %></a>
+            <a href="http://facebook.com"><%= image_tag('share/facebook.png') %></a>
+            <a href="http://twitter.com"><%= image_tag('share/twitter.png') %></a>
+            <a href="http://linkedin.com"><%= image_tag('share/linkedin.png') %></a>
+            <a href="http://pinterest.com"><%= image_tag('share/pinterest.png') %></a>
+          </span>
+        </p>
 
         <div class="thumbs">
             <a href="" ng-repeat="thumb in item.photos"><img ng-click="onThumbClick(thumb)" ng-src="{{thumb.photo.thumb_show.url}}" border="0" /></a>

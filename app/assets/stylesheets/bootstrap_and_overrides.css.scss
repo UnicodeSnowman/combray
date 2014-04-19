@@ -16,9 +16,10 @@
 }
 
 #home {
-    height: 100%;
-    background-repeat: no-repeat;
+    height: 768px;
     background-image: url(asset_path('home.jpg'));
+    .footer {
+    }
 }
 
 #current-stock {
