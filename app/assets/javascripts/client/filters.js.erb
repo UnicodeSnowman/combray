@@ -1,0 +1,33 @@
+angular.module('Combray')
+    .filter('ItemsFilter', function () {
+      function isMatch (item, query) {
+        var result = false,
+            query = query.toLowerCase();
+        if (item.name && item.name.toLowerCase().indexOf(query) !== -1)
+          result = true;
+        if (item.description && item.description.toLowerCase().indexOf(query) !== -1)
+          result = true;
+        else if (item.category && item.category.toLowerCase().indexOf(query) !== -1)
+          result = true; 
+        else if (item.subcategory && item.subcategory.toLowerCase().indexOf(query) !== -1)
+          result = true; 
+        return result; 
+      }
+      return function (items, query) {
+        var result = [];
+        return items.reduce(function (acc, item) {
+          if (isMatch(item, query))
+            acc.push(item);
+          return acc; 
+        }, [])
+      }
+    })
+    .filter('Titleize', function () {
+      return function (phrase) {
+        if (!phrase)
+          return;
+        return phrase.split(' ').map(function (word) {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        }).join(' ');
+      }
+    })

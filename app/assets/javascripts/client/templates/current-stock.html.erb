@@ -2,9 +2,9 @@
     <div class="navigation">
         <ul class="categories">
             <li ng-repeat="category in categories">
-                <a href="" ng-click="onCategoryClick(category)">{{category.name}}</a>
+                <a href="" ng-click="onCategoryClick(category)">{{category.name | Titleize}}</a>
                 <ul class="subcategories" ng-show="category.open" ng-if="category.subcategories.length">
-                    <li ng-repeat="subcategory in category.subcategories"><a href="" ng-click="onCategoryClick(category, subcategory)">{{subcategory}}</a></li>
+                    <li ng-repeat="subcategory in category.subcategories"><a href="" ng-click="onCategoryClick(category, subcategory)">{{subcategory.name | Titleize}}</a></li>
                 </ul>
             </li>
         </ul>

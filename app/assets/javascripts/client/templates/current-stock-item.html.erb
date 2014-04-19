@@ -10,12 +10,12 @@
     </div>
 
     <div class="description">
-        <h1 ng-bind="item.name"></h1>
-        <p>Ref #: {{item.code}}</p>
-        <p ng-bind="item.description"></p>
-        <p>Age: {{item.age}}</p>
-        <p>Origin: {{item.origin}}</p>
-        <p>Measurements: {{item.measurements}}</p>
+        <h1 ng-bind="item.name | Titleize"></h1>
+        <div><p>Ref #: </p><p ng-bind="item.code"></p></div>
+        <div><p ng-bind="item.description"></p></div>
+        <div><p>Age: </p><p ng-bind="item.age"></p></div>
+        <div><p>Origin: </p><p ng-bind="item.origin | Titleize"></p></div>
+        <div><p>Measurements: </p><p ng-bind="item.measurements"></p></div>
 
         <p><a href="mailto:contact@combraygallery.com">Enquiry</a> | <a href="#">Print</a> | <a href="mailto:">Share</a></p>
 

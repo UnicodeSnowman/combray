@@ -1,0 +1,53 @@
+angular.module('Combray')
+    .controller('AppCtrl', ['$scope', '$location', function ($scope, $location) {
+      $scope.$watch(function () { return $location.path(); }, function (path) {
+        $scope.isSearch = path === '/search';
+      });
+
+      $scope.query = '';
+    }])
+    .controller('CurrentStockCtrl', [
+      '$scope', 
+      '$location', 
+      '$http',
+      '$filter',
+      'ItemsService',
+      'categories',
+      'items', function ($scope, $location, $http, $filter, itemsService, categories, items) {
+
+      var itemsFilter = $filter('ItemsFilter');
+
+      $scope.categories = categories;
+      $scope.$watch('query', function (q) {
+        $scope.items = $scope.query ? itemsFilter(items, $scope.query) : items;
+      });
+
+      $scope.onCategoryClick = function (category, subcategory) {
+          $location.search('subcategory', null);
+          $location.search('category', category.id);
+
+          if (subcategory) {
+              $location.search('subcategory', subcategory.id);
+              itemsService.all(subcategory.id).then(function (res) {
+                  $scope.items = res.data;
+              })
+          } else {
+              category.open = !category.open;
+          }
+      }
+    }])
+    .controller('CurrentStockItemCtrl', [
+      '$scope', 
+      '$location', 
+      'item', function ($scope, $location, item) {
+
+      var $mainImage = angular.element('.main-image img');
+
+      $scope.onThumbClick = function (thumb) {
+          $mainImage.attr('src', thumb.photo.main_show.url);
+          $scope.current = thumb.photo;
+      }
+
+      $scope.current = item.photos[0].photo;
+      $scope.item = item;
+    }]);

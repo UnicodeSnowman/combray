@@ -1,0 +1,18 @@
+angular.module('Combray')
+    .service('ItemsService', ['$http', function ($http) {
+      this.all = function (subcategory_id) {
+        var reqUrl = '/items';
+
+        if (subcategory_id) {
+            reqUrl += '?subcategory_id=' + subcategory_id;
+        }
+        
+        return $http.get(reqUrl);
+      };
+
+      this.find = function (item_id) {
+        return $http.get('/items/' + item_id).then(function (res) {
+            return res.data;
+        })
+      }
+    }])

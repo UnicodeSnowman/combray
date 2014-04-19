@@ -104,11 +104,17 @@ ul{
 	font-size:17px;
 	color:#333;
 	margin-top:-5px;
+    margin-bottom: 15px;
 }
 
-.description p{
+.description p {
 	font-size:15px;
 	color:#330a0a; /*8d4448*/
+    display: inline;
+}
+
+.description div {
+    margin-bottom: 15px;
 }
 
 .description img{

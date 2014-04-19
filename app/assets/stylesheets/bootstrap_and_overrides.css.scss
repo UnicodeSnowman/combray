@@ -25,15 +25,14 @@
     @include body-text;
     padding-top: 120px;
 
-    .categories {
-
-    }
+    .categories { }
     .subcategories {
         li {
             margin-left: 15px;
         }
         a {
             color: gray;
+            font-size: 14px;
         }
     }
 }
@@ -47,6 +46,7 @@
         img {
             width: 100px;
             height: 100px;
+            margin-right: 5px;
         }
     }
 }
