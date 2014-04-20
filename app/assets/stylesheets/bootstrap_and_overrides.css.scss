@@ -42,6 +42,10 @@
     @include body-text;
     padding-top: 120px;
 
+    .main-image img {
+        cursor: url(asset_path('zoom2.gif')),auto;
+    }
+
     .thumbs {
         margin-top: 25px;
         img {

@@ -41,13 +41,16 @@ angular.module('Combray')
       '$location', 
       'item', function ($scope, $location, item) {
 
-      var $mainImage = angular.element('.main-image img');
+      var $mainImage = angular.element('.main-image');
 
       $scope.onThumbClick = function (thumb) {
-          $mainImage.attr('src', thumb.photo.main_show.url);
+          $mainImage.trigger('zoom.destroy');
+          $mainImage.find('img').attr('src', thumb.photo.main_show.url);
           $scope.current = thumb.photo;
+          $mainImage.zoom({ url: $scope.current.url });
       }
 
       $scope.current = item.photos[0].photo;
+      $mainImage.zoom({ url: $scope.current.url });
       $scope.item = item;
     }]);
