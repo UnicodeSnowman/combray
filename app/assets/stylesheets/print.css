@@ -71,13 +71,15 @@
         width:50%;
         margin-left:auto;
         margin-right:auto;
-        p {
-            display: inline;
-        }
 
-        .share-options {
-            display: none;
-        }
+    }
+
+    .description p {
+        display: inline;
+    }
+
+    .description .share-options {
+        display: none;
     }
 
     /*footer image at the bottom of the page*/
