@@ -63,6 +63,10 @@
     .product .main-image {
         border: none;
     }
+
+    .product .main-image img {
+        width: 100%;
+    }
         
     /*description title, reference number, and details*/
     .description {
