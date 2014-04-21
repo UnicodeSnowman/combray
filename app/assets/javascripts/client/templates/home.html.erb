@@ -1,16 +1,17 @@
-<div id="home">
-  <div class="footer" style="display:none">
+<div id="home" ng-controller="HomeCtrl">
+  <div class="footer">
       <div class="copyright">
           <span>&copy; 2014 Combray Gallery. All rights reserved.</span>
       </div>
-      <div class="share">
-          <span>
-              <a href="http://facebook.com"><%= image_tag('share/facebook.png') %></a>
-              <a href="http://twitter.com"><%= image_tag('share/twitter.png') %></a>
-              <a href="http://linkedin.com"><%= image_tag('share/linkedin.png') %></a>
-              <a href="http://pinterest.com"><%= image_tag('share/pinterest.png') %></a>
-          </span>
-      </div>
+        <div class="share addthis_toolbox addthis_default_style">
+          <a class="addthis_button_facebook"></a>
+          <a class="addthis_button_twitter"></a>
+          <a class="addthis_button_linkedin"></a>
+          <a class="addthis_button_tumblr"></a>
+        </div>
       <div class="clear"></div>
   </div>
 </div>
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5351d7ab506e0f95"></script>
+

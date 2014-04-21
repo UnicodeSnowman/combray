@@ -21,6 +21,17 @@ a:active {color:#b02733; text-decoration:none;}  /* selected link */
 	height:100px;
 	font-size:20px;
 	font-family: 'Muli', sans-serif;
+
+    .logo {
+        position:relative; 
+        left:15px; 
+        top:15px; 
+        display:inline;
+    }
+
+    .print-logo {
+        display: none;
+    }
 }
 
 .main{
@@ -30,7 +41,13 @@ a:active {color:#b02733; text-decoration:none;}  /* selected link */
 	margin-right:auto;
 }
 
-.navigation{
+.nav {
+    position:relative; 
+    top:-15px; 
+    display:inline;
+}
+
+.navigation {
 	position:relative;
 	width:150px;
 	float:left;
@@ -126,9 +143,12 @@ ul{
 	float:left;
 	left:20px;
 
-    .main-image img {
-        width: 600px;
-        height: 600px;
+    .main-image {
+        border: 1px solid black;
+        img {
+            width: 600px;
+            height: 600px;
+        }
     }
 }
 
@@ -192,16 +212,15 @@ ul{
 }
 
 .copyright{
-	//position:relative;
-	//float:left;
+    position: absolute;
+    bottom: -60px;
 	color:white;
 	font-size:12px;
-	//top:128px;
 }
 
 .share{
-	//position:relative;
-	float:right;
-	//top:120px;
+    float: right;
+    position: relative;
+    bottom: -745px;
 }
 

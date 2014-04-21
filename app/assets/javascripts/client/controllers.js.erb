@@ -6,6 +6,11 @@ angular.module('Combray')
 
       $scope.query = '';
     }])
+    .controller('HomeCtrl', ['$timeout', function ($timeout) {
+      $timeout(function () {
+        addthis.toolbox(".addthis_toolbox");
+      }, 100);
+    }])
     .controller('CurrentStockCtrl', [
       '$scope', 
       '$location', 

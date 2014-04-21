@@ -1,5 +1,4 @@
 @charset "utf-8";
-/* CSS Document */
 
 @media print {
 
@@ -22,26 +21,63 @@
 
     /*logo image at the top of the page*/
     .header {
+        margin-top: 25px;
         position:relative;
         width:50%;
         margin-left:auto;
         margin-right:auto;
     }
 
+    .logo {
+        display: none;
+    }
+
+    .print-logo {
+        position:relative; 
+        left:15px; 
+        top:15px; 
+        display:inline;
+    }
+
+    .print-logo img {
+        width: 95%;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .thumbs {
+        display: none;
+    }
+
     /*product image*/
     .product {
+        margin-top: 45px;
         position:relative;
         width:50%;
         margin-left:auto;
         margin-right:auto;
     }
+
+    .product .main-image {
+        border: none;
+    }
         
     /*description title, reference number, and details*/
     .description {
+        text-align: center;
         position:relative;
-        width:80%;
+        width:50%;
         margin-left:auto;
         margin-right:auto;
+        p {
+            display: inline;
+        }
+
+        .share-options {
+            display: none;
+        }
     }
 
     /*footer image at the bottom of the page*/
