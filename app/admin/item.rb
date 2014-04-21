@@ -10,7 +10,7 @@ ActiveAdmin.register Item do
     end
 
     def permitted_params
-      params.permit item: [:name, :code, :description, :subcategory_id, :age, :measurements, photos_attributes: [:id, :photo, :item_id, :_destroy]]
+      params.permit item: [:name, :code, :description, :subcategory_id, :sold, :age, :measurements, photos_attributes: [:id, :photo, :item_id, :_destroy]]
     end
   end
   
@@ -27,6 +27,7 @@ ActiveAdmin.register Item do
       f.input :measurements
       f.input :subcategory
       f.input :description
+      f.input :sold
     end
     f.has_many :photos do |p|
       unless p.object.new_record?
