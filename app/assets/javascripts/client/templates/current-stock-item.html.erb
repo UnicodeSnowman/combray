@@ -16,13 +16,18 @@
         <div><p>Measurements: </p><p ng-bind="item.measurements"></p></div>
 
         <p class="share-options"><a href="mailto:contact@combraygallery.com">Enquiry</a> | <a href="" onclick="window.print()">Print</a> |
-          <span style="position:relative; top:5px;">
-            <a href="mailTo:"><%= image_tag('share/email.png') %></a>
-            <a href="http://facebook.com"><%= image_tag('share/facebook.png') %></a>
-            <a href="http://twitter.com"><%= image_tag('share/twitter.png') %></a>
-            <a href="http://linkedin.com"><%= image_tag('share/linkedin.png') %></a>
-            <a href="http://pinterest.com"><%= image_tag('share/pinterest.png') %></a>
-          </span>
+          <!-- AddThis Button BEGIN PRODUCT PAGE ONLY-->
+          <div class="addthis_toolbox addthis_default_style" style="position:relative; top:-19px; left:110px;">
+            <a class="addthis_button_facebook"></a>
+            <a class="addthis_button_twitter"></a>
+            <a class="addthis_button_linkedin"></a>
+            <a class="addthis_button_pinterest"></a>
+            <a class="addthis_button_tumblr"></a>
+            <a class="addthis_button_email"></a>
+            <a class="addthis_button_compact"></a>
+            <a class="addthis_counter addthis_bubble_style"></a>
+          </div>
+          <!-- AddThis Button END -->
         </p>
 
         <div class="thumbs">
@@ -30,3 +35,8 @@
         </div>
     </div>
 </div>
+
+<script id="crappy-add-this-tag" type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5351d7ab506e0f95"></script>
+<script type="text/javascript">
+  var addthis_config = {"data_track_addressbar":true};
+</script>

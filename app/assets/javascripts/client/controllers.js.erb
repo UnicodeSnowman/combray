@@ -30,7 +30,7 @@ angular.module('Combray')
               $location.search('subcategory', subcategory.id);
               itemsService.all(subcategory.id).then(function (res) {
                   $scope.items = res.data;
-              })
+              });
           } else {
               category.open = !category.open;
           }
@@ -39,12 +39,15 @@ angular.module('Combray')
     .controller('CurrentStockItemCtrl', [
       '$scope', 
       '$location', 
-      'item', function ($scope, $location, item) {
+      '$timeout',
+      'item', function ($scope, $location, $timeout, item) {
 
       var $mainImage = angular.element('.main-image');
 
       $scope.onThumbClick = function (thumb) {
           $mainImage.trigger('zoom.destroy');
+//          $('#addimage').load(function() { $(this).show() });
+//          $('#addimage').attr('src', src[i]);
           $mainImage.find('img').attr('src', thumb.photo.main_show.url);
           $scope.current = thumb.photo;
           $mainImage.zoom({ url: $scope.current.url });
@@ -53,4 +56,8 @@ angular.module('Combray')
       $scope.current = item.photos[0].photo;
       $mainImage.zoom({ url: $scope.current.url });
       $scope.item = item;
+
+      $timeout(function () {
+        addthis.toolbox(".addthis_toolbox");
+      }, 100);
     }]);
