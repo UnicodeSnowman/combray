@@ -5,7 +5,7 @@
 //= depend_on_asset client/templates/current-stock.html
 //= depend_on_asset client/templates/current-stock-item.html
 
-angular.module('Combray', ['ngRoute'])
+angular.module('Combray', ['ngRoute', 'angularSpinner'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -35,8 +35,11 @@ angular.module('Combray', ['ngRoute'])
               templateUrl: '<%=asset_path("client/templates/current-stock-item.html")%>',
                 controller: 'CurrentStockItemCtrl',
                 resolve: {
-                    item: ['ItemsService', '$route', function (itemsService, $route) {
-                        return itemsService.find($route.current.params.itemId);
+                    item: ['ItemsService', '$route', 'usSpinnerService', function (itemsService, $route, spinnerService) {
+                        spinnerService.spin('spinner');
+                        return itemsService.find($route.current.params.itemId)['finally'](function () {
+                          spinnerService.stop('spinner');
+                        })
                     }]
                 }
             })
@@ -60,9 +63,12 @@ angular.module('Combray', ['ngRoute'])
                 templateUrl: '<%=asset_path("client/templates/current-stock.html")%>',
                 controller: 'CurrentStockCtrl',
                 resolve: {
-                  items: ['ItemsService', function (itemsService) {
+                  items: ['ItemsService', 'usSpinnerService', function (itemsService, spinnerService) {
+                    spinnerService.spin('spinner');
                     return itemsService.all().then(function (res) {
                       return res.data;
+                    })['finally'](function () {
+                      spinnerService.stop('spinner');
                     });
                   }], 
                   categories: function () {
