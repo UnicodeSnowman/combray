@@ -33,10 +33,13 @@ angular.module('Combray')
 
           if (subcategory) {
               $location.search('subcategory', subcategory.id);
-              itemsService.all(subcategory.id).then(function (res) {
+              itemsService.all(subcategory.id, category.id).then(function (res) {
                   $scope.items = res.data;
               });
           } else {
+              angular.forEach($scope.categories, function (category) {
+                category.open = false;
+              });
               category.open = !category.open;
           }
       }

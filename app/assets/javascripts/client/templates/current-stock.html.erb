@@ -2,6 +2,7 @@
     <div class="navigation">
         <ul class="categories">
             <li ng-repeat="category in categories">
+                <br / ng-if="$index === categories.length - 1">
                 <a href="" ng-click="onCategoryClick(category)">{{category.name | Titleize}}</a>
                 <ul class="subcategories" ng-show="category.open" ng-if="category.subcategories.length">
                     <li ng-repeat="subcategory in category.subcategories"><a href="" ng-click="onCategoryClick(category, subcategory)">{{subcategory.name | Titleize}}</a></li>

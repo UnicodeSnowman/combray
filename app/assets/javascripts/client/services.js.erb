@@ -1,7 +1,11 @@
 angular.module('Combray')
     .service('ItemsService', ['$http', function ($http) {
-      this.all = function (subcategory_id) {
+      this.all = function (subcategory_id, category_id) {
         var reqUrl = '/items';
+
+        if (category_id) {
+          reqUrl += '?category_id=' + category_id;
+        }
 
         if (subcategory_id) {
             reqUrl += '?subcategory_id=' + subcategory_id;
