@@ -5,8 +5,8 @@ class Item < ActiveRecord::Base
   validates :code, :presence => true, :uniqueness => true
 
   belongs_to :subcategory
-  has_one :category, :through => :subcategory
-  #delegate :category, :to => :subcategory
+  #has_one :category, :through => :subcategory
+  delegate :category, :to => :subcategory
   has_many :photos, :dependent => :destroy
   accepts_nested_attributes_for :photos, :allow_destroy => true
   #mount_uploader :photo, PhotoUploader

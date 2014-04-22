@@ -35,12 +35,23 @@
             color: gray;
             font-size: 14px;
         }
+        a.selected {
+            color: black;
+        }
+        a:hover {
+            color: black;
+        }
     }
+
+    a.selected {
+        color: #b02733;
+    }
+
 }
 
 #current-stock-item {
     @include body-text;
-    padding-top: 120px;
+    padding-top: 140px;
 
     .main-image img {
         cursor: url(asset_path('zoom2.gif')),auto;
@@ -63,7 +74,13 @@
 
 #about {
     @include body-text;
-    padding-top: 120px;
+    padding-top: 140px;
+    a {
+        color: #b02733;
+    }
+    a:hover {
+        color: black;
+    }
 }
 
 #contact {

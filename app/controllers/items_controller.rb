@@ -6,8 +6,8 @@ class ItemsController < ApplicationController
   def index
     if (params[:subcategory_id])
       render json: Item.where(subcategory_id: params[:subcategory_id]).as_json(:include => :photos)
-    elsif (params[:category_id])
-      render json: Item.where(category_id: params[:category_id]).as_json(:include => :photos)
+#    elsif (params[:category_id])
+#      render json: Item.where(category_id: params[:category_id]).as_json(:include => :photos)
     else
       render json: Item.search(params).as_json(:include => :photos)
     end
