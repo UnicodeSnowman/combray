@@ -69,17 +69,22 @@
 
 #services {
     @include body-text;
-    padding-top: 120px;
+    padding-top: 160px;
+
+    img {
+        margin-top: 20px;
+    }
+
+    .services-two {
+        margin-top: 10px;
+    }
 }
 
 #about {
     @include body-text;
     padding-top: 140px;
-    a {
-        color: #b02733;
-    }
     a:hover {
-        color: black;
+        color: #b02733;
     }
 }
 

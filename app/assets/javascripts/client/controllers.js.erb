@@ -1,8 +1,15 @@
 angular.module('Combray')
-    .controller('AppCtrl', ['$scope', '$location', function ($scope, $location) {
+    .controller('AppCtrl', ['$scope', '$location', '$route', function ($scope, $location, $route) {
       $scope.$watch(function () { return $location.path(); }, function (path) {
         $scope.isSearch = path === '/search';
       });
+
+      $scope.onClickCurrentStock = function () {
+        $location.search('category', undefined);
+        $location.search('subcategory', undefined);
+        $location.path('/current-stock');
+        $route.reload();
+      }
 
       $scope.query = '';
     }])
@@ -12,27 +19,36 @@ angular.module('Combray')
       }, 100);
     }])
     .controller('CurrentStockCtrl', [
-      '$scope', 
-      '$location', 
-      '$http',
-      '$filter',
-      'ItemsService',
-      'categories',
-      'items', function ($scope, $location, $http, $filter, itemsService, categories, items) {
+        '$scope', 
+        '$location', 
+        '$http',
+        '$filter',
+        'ItemsService',
+        'categories',
+        'items', function ($scope, $location, $http, $filter, itemsService, categories, items) {
 
-      var itemsFilter = $filter('ItemsFilter');
+      var itemsFilter = $filter('ItemsFilter'),
+          query = $location.search();
+
+      $scope.selectedCategory = $location.search().category;
+      $scope.selectedSubcategory = $location.search().subcategory;
+      $scope.showSplash = (!query.category && !query.subcategory);
 
       $scope.categories = categories;
+
       $scope.$watch('query', function (q) {
-        $scope.items = $scope.query ? itemsFilter(items, $scope.query) : items;
+          $scope.items = $scope.query ? itemsFilter(items, $scope.query) : items;
       });
 
       $scope.onCategoryClick = function (category, subcategory) {
+          $scope.showSplash = false;
           $location.search('subcategory', null);
           $location.search('category', category.id);
+          $scope.selectedCategory = category.id;
 
           if (subcategory) {
               $location.search('subcategory', subcategory.id);
+              $scope.selectedSubcategory = subcategory.id;
               itemsService.all(subcategory.id).then(function (res) {
                   $scope.items = res.data;
               });
