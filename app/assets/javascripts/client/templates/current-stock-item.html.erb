@@ -9,7 +9,8 @@
 
     <div class="description">
         <h1 ng-bind="item.name | Titleize"></h1>
-        <div><p>Ref #: </p><p ng-bind="item.code"></p></div>
+        <div ng-if="!item.sold"><p>Ref #: </p><p ng-bind="item.code"></p></div>
+        <div ng-if="item.sold"><p class="status">SOLD</p></div>
         <div><p ng-bind="item.description"></p></div>
         <div><p>Age: </p><p ng-bind="item.age"></p></div>
         <div><p>Origin: </p><p ng-bind="item.origin | Titleize"></p></div>

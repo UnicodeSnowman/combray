@@ -14,7 +14,8 @@ class Item < ActiveRecord::Base
   def self.search(params)
     if params
       find(:all, :conditions => [
-        "name LIKE ? OR description LIKE ?", 
+        "name LIKE ? OR description LIKE ? OR subcategory LIKE ?", 
+        "%#{params[:q]}%", 
         "%#{params[:q]}%", 
         "%#{params[:q]}%"])
     else

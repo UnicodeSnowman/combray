@@ -48,8 +48,7 @@ angular.module('Combray')
         'categories',
         'items', function ($scope, $location, $http, $filter, itemsService, spinnerService, categories, items) {
 
-      var itemsFilter = $filter('ItemsFilter'),
-          query = $location.search();
+      var query = $location.search();
 
       $scope.selectedCategory = $location.search().category;
       $scope.selectedSubcategory = $location.search().subcategory;
