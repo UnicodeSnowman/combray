@@ -1,13 +1,11 @@
 angular.module('Combray')
     .controller('AppCtrl', ['$scope', '$location', '$route', function ($scope, $location, $route) {
       var $searchBar = angular.element('.search-bar');
-      $scope.$watch(function () { return $location.path(); }, function (path) {
-        $scope.isSearch = path === '/search';
-      });
 
       $scope.onClickCurrentStock = function () {
         $location.search('category', undefined);
         $location.search('subcategory', undefined);
+        $location.search('q', undefined);
         $location.path('/current-stock');
         $route.reload();
       }
@@ -55,10 +53,7 @@ angular.module('Combray')
       $scope.showSplash = (!query.category && !query.subcategory && !query.q);
 
       $scope.categories = categories;
-
-      $scope.$watch('query', function (q) {
-          $scope.items = items;
-      });
+      $scope.items = items;
 
       $scope.onCategoryClick = function (category, subcategory) {
           $scope.showSplash = false;
@@ -69,18 +64,19 @@ angular.module('Combray')
           if (subcategory) {
               $location.search('subcategory', subcategory.id);
               $scope.selectedSubcategory = subcategory.id;
-              spinnerService.spin('spinner');
-              itemsService.all(subcategory.id).then(function (res) {
-                  $scope.items = res.data;
-              })['finally'](function () {
-                  spinnerService.stop('spinner');
-              });
           } else {
               angular.forEach($scope.categories, function (category) {
                 category.open = false;
               });
               category.open = !category.open;
           }
+
+          spinnerService.spin('spinner');
+          itemsService.all((subcategory ? subcategory.id : undefined), category.id).then(function (res) {
+              $scope.items = res.data;
+          })['finally'](function () {
+              spinnerService.stop('spinner');
+          });
       }
     }])
     .controller('CurrentStockItemCtrl', [

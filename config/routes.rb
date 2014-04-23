@@ -20,7 +20,6 @@ AntiquesGallery::Application.routes.draw do
 #  resources :categories
 #  resources :subcategories
   resources :items
-  get 'items/:id/print' => 'items#print', as: :print
 
 #  namespace :admin do
 #    resources :items   

@@ -11,10 +11,16 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :photos, :allow_destroy => true
   #mount_uploader :photo, PhotoUploader
   
+  def self.find_by_category_id(category_id)
+    Item.joins(:subcategory => :category).all(:conditions => [
+      "categories.id = ?", category_id
+    ])
+  end
+  
   def self.search(params)
     if params
-      find(:all, :conditions => [
-        "name LIKE ? OR description LIKE ? OR subcategory LIKE ?", 
+      Item.joins(:subcategory).all(:conditions => [
+        "items.name LIKE ? OR items.description LIKE ? OR subcategories.name LIKE ?",
         "%#{params[:q]}%", 
         "%#{params[:q]}%", 
         "%#{params[:q]}%"])
