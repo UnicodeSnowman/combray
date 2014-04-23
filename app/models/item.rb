@@ -20,7 +20,7 @@ class Item < ActiveRecord::Base
   def self.search(params)
     if params
       Item.joins(:subcategory).all(:conditions => [
-        "items.name LIKE ? OR items.description LIKE ? OR subcategories.name LIKE ?",
+        "lower(items.name) LIKE ? OR lower(items.description) LIKE ? OR lower(subcategories.name) LIKE ?",
         "%#{params[:q]}%", 
         "%#{params[:q]}%", 
         "%#{params[:q]}%"])
