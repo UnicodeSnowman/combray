@@ -24,8 +24,9 @@ angular.module('Combray')
         '$http',
         '$filter',
         'ItemsService',
+        'usSpinnerService',
         'categories',
-        'items', function ($scope, $location, $http, $filter, itemsService, categories, items) {
+        'items', function ($scope, $location, $http, $filter, itemsService, spinnerService, categories, items) {
 
       var itemsFilter = $filter('ItemsFilter'),
           query = $location.search();
@@ -49,8 +50,12 @@ angular.module('Combray')
           if (subcategory) {
               $location.search('subcategory', subcategory.id);
               $scope.selectedSubcategory = subcategory.id;
+              spinnerService.spin('spinner');
+              debugger;
               itemsService.all(subcategory.id).then(function (res) {
                   $scope.items = res.data;
+              })['finally'](function () {
+                  spinnerService.stop('spinner');
               });
           } else {
               angular.forEach($scope.categories, function (category) {
