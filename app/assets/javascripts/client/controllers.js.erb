@@ -13,7 +13,9 @@ angular.module('Combray')
       }
 
       $searchBar.bind('blur', function () {
-          $scope.showSearch = false;
+          $scope.$apply(function () {
+              $scope.showSearch = false;
+          });
       });
 
       $searchBar.bind('keydown', function (e) {
@@ -26,8 +28,7 @@ angular.module('Combray')
       });
 
       $scope.showSearch = false;
-      $scope.onSearchClick = function () {
-          $searchBar.focus();
+      $scope.onSearchClick = function (e) {
           $scope.showSearch = true;
       }
       $scope.query = '';
