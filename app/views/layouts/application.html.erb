@@ -22,9 +22,9 @@
         <a href="#/about">ABOUT</a>
         <a href="#/services">SERVICES</a>
         <a href="#/contact">CONTACT</a>
-        <a href="#/search">SEARCH</a>
+        <a href="" ng-hide="showSearch" ng-click="onSearchClick()">SEARCH</a>
         <!-- for now -->
-        <input type="text" class="ng-hide" placeholder="Search..." ng-model="query">
+        <input type="text" class="search-bar" ng-show="showSearch" placeholder="Search..." ng-model="query">
       </div>
     </div>
     <div class="main">

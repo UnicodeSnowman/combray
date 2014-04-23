@@ -63,9 +63,9 @@ angular.module('Combray', ['ngRoute', 'angularSpinner'])
                 templateUrl: '<%=asset_path("client/templates/current-stock.html")%>',
                 controller: 'CurrentStockCtrl',
                 resolve: {
-                  items: ['ItemsService', 'usSpinnerService', function (itemsService, spinnerService) {
+                  items: ['ItemsService', 'usSpinnerService', '$location', function (itemsService, spinnerService, $location) {
                     spinnerService.spin('spinner');
-                    return itemsService.all().then(function (res) {
+                    return itemsService.search($location.search().q).then(function (res) {
                       return res.data;
                     })['finally'](function () {
                       spinnerService.stop('spinner');

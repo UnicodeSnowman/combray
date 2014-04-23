@@ -1,5 +1,6 @@
 angular.module('Combray')
     .controller('AppCtrl', ['$scope', '$location', '$route', function ($scope, $location, $route) {
+      var $searchBar = angular.element('.search-bar');
       $scope.$watch(function () { return $location.path(); }, function (path) {
         $scope.isSearch = path === '/search';
       });
@@ -11,6 +12,24 @@ angular.module('Combray')
         $route.reload();
       }
 
+      $searchBar.bind('blur', function () {
+          $scope.showSearch = false;
+      });
+
+      $searchBar.bind('keydown', function (e) {
+          if (e.keyCode === 13) {
+              $scope.$apply(function () {
+                  $location.search('q', $scope.query);
+                  $location.path('/search');
+              });
+          }
+      });
+
+      $scope.showSearch = false;
+      $scope.onSearchClick = function () {
+          $searchBar.focus();
+          $scope.showSearch = true;
+      }
       $scope.query = '';
     }])
     .controller('HomeCtrl', ['$timeout', function ($timeout) {
@@ -33,12 +52,12 @@ angular.module('Combray')
 
       $scope.selectedCategory = $location.search().category;
       $scope.selectedSubcategory = $location.search().subcategory;
-      $scope.showSplash = (!query.category && !query.subcategory);
+      $scope.showSplash = (!query.category && !query.subcategory && !query.q);
 
       $scope.categories = categories;
 
       $scope.$watch('query', function (q) {
-          $scope.items = $scope.query ? itemsFilter(items, $scope.query) : items;
+          $scope.items = items;
       });
 
       $scope.onCategoryClick = function (category, subcategory) {
@@ -51,7 +70,6 @@ angular.module('Combray')
               $location.search('subcategory', subcategory.id);
               $scope.selectedSubcategory = subcategory.id;
               spinnerService.spin('spinner');
-              debugger;
               itemsService.all(subcategory.id).then(function (res) {
                   $scope.items = res.data;
               })['finally'](function () {

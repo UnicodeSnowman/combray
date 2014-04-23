@@ -18,5 +18,9 @@ angular.module('Combray')
         return $http.get('/items/' + item_id).then(function (res) {
             return res.data;
         })
+      };
+
+      this.search = function (query) {
+        return $http.get('/items?q=' + query.toLowerCase());
       }
     }])
