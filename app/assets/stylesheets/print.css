@@ -11,6 +11,15 @@
         font-family: 'Muli', sans-serif;
     }
 
+    h1 {
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
     /*container containing all the content on the page*/
     .container {
         position:relative;
@@ -32,13 +41,6 @@
         display: none;
     }
 
-    .print-logo {
-        position:relative; 
-        left:15px; 
-        top:15px; 
-        display:inline;
-    }
-
     .print-logo img {
         width: 95%;
     }
@@ -53,7 +55,7 @@
 
     /*product image*/
     .product {
-        margin-top: 45px;
+        margin-top: 35px;
         position:relative;
         width:50%;
         margin-left:auto;
@@ -70,12 +72,19 @@
         
     /*description title, reference number, and details*/
     .description {
-        text-align: center;
         position:relative;
-        width:50%;
+        width:75%;
         margin-left:auto;
         margin-right:auto;
 
+    }
+
+    .description h1 {
+        margin-bottom: 10px;
+    }
+
+    .description div {
+        margin-bottom: 10px;
     }
 
     .description p {
@@ -86,11 +95,18 @@
         display: none;
     }
 
-    /*footer image at the bottom of the page*/
-    .footer {
-        position:relative;
-        width:50%;
-        margin-left:auto;
-        margin-right:auto;
+    .print-footer {
+        width:100%;
+        display: inline;
+        position:fixed;
+        bottom: 0;
+        left: 0;
     }
+
+    .print-footer img {
+        width: 400px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
 }

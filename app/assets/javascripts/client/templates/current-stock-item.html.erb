@@ -14,9 +14,9 @@
           <div ng-if="!item.sold"><p>Ref #: </p><p ng-bind="item.code"></p></div>
           <div ng-if="item.sold"><p class="status">SOLD</p></div>
           <div><p ng-bind="item.description"></p></div>
-          <div><p>Age: </p><p ng-bind="item.age"></p></div>
-          <div><p>Origin: </p><p ng-bind="item.origin | Titleize"></p></div>
-          <div><p>Measurements: </p><p ng-bind="item.measurements"></p></div>
+          <div class="description-age"><p>Age: </p><p ng-bind="item.age"></p></div>
+          <div class="description-origin"><p>Origin: </p><p ng-bind="item.origin | Titleize"></p></div>
+          <div class="description-measurements"><p>Measurements: </p><p ng-bind="item.measurements"></p></div>
   
           <p class="share-options"><a href="mailto:contact@combraygallery.com">Enquiry</a> | <a href="" onclick="window.print()">Print</a> |
             <!-- AddThis Button BEGIN PRODUCT PAGE ONLY-->
@@ -40,6 +40,9 @@
     <div class="clear"></div>
     </div>
 </div>
+<footer class="print-footer">
+    <%= image_tag('print_footer.png') %>
+</footer>
 
 <script id="crappy-add-this-tag" type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5351d7ab506e0f95"></script>
 <script type="text/javascript">
