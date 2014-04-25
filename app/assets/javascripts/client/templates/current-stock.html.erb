@@ -17,7 +17,7 @@
           <div ng-show="items.length && !showSplash">
               <div class="cell" ng-repeat="item in items"><a ng-href="#/current-stock/{{item.id}}"><img ng-src="{{item.photos[0].photo.thumb.url}}" border="0" /></a></div>
           </div>
-          <div ng-hide="items.length">No items available at this time.</div>
+          <div ng-hide="items.length">We are sorry, no items are available at this time.</div>
       </div>
       <div class="clear"></div>
     </div>

@@ -14,6 +14,7 @@ angular.module('Combray')
           if (e.keyCode === 13) {
               $location.search('q', query);
               $location.path('/search');
+              $scope.showSearch = false;
           }
       }
 
