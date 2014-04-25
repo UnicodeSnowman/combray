@@ -12,6 +12,6 @@
     <a href="#/contact">CONTACT</a>
     <a href="" ng-hide="showSearch" ng-click="onSearchClick()">SEARCH</a>
     <!-- for now -->
-    <input type="text" class="search-bar" ng-show="showSearch" placeholder="Search..." ng-model="query">
+    <input type="text" class="search-bar" ng-show="showSearch" ng-keydown="onSearch($event, query)" ng-blur="onBlurEvent()" placeholder="Search..." ng-model="query">
   </div>
 </div>

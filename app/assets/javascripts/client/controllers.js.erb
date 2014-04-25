@@ -10,26 +10,20 @@ angular.module('Combray')
         $route.reload();
       }
 
-      $searchBar.bind('blur', function () {
-          $scope.$apply(function () {
-              $scope.showSearch = false;
-          });
-      });
-
-      $searchBar.bind('keydown', function (e) {
+      $scope.onSearch = function (e, query) {
           if (e.keyCode === 13) {
-              $scope.$apply(function () {
-                  $location.search('q', $scope.query);
-                  $location.path('/search');
-              });
+              $location.search('q', query);
+              $location.path('/search');
           }
-      });
+      }
+
+      $scope.onBlurEvent = function () { $scope.showSearch = false; };
 
       $scope.showSearch = false;
       $scope.onSearchClick = function (e) {
           $scope.showSearch = true;
       }
-      $scope.query = '';
+
     }])
     .controller('HomeCtrl', ['$timeout', function ($timeout) {
       $timeout(function () {
