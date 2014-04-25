@@ -1,0 +1,17 @@
+<div class="header">
+  <div class="logo">
+    <a href="#/"><%= image_tag('logo.png') %></a>
+  </div>
+  <div class="print-logo">
+    <%= image_tag('print_letterhead.png') %>
+  </div>
+  <div class="nav">
+    <a href="" ng-click="onClickCurrentStock()">CURRENT STOCK</a>
+    <a href="#/about">ABOUT</a>
+    <a href="#/services">SERVICES</a>
+    <a href="#/contact">CONTACT</a>
+    <a href="" ng-hide="showSearch" ng-click="onSearchClick()">SEARCH</a>
+    <!-- for now -->
+    <input type="text" class="search-bar" ng-show="showSearch" placeholder="Search..." ng-model="query">
+  </div>
+</div>

@@ -1,15 +1,13 @@
 <div id="home" ng-controller="HomeCtrl">
-  <div class="footer">
-      <div class="copyright">
-          <span>&copy; 2014 Combray Gallery. All rights reserved.</span>
-      </div>
-        <div class="share addthis_toolbox addthis_default_style">
-          <a class="addthis_button_facebook"></a>
-          <a class="addthis_button_twitter"></a>
-          <a class="addthis_button_linkedin"></a>
-          <a class="addthis_button_tumblr"></a>
-        </div>
-      <div class="clear"></div>
+  <div ng-include="'<%= asset_path('client/templates/nav.html') %>'"></div>
+  <div class="copyright">
+      <span>&copy; 2014 Combray Gallery. All rights reserved.</span>
+  </div>
+  <div class="share addthis_toolbox addthis_default_style">
+    <a class="addthis_button_facebook"></a>
+    <a class="addthis_button_twitter"></a>
+    <a class="addthis_button_linkedin"></a>
+    <a class="addthis_button_tumblr"></a>
   </div>
 </div>
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>

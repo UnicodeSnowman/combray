@@ -1,20 +1,24 @@
 <div id="current-stock">
-    <div class="navigation">
-        <ul class="categories">
-            <li ng-repeat="category in categories">
-                <br / ng-if="$index === categories.length - 1">
-                <a href="" ng-class="{ selected: category.open }" ng-click="onCategoryClick(category)">{{category.name | Titleize}}</a>
-                <ul class="subcategories" ng-show="category.open" ng-if="category.subcategories.length">
-                  <li ng-repeat="subcategory in category.subcategories"><a href="" ng-class="{ selected: subcategory.id == selectedSubcategory }" ng-click="onCategoryClick(category, subcategory)">{{subcategory.name | Titleize}}</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="grid">
-        <div ng-show="showSplash"><%= image_tag('current-stock.jpg') %></div>
-        <div ng-show="items.length && !showSplash">
-            <div class="cell" ng-repeat="item in items"><a ng-href="#/current-stock/{{item.id}}"><img ng-src="{{item.photos[0].photo.thumb.url}}" border="0" /></a></div>
-        </div>
-        <div ng-hide="items.length">No items available at this time.</div>
+    <div ng-include="'<%= asset_path('client/templates/nav.html') %>'"></div>
+    <div class="current-stock-content">
+      <div class="navigation">
+          <ul class="categories">
+              <li ng-repeat="category in categories">
+                  <br / ng-if="$index === categories.length - 1">
+                  <a href="" ng-class="{ selected: category.open }" ng-click="onCategoryClick(category)">{{category.name | Titleize}}</a>
+                  <ul class="subcategories" ng-show="category.open" ng-if="category.subcategories.length">
+                    <li ng-repeat="subcategory in category.subcategories"><a href="" ng-class="{ selected: subcategory.id == selectedSubcategory }" ng-click="onCategoryClick(category, subcategory)">{{subcategory.name | Titleize}}</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+      <div class="grid">
+          <div ng-show="showSplash"><%= image_tag('current-stock.jpg') %></div>
+          <div ng-show="items.length && !showSplash">
+              <div class="cell" ng-repeat="item in items"><a ng-href="#/current-stock/{{item.id}}"><img ng-src="{{item.photos[0].photo.thumb.url}}" border="0" /></a></div>
+          </div>
+          <div ng-hide="items.length">No items available at this time.</div>
+      </div>
+      <div class="clear"></div>
     </div>
 </div>

@@ -1,39 +1,43 @@
 <div id="current-stock-item">
-    <div class="product">
-        <div id="rightcolumn">
-            <div class="main-image">
-              <img photo-box="current" ng-src="{{current.main_show.url}}" border="0" />
-            </div>
-        </div>
-    </div>
-
-    <div class="description">
-        <h1 ng-bind="item.name | Titleize"></h1>
-        <div ng-if="!item.sold"><p>Ref #: </p><p ng-bind="item.code"></p></div>
-        <div ng-if="item.sold"><p class="status">SOLD</p></div>
-        <div><p ng-bind="item.description"></p></div>
-        <div><p>Age: </p><p ng-bind="item.age"></p></div>
-        <div><p>Origin: </p><p ng-bind="item.origin | Titleize"></p></div>
-        <div><p>Measurements: </p><p ng-bind="item.measurements"></p></div>
-
-        <p class="share-options"><a href="mailto:contact@combraygallery.com">Enquiry</a> | <a href="" onclick="window.print()">Print</a> |
-          <!-- AddThis Button BEGIN PRODUCT PAGE ONLY-->
-          <div class="addthis_toolbox addthis_default_style" style="position:relative; top:-19px; left:110px;">
-            <a class="addthis_button_facebook"></a>
-            <a class="addthis_button_twitter"></a>
-            <a class="addthis_button_linkedin"></a>
-            <a class="addthis_button_pinterest"></a>
-            <a class="addthis_button_tumblr"></a>
-            <a class="addthis_button_email"></a>
-            <a class="addthis_button_compact"></a>
-            <a class="addthis_counter addthis_bubble_style"></a>
+    <div ng-include="'<%= asset_path('client/templates/nav.html') %>'"></div>
+    <div class="current-stock-item-content">
+      <div class="product">
+          <div id="rightcolumn">
+              <div class="main-image">
+                <img photo-box="current" ng-src="{{current.main_show.url}}" border="0" />
+              </div>
           </div>
-          <!-- AddThis Button END -->
-        </p>
-
-        <div class="thumbs">
-            <a href="" ng-repeat="thumb in item.photos"><img ng-click="onThumbClick(thumb)" ng-src="{{thumb.photo.thumb_show.url}}" border="0" /></a>
-        </div>
+      </div>
+  
+      <div class="description">
+          <h1 ng-bind="item.name | Titleize"></h1>
+          <div ng-if="!item.sold"><p>Ref #: </p><p ng-bind="item.code"></p></div>
+          <div ng-if="item.sold"><p class="status">SOLD</p></div>
+          <div><p ng-bind="item.description"></p></div>
+          <div><p>Age: </p><p ng-bind="item.age"></p></div>
+          <div><p>Origin: </p><p ng-bind="item.origin | Titleize"></p></div>
+          <div><p>Measurements: </p><p ng-bind="item.measurements"></p></div>
+  
+          <p class="share-options"><a href="mailto:contact@combraygallery.com">Enquiry</a> | <a href="" onclick="window.print()">Print</a> |
+            <!-- AddThis Button BEGIN PRODUCT PAGE ONLY-->
+            <div class="addthis_toolbox addthis_default_style" style="position:relative; top:-19px; left:110px;">
+              <a class="addthis_button_facebook"></a>
+              <a class="addthis_button_twitter"></a>
+              <a class="addthis_button_linkedin"></a>
+              <a class="addthis_button_pinterest"></a>
+              <a class="addthis_button_tumblr"></a>
+              <a class="addthis_button_email"></a>
+              <a class="addthis_button_compact"></a>
+              <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Button END -->
+          </p>
+  
+          <div class="thumbs">
+              <a href="" ng-repeat="thumb in item.photos"><img ng-click="onThumbClick(thumb)" ng-src="{{thumb.photo.thumb_show.url}}" border="0" /></a>
+          </div>
+      </div>
+    <div class="clear"></div>
     </div>
 </div>
 

@@ -1,12 +1,17 @@
 
 .main {
-    margin-top: -100px;
+    //margin-top: -100px;
     line-height: 20px;
     font-size: 16px;
 
     p {
         margin: 0;
     }
+}
+
+.app {
+    max-height: 100%;
+    margin-bottom: 60px;
 }
 
 @mixin body-text {
@@ -16,15 +21,13 @@
 }
 
 #home {
+    position: relative;
     height: 768px;
     background-image: url(asset_path('home.jpg'));
-    .footer {
-    }
 }
 
 #current-stock {
     @include body-text;
-    padding-top: 140px;
 
     .categories { }
     .subcategories {
@@ -47,11 +50,13 @@
         color: #b02733;
     }
 
+    .current-stock-content {
+        margin-top: 40px;
+    }
 }
 
 #current-stock-item {
     @include body-text;
-    padding-top: 140px;
 
     .main-image img {
         cursor: url(asset_path('zoom2.gif')),auto;
@@ -65,35 +70,51 @@
             margin-right: 5px;
         }
     }
+
+    .current-stock-item-content {
+        margin-top: 40px;
+    }
 }
 
 #services {
     @include body-text;
-    padding-top: 160px;
+    padding-bottom: 75px;
 
-    img {
-        margin-top: 20px;
+    h1 {
+        font-weight: bold;
     }
 
+    .servies-main img {
+        margin-top: 20px;
+    }
     .services-two {
         margin-top: 10px;
+    }
+
+    .services-content {
+        margin-top: 50px;
     }
 }
 
 #about {
     @include body-text;
-    padding-top: 140px;
     a:hover {
         color: #b02733;
+    }
+
+    .about-content {
+        margin-top: 40px;
     }
 }
 
 #contact {
     @include body-text;
-    padding-top: 120px;
     height: 100%;
     background-repeat: no-repeat;
     background-image: url(asset_path('contact.jpg'));
+    .contact-text {
+        margin-top: 40px;
+    }
 }
 
 .header {
