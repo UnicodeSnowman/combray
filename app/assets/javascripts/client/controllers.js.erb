@@ -51,7 +51,6 @@ angular.module('Combray')
       $scope.items = items;
 
       $scope.onCategoryClick = function (category, subcategory) {
-          $scope.showSplash = false;
           $location.search('subcategory', null);
           $location.search('category', category.id);
           $scope.selectedCategory = category.id;
@@ -68,8 +67,8 @@ angular.module('Combray')
 
           spinnerService.spin('spinner');
           itemsService.all((subcategory ? subcategory.id : undefined), category.id).then(function (res) {
-              $scope.items = [];
               $scope.items = res.data;
+              $scope.showSplash = false;
           })['finally'](function () {
               spinnerService.stop('spinner');
           });
