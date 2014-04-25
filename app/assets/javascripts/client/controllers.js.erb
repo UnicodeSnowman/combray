@@ -68,6 +68,7 @@ angular.module('Combray')
 
           spinnerService.spin('spinner');
           itemsService.all((subcategory ? subcategory.id : undefined), category.id).then(function (res) {
+              $scope.items = [];
               $scope.items = res.data;
           })['finally'](function () {
               spinnerService.stop('spinner');

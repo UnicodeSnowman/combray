@@ -25,9 +25,9 @@ angular.module('Combray', ['ngRoute', 'angularSpinner'])
                         })
                     }],
                     items: ['$http', '$route', 'ItemsService', function ($http, $route, itemsService) {
-                        return ($route.current.params.subcategory || $route.current.params.category) ? itemsService.all($route.current.params.subcategory, $route.current.params.category).then(function (res) {
+                        return itemsService.all($route.current.params.subcategory, $route.current.params.category).then(function (res) {
                             return res.data;
-                        }) : [];
+                        });
                     }]
                 }
             })
