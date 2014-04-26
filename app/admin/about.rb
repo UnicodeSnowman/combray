@@ -1,6 +1,6 @@
 ActiveAdmin.register About do
 
-  menu :label => "About Page", :priority => 5
+  menu false
   actions :all, :except => [:new, :destroy]
 
   # See permitted parameters documentation:

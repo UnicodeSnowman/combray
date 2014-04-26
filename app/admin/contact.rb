@@ -1,6 +1,6 @@
 ActiveAdmin.register Contact do
 
-  menu :label => "Contact Page", :priority => 6
+  menu false
   actions :all, :except => [:new, :destroy]
   
   # See permitted parameters documentation:

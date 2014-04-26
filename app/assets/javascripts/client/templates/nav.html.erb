@@ -6,12 +6,11 @@
     <%= image_tag('print_letterhead.png') %>
   </div>
   <div class="nav">
-    <a href="" ng-click="onClickCurrentStock()">CURRENT STOCK</a>
+    <a href="" ng-click="app.onClickCurrentStock()">CURRENT STOCK</a>
     <a href="#/about">ABOUT</a>
     <a href="#/services">SERVICES</a>
     <a href="#/contact">CONTACT</a>
-    <a href="" ng-hide="showSearch" ng-click="onSearchClick()">SEARCH</a>
-    <!-- for now -->
-    <input type="text" class="search-bar" ng-show="showSearch" ng-keydown="onSearch($event, query)" ng-blur="onBlurEvent()" placeholder="Search..." ng-model="query">
+    <a href="" ng-hide="app.showSearch" ng-click="app.onSearchClick()">SEARCH</a>
+    <input type="text" class="search-bar" ng-show="app.showSearch" ng-keydown="app.onSearch($event, model.query)" ng-blur="app.onBlurEvent()" placeholder="Search..." ng-model="model.query">
   </div>
 </div>

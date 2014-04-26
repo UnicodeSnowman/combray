@@ -1,6 +1,6 @@
 ActiveAdmin.register Service do
 
-  menu :label => "Services Page", :priority => 4
+  menu false
   actions :all, :except => [:new, :destroy]
   
   # See permitted parameters documentation:

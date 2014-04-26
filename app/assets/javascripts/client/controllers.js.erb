@@ -1,7 +1,9 @@
 angular.module('Combray')
     .controller('AppCtrl', ['$scope', '$location', '$route', function ($scope, $location, $route) {
 
-      $scope.onClickCurrentStock = function () {
+      var app = this;
+
+      app.onClickCurrentStock = function () {
         $location.search('category', undefined);
         $location.search('subcategory', undefined);
         $location.search('q', undefined);
@@ -9,19 +11,19 @@ angular.module('Combray')
         $route.reload();
       }
 
-      $scope.onSearch = function (e, query) {
-          if (e.keyCode === 13) {
+      app.onSearch = function (e, query) {
+          if (e.keyCode === 13 && query) {
               $location.search('q', query);
               $location.path('/search');
-              $scope.showSearch = false;
+              app.showSearch = false;
           }
       }
 
-      $scope.onBlurEvent = function () { $scope.showSearch = false; };
+      app.onBlurEvent = function () { app.showSearch = false; };
 
-      $scope.showSearch = false;
-      $scope.onSearchClick = function (e) {
-          $scope.showSearch = true;
+      app.showSearch = false;
+      app.onSearchClick = function (e) {
+          app.showSearch = true;
       }
 
     }])

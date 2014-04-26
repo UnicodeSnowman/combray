@@ -6,6 +6,15 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Combray Gallery"
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add :label => "Pages" do |sites|
+        sites.add :label => "Contact", :url => "/admin/contacts/1/edit"
+        sites.add :label => "About", :url => "/admin/abouts/1/edit"
+        sites.add :label => "Services", :url => "/admin/services/1/edit"
+      end
+    end
+  end
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
