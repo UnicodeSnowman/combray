@@ -17,7 +17,7 @@
     }
 
     p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     /*container containing all the content on the page*/
@@ -30,9 +30,8 @@
 
     /*logo image at the top of the page*/
     .header {
-        margin-top: 25px;
         position:relative;
-        width:50%;
+        width:40%;
         margin-left:auto;
         margin-right:auto;
     }
@@ -55,7 +54,6 @@
 
     /*product image*/
     .product {
-        margin-top: 35px;
         position:relative;
         width:50%;
         margin-left:auto;
@@ -80,11 +78,11 @@
     }
 
     .description h1 {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
     .description div {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
     .description p {
@@ -96,17 +94,17 @@
     }
 
     .print-footer {
-        width:100%;
-        display: inline;
-        position:fixed;
+        position: fixed;
         bottom: 0;
-        left: 0;
+        width: 50%;
+        margin-left:auto;
+        margin-right:auto;
     }
 
     .print-footer img {
-        width: 400px;
-        text-align: center;
-        margin: 0 auto;
+        width: 500px;
+        margin-left: 110px;
+        /*text-align: center;*/
     }
 
 }
