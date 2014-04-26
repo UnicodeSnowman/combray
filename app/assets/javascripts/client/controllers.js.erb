@@ -43,7 +43,7 @@ angular.module('Combray')
         'items', function ($scope, $location, $http, $filter, itemsService, spinnerService, categories, items) {
 
       var query = $location.search(),
-          itemsPerPage = 3,
+          itemsPerPage = 12,
           lastPage = (items.length / itemsPerPage) - 1;
 
       $scope.page = 0;

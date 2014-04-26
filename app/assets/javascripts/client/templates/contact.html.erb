@@ -1,33 +1,6 @@
 <div id="contact">
     <div ng-include="'<%= asset_path('client/templates/nav.html') %>'"></div>
-    <div class="contact-text">
-        <p ng-bind-html="content.body"></p>
-
-        <p>
-            Visit Us:
-        </p>
-
-        <p>
-            Combray Gallery<br />
-            307 Warren Street<br />
-            Hudson, N.Y. 12534<br />
-            <a href="https://goo.gl/maps/BabwY" target="_blank">(View Map)</a>
-        </p>
-
-        <p>
-            Tel: (518) 828 2880<br />
-            Fax: (518) 828 3886
-        </p>
-
-        <p>
-            <a href="mailto:contact@combraygallery.com">contact@combraygallery.com</a>
-        </p>
-
-        <p ng-bind-html="content.hours"></p>
-
-        <p>
-            We accept all major credit cards. Global shipping available via third party carriers.
-        </p>
+    <div class="contact-text" ng-bind-html="content.body">
         <div class="clear"></div>
     </div>
 </div>
