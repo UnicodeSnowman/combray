@@ -1,20 +1,13 @@
 class PagesController < ApplicationController
-  before_action :set_page
-
-  def home
-  end
-
-  def about
+  def services
+    render json: Service.first
   end
 
   def contact
+    render json: Contact.first
   end
 
-  def services
-    render json: set_page
-  end
-
-  def set_page
-    Page.find_by_title(params[:action])
+  def about
+    render json: About.first
   end
 end

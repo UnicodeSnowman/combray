@@ -14,27 +14,11 @@ AntiquesGallery::Application.routes.draw do
   get '/contact' => 'pages#contact'
   get '/newsletter' => 'pages#newsletter'
 
-  #get '/collection' => categories?
-  # get "subcategory/index"
-
-#  resources :categories
-#  resources :subcategories
   resources :items
-
-#  namespace :admin do
-#    resources :items   
-#    resources :categories
-#    resources :subcategories
-#    resources :photos
-#  end
 
   resources :categories do
     resources :subcategories
   end
-
-  #get 'admin' => 'sessions#index'
-  #get 'admin/login' => 'sessions#new'
-  #post 'admin/login' => 'sessions#create'
 
   ###########################
   #
