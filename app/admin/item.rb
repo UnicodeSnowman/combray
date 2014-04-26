@@ -1,5 +1,7 @@
 ActiveAdmin.register Item do
 
+  menu :priority => 1
+
   ActiveAdmin.register Photo do
     belongs_to :item, :optional => true
   end
