@@ -44,7 +44,7 @@ angular.module('Combray')
 
       var query = $location.search(),
           itemsPerPage = 12,
-          lastPage = Math.floor(items.length / itemsPerPage) - 1;
+          lastPage = Math.floor(items.length / itemsPerPage);
 
       $scope.page = 0;
       $scope.limit = itemsPerPage;
