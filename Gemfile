@@ -10,6 +10,7 @@ ruby "2.0.0"
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'unicorn'
 
 group :assets do
   gem 'sprockets-rails', '~> 2.0.0'

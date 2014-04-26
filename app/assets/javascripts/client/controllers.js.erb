@@ -1,6 +1,5 @@
 angular.module('Combray')
     .controller('AppCtrl', ['$scope', '$location', '$route', function ($scope, $location, $route) {
-      var $searchBar = angular.element('.search-bar');
 
       $scope.onClickCurrentStock = function () {
         $location.search('category', undefined);
