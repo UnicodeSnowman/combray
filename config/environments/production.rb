@@ -2,7 +2,8 @@ AntiquesGallery::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  config.cache_classes = false
+  # config.cache_classes = true # default
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both thread web servers
