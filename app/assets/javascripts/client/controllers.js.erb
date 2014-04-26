@@ -42,15 +42,17 @@ angular.module('Combray')
         'categories',
         'items', function ($scope, $location, $http, $filter, itemsService, spinnerService, categories, items) {
 
-      var query = $location.search(),
-          itemsPerPage = 12,
-          lastPage = Math.floor(items.length / itemsPerPage);
+      function getNumPages (numItems) {
+        return Math.floor(numItems / $scope.limit);
+      }
+      var query = $location.search();
 
       $scope.page = 0;
-      $scope.pageMax = lastPage;
-      $scope.limit = itemsPerPage;
+      $scope.pageMax = getNumPages(items.length);
+      $scope.limit = 12;
+
       $scope.next = function () { 
-        $scope.page = $scope.page < lastPage ? $scope.page + 1 : $scope.page; 
+        $scope.page = $scope.page < $scope.pageMax ? $scope.page + 1 : $scope.page; 
       };
       $scope.previous = function () { 
         $scope.page = $scope.page != 0 ? $scope.page - 1 : $scope.page = 0; 
@@ -80,6 +82,8 @@ angular.module('Combray')
 
           spinnerService.spin('spinner');
           itemsService.all((subcategory ? subcategory.id : undefined), category.id).then(function (res) {
+              $scope.page = 0;
+              $scope.pageMax = getNumPages(res.data.length)
               $scope.items = res.data;
               $scope.showSplash = false;
           })['finally'](function () {
