@@ -8,11 +8,9 @@ AntiquesGallery::Application.routes.draw do
   # root 'welcome#index'
 
   root :to => 'pages#home'
-  get '/home' => 'pages#home'
   get '/services' => 'pages#services'
   get '/about' => 'pages#about'
   get '/contact' => 'pages#contact'
-  get '/newsletter' => 'pages#newsletter'
 
   resources :items
 

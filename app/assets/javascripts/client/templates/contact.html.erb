@@ -1,9 +1,7 @@
 <div id="contact">
     <div ng-include="'<%= asset_path('client/templates/nav.html') %>'"></div>
     <div class="contact-text">
-        <p>
-            We are located in Hudson, an upstate New York town two hours north of Manhattan known for its dynamic and vibrant antiques and art market. You will find us on historic Warren Street, right off 3rd Street.
-        </p>
+        <p ng-bind-html="content.body"></p>
 
         <p>
             Visit Us:
@@ -25,13 +23,7 @@
             <a href="mailto:contact@combraygallery.com">contact@combraygallery.com</a>
         </p>
 
-        <p>
-            Hours:<br />
-            Mon - Fri 10 - 6<br />
-            Sat 11 - 6<br />
-            Sun 12 - 4<br />
-            Email inquiries are addressed daily.
-        </p>
+        <p ng-bind-html="content.hours"></p>
 
         <p>
             We accept all major credit cards. Global shipping available via third party carriers.

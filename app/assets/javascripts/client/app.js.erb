@@ -44,20 +44,45 @@ angular.module('Combray', ['ngRoute', 'angularSpinner'])
                 }
             })
             .when('/about', {
-              templateUrl: '<%=asset_path("client/templates/about.html")%>'
+              templateUrl: '<%=asset_path("client/templates/about.html")%>',
+              controller: ['$scope', 'content', '$sce', function ($scope, content, $sce) { 
+                $scope.body = $sce.trustAsHtml(content.data.body);
+              }],
+              resolve: {
+                content: ['$http', function ($http) {
+                  return $http.get('/about');
+                }]
+              }
             })
             .when('/contact', {
-              templateUrl: '<%=asset_path("client/templates/contact.html")%>'
+              templateUrl: '<%=asset_path("client/templates/contact.html")%>',
+              controller: ['$scope', 'content', '$sce', function ($scope, content, $sce) { 
+                $scope.content = {
+                  hours: $sce.trustAsHtml(content.data.hours),
+                  body: $sce.trustAsHtml(content.data.body)
+                }
+              }],
+              resolve: {
+                content: ['$http', function ($http) {
+                  return $http.get('/contact');
+                }]
+              }
             })
             .when('/services', {
-//              resolve: {
-//                content: ['$http', function ($http) {
-//                    return $http.get('/services').then(function (res) {
-//                      return res.data;
-//                    })
-//                }]
-//              },
-              templateUrl: '<%=asset_path("client/templates/services.html")%>'
+              templateUrl: '<%=asset_path("client/templates/services.html")%>',
+              controller: ['$scope', 'content', '$sce', function ($scope, content, $sce) { 
+                $scope.content = {
+                  bodyTop: $sce.trustAsHtml(content.data.body_top),
+                  bodyBottom: $sce.trustAsHtml(content.data.body_bottom),
+                  titleTop: $sce.trustAsHtml(content.data.title_top),
+                  titleBottom: $sce.trustAsHtml(content.data.title_bottom)
+                }
+              }],
+              resolve: {
+                content: ['$http', function ($http) {
+                  return $http.get('/services');
+                }]
+              }
             })
             .when('/search', {
                 templateUrl: '<%=asset_path("client/templates/current-stock.html")%>',
