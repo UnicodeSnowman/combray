@@ -1,27 +1,11 @@
 angular.module('Combray')
-    .filter('ItemsFilter', function () {
-      function isMatch (item, query) {
-        var result = false,
-            query = query.toLowerCase();
-        if (item.name && item.name.toLowerCase().indexOf(query) !== -1)
-          result = true;
-        if (item.description && item.description.toLowerCase().indexOf(query) !== -1)
-          result = true;
-        else if (item.category && item.category.toLowerCase().indexOf(query) !== -1)
-          result = true; 
-        else if (item.subcategory && item.subcategory.toLowerCase().indexOf(query) !== -1)
-          result = true; 
-        return result; 
+    .filter('Paginate', ['$filter', function ($filter) {
+      var limitTo = $filter('limitTo');
+      return function (items, page, limit) {
+        var start = page * limit;
+        return limitTo(items.slice(start), limit);
       }
-      return function (items, query) {
-        var result = [];
-        return items.reduce(function (acc, item) {
-          if (isMatch(item, query))
-            acc.push(item);
-          return acc; 
-        }, [])
-      }
-    })
+    }])
     .filter('Titleize', function () {
       return function (phrase) {
         if (!phrase)

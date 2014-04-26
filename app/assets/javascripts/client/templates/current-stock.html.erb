@@ -15,7 +15,8 @@
       <div class="grid">
           <div ng-show="showSplash"><%= image_tag('current-stock.jpg') %></div>
           <div ng-show="items.length && !showSplash">
-              <div class="cell" ng-repeat="item in items"><a ng-href="#/current-stock/{{item.id}}"><img ng-src="{{item.photos[0].photo.thumb.url}}" border="0" /></a></div>
+              <div class="cell" ng-repeat="item in items | Paginate:page:limit"><a ng-href="#/current-stock/{{item.id}}"><img ng-src="{{item.photos[0].photo.thumb.url}}" border="0" /></a></div>
+              <p class="paginatio"><a href="" ng-click="previous()">Previous</a> | <a href="" ng-click="next()">Next</a></p>
           </div>
           <div ng-hide="items.length">We are sorry, no items are available at this time.</div>
       </div>

@@ -58,10 +58,14 @@ a:active {color:#b02733; text-decoration:none;}  /* selected link */
 	font-size:medium;
 }
 
-.grid{
+.grid {
 	position:relative;
 	width:870px;
 	float:right;
+}
+
+.grid .pagination {
+    float: right;
 }
 
 .grid .cell img{

@@ -42,7 +42,18 @@ angular.module('Combray')
         'categories',
         'items', function ($scope, $location, $http, $filter, itemsService, spinnerService, categories, items) {
 
-      var query = $location.search();
+      var query = $location.search(),
+          itemsPerPage = 3,
+          lastPage = (items.length / itemsPerPage) - 1;
+
+      $scope.page = 0;
+      $scope.limit = itemsPerPage;
+      $scope.next = function () { 
+        $scope.page = $scope.page < lastPage ? $scope.page + 1 : $scope.page; 
+      };
+      $scope.previous = function () { 
+        $scope.page = $scope.page != 0 ? $scope.page - 1 : $scope.page = 0; 
+      };
 
       $scope.selectedCategory = $location.search().category;
       $scope.selectedSubcategory = $location.search().subcategory;

@@ -31,7 +31,7 @@
     /*logo image at the top of the page*/
     .header {
         position:relative;
-        width:40%;
+        width: 50%;
         margin-left:auto;
         margin-right:auto;
     }
@@ -49,6 +49,10 @@
     }
 
     .thumbs {
+        display: none;
+    }
+
+    .addthis_toolbox {
         display: none;
     }
 
