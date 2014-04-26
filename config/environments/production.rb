@@ -2,8 +2,7 @@ AntiquesGallery::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = false
-  # config.cache_classes = true # default
+  config.cache_classes = true
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both thread web servers
@@ -26,6 +25,7 @@ AntiquesGallery::Application.configure do
   # Compress JavaScripts and CSS.
   #config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
+  config.assets.compress = false
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
