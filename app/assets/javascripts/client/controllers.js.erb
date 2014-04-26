@@ -47,6 +47,7 @@ angular.module('Combray')
           lastPage = Math.floor(items.length / itemsPerPage);
 
       $scope.page = 0;
+      $scope.pageMax = lastPage;
       $scope.limit = itemsPerPage;
       $scope.next = function () { 
         $scope.page = $scope.page < lastPage ? $scope.page + 1 : $scope.page; 
