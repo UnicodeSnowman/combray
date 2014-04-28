@@ -95,15 +95,18 @@ angular.module('Combray')
       '$scope', 
       '$location', 
       '$timeout',
-      'item', function ($scope, $location, $timeout, item) {
+      'usSpinnerService',
+      'item', function ($scope, $location, $timeout, spinnerService, item) {
 
       var $mainImage = angular.element('.main-image');
 
       $scope.onThumbClick = function (thumb) {
           $mainImage.trigger('zoom.destroy');
-//          $('#addimage').load(function() { $(this).show() });
-//          $('#addimage').attr('src', src[i]);
-          $mainImage.find('img').attr('src', thumb.photo.main_show.url);
+          spinnerService.spin('item-spinner');
+          $mainImage.find('img').load(function() { 
+            spinnerService.stop('item-spinner')
+            $(this).show() 
+          });
           $scope.current = thumb.photo;
           $mainImage.zoom({ url: $scope.current.url });
       }
