@@ -11,6 +11,7 @@ AntiquesGallery::Application.routes.draw do
   get '/services' => 'pages#services'
   get '/about' => 'pages#about'
   get '/contact' => 'pages#contact'
+  get '/print/:id' => 'items#print'
 
   resources :items
 
