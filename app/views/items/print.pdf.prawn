@@ -4,7 +4,7 @@ pdf.image "#{Rails.root}/app/assets/images/print_letterhead.png", :width => 280,
 
 pdf.image open("#{@item.photos.first.photo.main_show.url}"), :width => 350, :position => :center
 
-pdf.text "#{@item.name.titleize}", :margin => 60
+pdf.text "#{@item.name.titleize}", :style => :bold, :margin => 60
 
 pdf.move_down(15)
 
