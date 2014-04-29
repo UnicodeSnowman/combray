@@ -48,8 +48,8 @@ angular.module('Combray')
       var query = $location.search();
 
       $scope.page = 0;
-      $scope.pageMax = getNumPages(items.length);
       $scope.limit = 12;
+      $scope.pageMax = getNumPages(items.length);
 
       $scope.next = function () { 
         $scope.page = $scope.page < $scope.pageMax ? $scope.page + 1 : $scope.page; 
