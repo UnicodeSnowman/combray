@@ -28,6 +28,8 @@
 #current-stock {
     @include body-text;
 
+    margin-bottom: 60px;
+
     .categories { }
     .subcategories {
         li {
