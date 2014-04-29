@@ -1,10 +1,12 @@
-pdf.font "#{Rails.root}/public/fonts/Muli-Regular.ttf", :size => 11
+pdf.font "#{Rails.root}/public/fonts/Muli-Regular.ttf"
 
 pdf.image "#{Rails.root}/app/assets/images/print_letterhead.png", :width => 280, :position => :center, :vposition => :top
 
 pdf.image open("#{@item.photos.first.photo.main_show.url}"), :width => 350, :position => :center
 
-pdf.text "#{@item.name.titleize}", :style => :bold, :margin => 60, :size => 12
+pdf.text "#{@item.name.titleize}", :margin => 60, :size => 12
+
+pdf.font "#{Rails.root}/public/fonts/Muli-Light.ttf", :size => 10
 
 pdf.move_down(15)
 
