@@ -72,6 +72,7 @@ angular.module('Combray')
       $scope.onCategoryClick = function (category, subcategory) {
           $location.search('subcategory', null);
           $location.search('category', category.id);
+          $scope.selectedSubcategory = undefined;
           $scope.selectedCategory = category.id;
 
           if (subcategory) {

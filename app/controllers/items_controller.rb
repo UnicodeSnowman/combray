@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   layout false, only: [:print]
-  prawnto :prawn => { :left_margin => 70, :right_margin => 70, :bottom_margin => 30 }
+  prawnto :prawn => { :left_margin => 70, :right_margin => 70, :bottom_margin => 20, :top_margin => 20 }
   before_action :set_item, only: [:print, :edit, :update, :destroy]
   # before_action to prevent undefined routes from throwing errors
 
