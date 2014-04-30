@@ -24,6 +24,10 @@ angular.module('Combray')
       app.showSearch = false;
       app.onSearchClick = function (e) {
           app.showSearch = true;
+          setTimeout(function () {
+            $('.search-bar').focus();
+          }, 0);
+          return false;
       }
 
     }])

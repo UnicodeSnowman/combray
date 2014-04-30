@@ -10,7 +10,7 @@
     <a href="#/about">ABOUT</a>
     <a href="#/services">SERVICES</a>
     <a href="#/contact">CONTACT</a>
-    <a href="" ng-hide="app.showSearch" ng-click="app.onSearchClick()">SEARCH</a>
+    <a href="" ng-hide="app.showSearch" ng-click="app.onSearchClick($event)">SEARCH</a>
     <input type="text" class="search-bar" ng-show="app.showSearch" ng-keydown="app.onSearch($event, model.query)" ng-blur="app.onBlurEvent()" placeholder="Search..." ng-model="model.query">
   </div>
 </div>
